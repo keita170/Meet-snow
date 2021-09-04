@@ -1,0 +1,2 @@
+class TeacherPost < ApplicationRecord
+end

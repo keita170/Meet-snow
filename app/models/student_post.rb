@@ -1,0 +1,2 @@
+class StudentPost < ApplicationRecord
+end
