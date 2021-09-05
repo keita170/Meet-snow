@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-8">
+      <%= @user.name %>
+      <%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-primary btn-sm ml-5" %><br>
+      <p>投稿数/フォロー数/フォロワー数</p>
+      <%= @user.introduction %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="bg-info d-flex mx-auto justify-content-center align-items-center rounded-pill mt-5 mb-5" style="height:450px; width:500px;">
+        <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <h1 class="meet_snow display-4">Meet snow</h1>
+
+        <div class="field mb-3 mt-4">
+          <%= f.text_field :name, autofocus: true, placeholder: "名前" %>
+        </div>
+        <div class="field mb-3">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+        </div>
+        <div class="field mb-3">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード(6文字以上)" %>
+        </div>
+        <div class="field mb-3">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認用)" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "アカウント作成", class: 'btn btn-primary mx-auto'  %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 ">
+      <p class="text-right">アカウント作成済みの方は<%= link_to "こちら", new_user_session_path, class: 'text-decolation' %>から。</p>
+    </div>
+  </div>
+</div>

@@ -5,11 +5,49 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name ="viewport" content="width=device-width, initial-scale=1, maximim-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-white mb-3">
+        <div class="container">
+          <a class="navbar-brand text-dark" href="">
+            <span>Meet snow</span>
+          </a>
+          <div>
+           <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+            <li>
+              <%= link_to students_path, class:"nav-link" do %>
+              <span class="fas fa-home text-dark"> Student</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to teachers_path, class:"nav-link" do %>
+              <span class="fas fa-users text-dark" > Teacher</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to teachers_path, class:"nav-link" do %>
+              <span class="fas fa-book-open text-dark"> Teachers</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to user_path(current_user), class:"nav-link" do %>
+              <span class="fas fa-sign-out-alt text-dark"> User</span>
+              <% end %>
+            </li>
+
+            <% else %>
+            <% end %>
+           </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
