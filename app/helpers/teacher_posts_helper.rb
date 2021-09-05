@@ -1,0 +1,2 @@
+module TeacherPostsHelper
+end

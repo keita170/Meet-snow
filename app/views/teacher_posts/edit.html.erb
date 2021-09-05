@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="meet_snow text-center mx-auto mt-3">〜先生側の新規投稿ページ〜</h1>
+      <div class="bg-info d-flex mx-auto justify-content-center align-items-center rounded mt-3 mb-2" style="height:430px; width:700px;">
+        <%= form_with model:@teacher_post, local: true do |f| %>
+
+
+        <div class="field mb-3 mt-4">
+          <%= f.label :"投稿内容",class:"mr-2 h4" %>
+          <%= f.text_area :body, size: "30x6", class: "form-control", placeholder: "◯◯というトリックまでできます！教えて欲しい方は是非！場所は要相談で！or ◯月◯日〜◯月◯日まで、◯◯スキー場にいます！その期間で教えて欲しい方募集します！など" %>
+        </div>
+        <div class="field mb-3">
+          <%= f.label :"生徒の条件",class:"mr-2 h4" %>
+          <%= f.text_field :title, size: "2x3", class: "form-control", placeholder: "誰でも教えられます！など" %>
+        </div>
+        <div class="field mb-3">
+          <%= f.label :"分野",class:"h4" %>
+        　<%= f.select :field, [["フリースタイル", "フリースタイル"], ["グラトリ", "グラトリ"], ["カービング", "カービング"], ["その他", "その他"]], include_blank: "選択して下さい" %>
+        </div>
+
+        <div class="actions mb-3">
+          <%= f.submit "編集内容を保存", class: 'btn btn-primary mx-auto'  %>
+        </div>
+      <% end %>
+
+
+      </div>
+    </div>
+  </div>
+</div>

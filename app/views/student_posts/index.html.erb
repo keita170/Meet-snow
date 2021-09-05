@@ -1,0 +1,85 @@
+<div class="student-title mb-5">
+  <h1 class="text-center">〜教えてくれる人募集中〜</h1>
+</div>
+
+  <div class="row ml-5">
+
+    <div class="student-left col-md-3">
+      <%= link_to new_student_post_path do %>
+            <i class="fas fa-plus-square text-dark fa-2x new-button"></i>
+            <span class="h2 text-dark">新規投稿する</span>
+      <% end %>
+    </div>
+
+    <div class="student-center col-md-6 overflow-auto" style="width:100%; height:800px;">
+      <% @student_post.each do |student| %>
+      <div class="card mb-2" style="width: 42rem;">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= student.field %>
+            <% if student.user == current_user %>
+            <%= link_to "編集する",  edit_student_post_path(student) ,class:"btn btn-primary btn-sm ml-5" %>
+            <% else %>
+            <%= link_to "連絡を取る", user_path(student.user) ,class:"btn btn-primary btn-sm ml-5" %>
+            <% end %>
+
+          </h5>
+          <p class="card-text"><%= student.body %></p>
+          <div class="text-muted">
+          条件:<%= student.title %>
+          </div>
+
+        </div>
+      </div>
+      <% end %>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p><p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p><p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p><p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p><p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <% @student_post.each do |student| %>
+      <%= student.body %>
+      <%= student.title %>
+      <%= student.field %>
+      <% end %>
+      <% @student_post.each do |student| %>
+      <div class="card text-center border-top">
+
+        <div class="card-header">
+          <%= student.field %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= student.body %></h5>
+        </div>
+        <div class="card-footer text-muted mb-5 border-bottom">
+          <%= student.title %>
+        </div>
+
+      </div>
+      <% end %>
+      <p>O</p>
+    </div>
+    <div class="col-md-3"><p>aaaaa</p></div>
+  </div>

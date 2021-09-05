@@ -12,13 +12,13 @@ Rails.application.routes.draw do
   end
 
 
-  resources :students, only: [:index, :new, :create, :edit, :update] do
+  resources :student_posts, only: [:index, :new, :create, :edit, :update] do
     resources :favorites, only: [:create]
     delete 'favorites' => 'favorites#destroy', as:'favorite'
     resources :comments, only: [:create, :destroy]
   end
 
-  resources :teachers, only: [:index, :new, :create, :edit, :update] do
+  resources :teacher_posts, only: [:index, :new, :create, :edit, :update] do
     resources :favorites, only: [:create]
     delete 'favorites' => 'favorites#destroy', as:'favorite'
     resources :comments, only: [:create, :destroy]
