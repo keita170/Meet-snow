@@ -1,13 +1,88 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-
+    <div class="col-md-2 offset-md-2 mx-auto">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image.variant(resize:'200x200'), class:"rounded" %>
+      <% else %>
+       <%= image_tag 'no_image.jpg' %>
+      <% end %>
     </div>
     <div class="col-md-8">
       <%= @user.name %>
       <%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-primary btn-sm ml-5" %><br>
       <p>投稿数/フォロー数/フォロワー数</p>
       <%= @user.introduction %>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="student col-md-10 offset-md-2">
+      <h2 class="text-center">〜生徒側で投稿した一覧〜</h2>
+      <% @student_post.each do |student| %>
+      <div class="card mb-2" style="width: 42rem;">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= student.field %>
+            <% if student.user == current_user %>
+            <%= link_to "編集する",  edit_student_post_path(student) ,class:"btn btn-primary btn-sm ml-5" %>
+            <% else %>
+            <%= link_to "連絡を取る", user_path(student.user) ,class:"btn btn-primary btn-sm ml-5" %>
+            <% end %>
+
+          </h5>
+          <p class="card-text"><%= student.body %></p>
+          <div class="text-muted">
+            <span>条件:<%= student.title %>
+             <% if student.favorited_by?(current_user) %>
+              <%= link_to student_post_favorite_path(id: student.id, student_post_id: student.id), method: :delete do %>
+              <i class="fas fa-heart"></i><%= student.favorites.count %>
+              <% end %>
+             <% else %>
+              <%= link_to student_post_favorites_path(id: student.id, student_post_id: student.id), method: :post do %>
+              <i class="far fa-heart"></i><%= student.favorites.count %>
+              <% end %>
+             <% end %>
+            </span>
+          </div>
+
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="teacher col-md-10 offset-md-2 mt-5">
+      <h2 class="text-center">〜先生側で投稿した一覧〜</h2>
+      <% @teacher_post.each do |teacher| %>
+      <div class="card mb-2" style="width: 42rem;">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= teacher.field %>
+            <% if teacher.user == current_user %>
+            <%= link_to "編集する",  edit_teacher_post_path(teacher) ,class:"btn btn-primary btn-sm ml-5" %>
+            <% else %>
+            <%= link_to "連絡を取る", user_path(teacher.user) ,class:"btn btn-primary btn-sm ml-5" %>
+            <% end %>
+
+          </h5>
+          <p class="card-text"><%= teacher.body %></p>
+          <div class="text-muted">
+            <span>条件:<%= teacher.title %>
+             <% if teacher.favorited_by?(current_user) %>
+              <%= link_to teacher_post_favorite_path(id: teacher.id, teacher_post_id: teacher.id), method: :delete do %>
+              <i class="fas fa-heart"></i><%= teacher.favorite_teachers.count %>
+              <% end %>
+
+             <% else %>
+              <%= link_to teacher_post_favorite_teachers_path(id: teacher.id, teacher_post_id: teacher.id), method: :post do %>
+              <i class="far fa-heart"></i><%= teacher.favorite_teachers.count %>
+              <% end %>
+
+             <% end %>
+            </span>
+          </div>
+
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>

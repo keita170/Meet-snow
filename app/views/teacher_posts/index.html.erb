@@ -26,7 +26,19 @@
           </h5>
           <p class="card-text"><%= teacher.body %></p>
           <div class="text-muted">
-          条件:<%= teacher.title %>
+            <span>条件:<%= teacher.title %>
+             <% if teacher.favorited_by?(current_user) %>
+              <%= link_to teacher_post_favorite_path(id: teacher.id, teacher_post_id: teacher.id), method: :delete do %>
+              <i class="fas fa-heart"></i><%= teacher.favorite_teachers.count %>
+              <% end %>
+
+             <% else %>
+              <%= link_to teacher_post_favorite_teachers_path(id: teacher.id, teacher_post_id: teacher.id), method: :post do %>
+              <i class="far fa-heart"></i><%= teacher.favorite_teachers.count %>
+              <% end %>
+
+             <% end %>
+           </span>
           </div>
 
         </div>

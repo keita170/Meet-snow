@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @student_post = @user.student_posts
+    @teacher_post = @user.teacher_posts
   end
 
   def edit

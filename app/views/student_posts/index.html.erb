@@ -22,20 +22,65 @@
             <% else %>
             <%= link_to "連絡を取る", user_path(student.user) ,class:"btn btn-primary btn-sm ml-5" %>
             <% end %>
-
           </h5>
+          
+          
           <p class="card-text"><%= student.body %></p>
           <div class="text-muted">
-          条件:<%= student.title %>
+           <span>条件:<%= student.title %>
+           
+           <% if student.favorited_by?(current_user) %>
+            <%= link_to student_post_favorite_path(id: student.id, student_post_id: student.id), method: :delete do %>
+            <i class="fas fa-heart"></i><%= student.favorites.count %>
+            <% end %>
+            
+           <% else %>
+            <%= link_to student_post_favorites_path(id: student.id, student_post_id: student.id), method: :post do %>
+            <i class="far fa-heart"></i><%= student.favorites.count %>
+            <% end %>
+            
+           <% end %>
+           </span>
           </div>
-
         </div>
       </div>
       <% end %>
       <p>O</p>
       <p>O</p>
-      <p>O</p>
-      <p>O</p>
+      
+      <% @student_post.each do |student| %>
+      <div class="card border-top mb-2">
+
+        <div class="card-header text-center">
+          <%= student.field %>
+          <% if student.user == current_user %>
+            <%= link_to "編集する",  edit_student_post_path(student) ,class:"btn btn-primary btn-sm ml-5" %>
+            <% else %>
+            <%= link_to "連絡を取る", user_path(student.user) ,class:"btn btn-primary btn-sm ml-5" %>
+            <% end %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-center"><%= student.body %></h5>
+        </div>
+        <div class="text-muted">
+        　<span>条件:<%= student.title %>
+        　<% if student.favorited_by?(current_user) %>
+            <%= link_to student_post_favorite_path(id: student.id, student_post_id: student.id), method: :delete do %>
+            <i class="fas fa-heart"></i><%= student.favorites.count %>
+            <% end %>
+            
+           <% else %>
+            <%= link_to student_post_favorites_path(id: student.id, student_post_id: student.id), method: :post do %>
+            <i class="far fa-heart"></i><%= student.favorites.count %>
+            <% end %>
+            
+           <% end %>
+          </span>
+        </div>
+      </div>
+
+ 
+      <% end %>
       <p>O</p>
       <p>O</p>
       <p>O</p>
