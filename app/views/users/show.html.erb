@@ -4,7 +4,7 @@
       <% if @user.image.attached? %>
         <%= image_tag @user.image.variant(resize:'200x200'), class:"rounded-circle" %>
       <% else %>
-       <%= image_tag 'no_image.jpg' %>
+       <%= image_tag 'no_image.jpg', class:"rounded-circle" %>
       <% end %>
     </div>
     <div class="col-md-8">

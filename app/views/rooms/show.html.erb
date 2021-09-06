@@ -10,9 +10,12 @@
         <% if user == current_user %>
         <% else %>
           <p class="rounded bg-dm px-md-2 py-md-2" style="width:100%; height:60px;text-align: left">
-          <%= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2 mr-2" %>
+          <%#= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2 mr-2" %>
+          <% if user.image.attached? %>
+          <%= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2 mr-3" %>
+          <% end %>
           <%= link_to user.name,room_path(room) %>
-          
+          <%= room.messages.order('created_at DESC').limit(1).first.message %>
         <% end %>
       <% end %>
     <% end %>
@@ -56,27 +59,3 @@
 
 <%= link_to "一覧へ", rooms_path %>
 
-
-<h1>DM</h1>
-
-<h4>参加者</h4>
-<% @entries.each do |entry| %>
-  <h5><strong><a href="/users/<%= entry.user.id %>"><%= entry.user.email%>さん</a></strong></h5>
-<% end %>
-
-<hr>
-  <% if @messages.present? %>
-    <% @messages.each do |message| %>
-      <% if message.user.id == current_user.id %>
-       <p style="text-align: right"><%= message.message %></p>
-      <% else %>
-       <p style="text-align: left"><%= message.message %></p>
-      <% end %>
-   <% end %>
-  <% else %>
-    <h3 class="text-center">メッセージはまだありません</h3>
-  <% end %>
-
-
-
-<%= link_to "一覧へ", rooms_path %>
