@@ -1,0 +1,10 @@
+<div class="comment-box">
+  <div class="comment-info">
+    <%# user名を表示 %>
+    <p class="comment-user"><%= comment.user.name %></p>
+    <%# 投稿時間を表示 %>
+    <p class="comment-time"><%= l comment.created_at %></p>
+  </div>
+  <%# 改行が反映される形でコメントを表示 %>
+  <p><%= simple_format(h(comment.comment)) %></p>
+</div>

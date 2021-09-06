@@ -40,7 +40,21 @@
              <% end %>
            </span>
           </div>
+          <div class="comment-student">
+            <% teacher.comment_teachers.each do |comment| %>
+             <tr>
+                <td><%= link_to comment.user.name, user_path(comment.user) %></td>
+                <td><%= comment.comment %></td>
+             </tr>
+            <% end %>
+          </div>
 
+          <div class="commnt-student-make border-top pt-3">
+            <%= form_with(model:[teacher, @comment_teacher], local:true) do |f| %>
+            <%= f.text_area :comment, size:"50x1", class:"inputComment" %><br>
+            <%= f.submit "コメント", class:"btn btn-light" %>
+            <% end %>
+          </div>
         </div>
       </div>
       <% end %>

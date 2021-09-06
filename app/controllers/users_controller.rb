@@ -4,6 +4,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @student_post = @user.student_posts
     @teacher_post = @user.teacher_posts
+    @comment = Comment.new
+    @comment_teacher = CommentTeacher.new
   end
 
   def edit

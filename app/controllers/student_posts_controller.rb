@@ -1,7 +1,10 @@
 class StudentPostsController < ApplicationController
+  
 
   def index
     @student_post = StudentPost.all
+    @comment = Comment.new
+    
   end
 
   def new

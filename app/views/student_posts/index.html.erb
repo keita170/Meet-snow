@@ -12,6 +12,62 @@
     </div>
 
     <div class="student-center col-md-6 overflow-auto" style="width:100%; height:800px;">
+            <% @student_post.each do |student| %>
+      <div class="card mb-2" style="width: 42rem;">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= student.field %>
+            <% if student.user == current_user %>
+            <%= link_to "編集する",  edit_student_post_path(student) ,class:"btn btn-primary btn-sm ml-5" %>
+            <% else %>
+            <%= link_to "連絡を取る", user_path(student.user) ,class:"btn btn-primary btn-sm ml-5" %>
+            <% end %>
+          </h5>
+
+
+          <p class="card-text"><%= student.body %></p>
+          <div class="text-muted mb-2">
+           <span>条件:<%= student.title %>
+
+           <% if student.favorited_by?(current_user) %>
+            <%= link_to student_post_favorite_path(id: student.id, student_post_id: student.id), method: :delete do %>
+            <i class="fas fa-heart"></i><%= student.favorites.count %>
+            <% end %>
+
+           <% else %>
+            <%= link_to student_post_favorites_path(id: student.id, student_post_id: student.id), method: :post do %>
+            <i class="far fa-heart"></i><%= student.favorites.count %>
+            <% end %>
+
+           <% end %>
+           </span>
+          </div>
+          <div class="comment-student">
+            <% student.comments.each do |comment| %>
+             <tr>
+                <td><%= link_to comment.user.name, user_path(comment.user) %></td>
+                <td><%= comment.comment %></td>
+             </tr>
+            <% end %>
+          </div>
+
+          <div class="commnt-student-make border-top pt-3">
+            <%= form_with(model:[student, @comment], local:true) do |f| %>
+            <%= f.text_area :comment, size:"50x1", class:"inputComment" %><br>
+            <%= f.submit "コメント", class:"btn btn-light" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+       <p>O</p><p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p><p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
       <% @student_post.each do |student| %>
       <div class="card mb-2" style="width: 42rem;">
         <div class="card-body">
@@ -23,31 +79,39 @@
             <%= link_to "連絡を取る", user_path(student.user) ,class:"btn btn-primary btn-sm ml-5" %>
             <% end %>
           </h5>
-          
-          
+
+
           <p class="card-text"><%= student.body %></p>
           <div class="text-muted">
            <span>条件:<%= student.title %>
-           
+
            <% if student.favorited_by?(current_user) %>
             <%= link_to student_post_favorite_path(id: student.id, student_post_id: student.id), method: :delete do %>
             <i class="fas fa-heart"></i><%= student.favorites.count %>
             <% end %>
-            
+
            <% else %>
             <%= link_to student_post_favorites_path(id: student.id, student_post_id: student.id), method: :post do %>
             <i class="far fa-heart"></i><%= student.favorites.count %>
             <% end %>
-            
+
            <% end %>
            </span>
           </div>
         </div>
       </div>
       <% end %>
+       <p>O</p><p>O</p>
       <p>O</p>
       <p>O</p>
-      
+      <p>O</p>
+      <p>O</p><p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+      <p>O</p>
+
       <% @student_post.each do |student| %>
       <div class="card border-top mb-2">
 
@@ -68,18 +132,19 @@
             <%= link_to student_post_favorite_path(id: student.id, student_post_id: student.id), method: :delete do %>
             <i class="fas fa-heart"></i><%= student.favorites.count %>
             <% end %>
-            
+
            <% else %>
             <%= link_to student_post_favorites_path(id: student.id, student_post_id: student.id), method: :post do %>
             <i class="far fa-heart"></i><%= student.favorites.count %>
             <% end %>
-            
+
            <% end %>
           </span>
+
         </div>
       </div>
 
- 
+
       <% end %>
       <p>O</p>
       <p>O</p>
@@ -88,14 +153,7 @@
       <p>O</p>
       <p>O</p>
       <p>O</p>
-      <p>O</p><p>O</p>
-      <p>O</p>
-      <p>O</p>
-      <p>O</p>
-      <p>O</p><p>O</p>
-      <p>O</p>
-      <p>O</p>
-      <p>O</p>
+
       <p>O</p><p>O</p>
       <p>O</p>
       <p>O</p>

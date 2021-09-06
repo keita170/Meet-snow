@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :teacher_posts, only: [:index, :new, :create, :edit, :update] do
     resources :favorite_teachers, only: [:create]
     delete 'favorites' => 'favorite_teachers#destroy', as:'favorite'
-    resources :comments, only: [:create, :destroy]
+    resources :comment_teachers, only: [:create, :destroy]
   end
 
   resources :messagess, only: [:create, :show]

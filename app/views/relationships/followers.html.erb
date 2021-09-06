@@ -1,1 +1,98 @@
-<h1>followers</h1>
+ <div class="row">
+   <div class="col-md-3"></div>
+   <div class="col-md-3">
+     <div class="student-title">
+        <h4 class="text-center">フォロワー</h4>
+      </div>
+   </div>
+   <div class="col-md-3">
+     <div class="student-title">
+        <h4 class="text-center">フォロー中</h4>
+      </div>
+   </div>
+   <div class="col-md-3"></div>
+ </div>
+
+  <div class="row ml-4">
+
+    <div class="student-left col-md-3">
+      <%= link_to new_student_post_path do %>
+            <i class="fas fa-plus-square text-dark fa-2x new-button"></i>
+            <span class="h2 text-dark">新規投稿する</span>
+      <% end %>
+    </div>
+
+    <div class="student-center col-md-3 overflow-auto" style="width:100%; height:500px;">
+      <div>
+        <% @users.each do |user| %>
+          <% if user.image.attached? %>
+            <%= image_tag user.image.variant(resize:'40x40'), class:"rounded mr-3" %>
+          <% else %>
+           <%= image_tag 'no_image.jpg', image_tag.variant(resize: '40x40') %>
+          <% end %>
+          <%= user.name %>
+          <% if user == current_user %>
+           <%= link_to "プロフィール編集", edit_user_path(user), class:"btn btn-primary btn-sm ml-5" %>
+          <% else %>
+              <% if current_user.following?(user) %>
+                <%= link_to "Unfollow", user_relationship_path(id: user.id, user_id: user.id), class:"btn btn-info btn-sm", method: :delete %>
+              <% else %>
+                <%= link_to "Follow", user_relationships_path(id: user.id, user_id: user.id), class:"btn btn-success btn-sm",method: :post %>
+              <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p><p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+    </div>
+    <div class="student-center col-md-3 overflow-auto" style="width:100%; height:500px;">
+      <div>
+        <% @users_follower.each do |user| %>
+          <% if user.image.attached? %>
+            <%= image_tag user.image.variant(resize:'40x40'), class:"rounded mr-3" %>
+          <% else %>
+           <%= image_tag 'no_image.jpg' %>
+          <% end %>
+          <%= user.name %>
+          <% if user == current_user %>
+           <%= link_to "プロフィール編集", edit_user_path(user), class:"btn btn-primary btn-sm ml-5" %>
+          <% else %>
+              <% if current_user.following?(user) %>
+                <%= link_to "Unfollow", user_relationship_path(user), class:"btn btn-info btn-sm", method: :delete %>
+              <% else %>
+                <%= link_to "Follow", user_relationships_path(user), class:"btn btn-success btn-sm",method: :post %>
+              <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p><p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+      <p>aaaaa</p>
+    </div>
+    <div class="col-md-3"><p>aaaaa</p></div>
+  </div>

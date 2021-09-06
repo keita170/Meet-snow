@@ -2,6 +2,7 @@ class TeacherPostsController < ApplicationController
 
   def index
     @teacher_post = TeacherPost.all
+    @comment_teacher = CommentTeacher.new
   end
 
   def new

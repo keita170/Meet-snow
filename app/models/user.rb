@@ -8,6 +8,27 @@ class User < ApplicationRecord
   has_many :teacher_posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_teachers, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :comment_teachers, dependent: :destroy
+
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id",dependent: :destroy
+  has_many :following_user, through: :follower, source: :followed
+  has_many :followed, class_name: "Relationship",foreign_key: "followed_id", dependent: :destroy
+  has_many :followed_user, through: :followed, source: :follower
+
+  def follow(user_id)
+    follower.create(followed_id: user_id)
+  end
+
+  def unfollow(user_id)
+    follower.find_by(followed_id: user_id).destroy
+  end
+
+  def following?(user)
+    following_user.include?(user)
+  end
+
+
 
   #メソッドの追加
   has_one_attached :image
@@ -23,4 +44,5 @@ class User < ApplicationRecord
       errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
     end
   end
+
 end
