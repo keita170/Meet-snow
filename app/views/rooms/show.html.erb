@@ -9,13 +9,22 @@
       <% room.users.each do |user| %>
         <% if user == current_user %>
         <% else %>
-          <p class="rounded bg-dm px-md-2 py-md-2" style="width:100%; height:60px;text-align: left">
+          <div class="rounded bg-dm px-md-4 py-md-2 mb-2 row" style="width:110%; height:60px;">
           <%#= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2 mr-2" %>
-          <% if user.image.attached? %>
-          <%= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2 mr-3" %>
-          <% end %>
-          <%= link_to user.name,room_path(room) %>
-          <%= room.messages.order('created_at DESC').limit(1).first.message %>
+           <div>
+            <% if user.image.attached? %>
+              <%= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2 mr-3" %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', class:"rounded-circle rounded-circle2 mr-3" %>
+            <% end %>
+           </div>
+            <div class="text-muted ">
+              <%= link_to user.name,room_path(room) %><br>
+              <%= room.messages.order('created_at DESC').limit(1).first.message.truncate(12) %>..
+              <% @post = room.messages.order('created_at DESC').limit(1).first %>
+              <%= time_ago_in_words(@post.created_at) %>
+            </div>
+          </div>
         <% end %>
       <% end %>
     <% end %>
