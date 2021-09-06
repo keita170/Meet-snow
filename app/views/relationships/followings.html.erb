@@ -35,9 +35,9 @@
            <%= link_to "プロフィール編集", edit_user_path(user), class:"btn btn-primary btn-sm ml-5" %>
           <% else %>
               <% if current_user.following?(user) %>
-                <%= link_to "Unfollow", user_relationship_path(user), class:"btn btn-info btn-sm", method: :delete %>
+                <%= link_to "Unfollow", user_relationship_path(id: user.id, user_id: user.id), class:"btn btn-info btn-sm", method: :delete %>
               <% else %>
-                <%= link_to "Follow", user_relationships_path(user), class:"btn btn-success btn-sm",method: :post %>
+                <%= link_to "Follow", user_relationships_path(id: user.id, user_id: user.id), class:"btn btn-success btn-sm",method: :post %>
               <% end %>
           <% end %>
           <br>
