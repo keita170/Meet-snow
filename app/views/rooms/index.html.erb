@@ -1,0 +1,8 @@
+<% @rooms.each do |room| %>
+  <% room.users.each do |user| %>
+    <% if user == current_user %>
+    <% else %>
+      <%= user.name %>
+    <% end %>
+  <% end %>
+<% end %>

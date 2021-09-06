@@ -28,7 +28,7 @@
           <% if user.image.attached? %>
             <%= image_tag user.image.variant(resize:'40x40'), class:"rounded mr-3" %>
           <% else %>
-           <%= image_tag 'no_image.jpg', image_tag.variant(resize: '40x40') %>
+           <%= image_tag 'no_image.jpg' %>
           <% end %>
           <%= user.name %>
           <% if user == current_user %>
@@ -40,6 +40,7 @@
                 <%= link_to "Follow", user_relationships_path(id: user.id, user_id: user.id), class:"btn btn-success btn-sm",method: :post %>
               <% end %>
           <% end %>
+          <br>
         <% end %>
       </div>
       <p>aaaaa</p>
@@ -76,6 +77,7 @@
                 <%= link_to "Follow", user_relationships_path(user), class:"btn btn-success btn-sm",method: :post %>
               <% end %>
           <% end %>
+          <br>
         <% end %>
       </div>
       <p>aaaaa</p>

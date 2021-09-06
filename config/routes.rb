@@ -24,7 +24,8 @@ Rails.application.routes.draw do
     resources :comment_teachers, only: [:create, :destroy]
   end
 
-  resources :messagess, only: [:create, :show]
+  resources :messages, only: [:create, :show]
+  resources :rooms, only: [:create, :show, :index]
 
 
   namespace :admin do

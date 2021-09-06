@@ -2,22 +2,38 @@
   <div class="row">
     <div class="col-md-2 offset-md-2 mx-auto">
       <% if @user.image.attached? %>
-        <%= image_tag @user.image.variant(resize:'200x200'), class:"rounded" %>
+        <%= image_tag @user.image.variant(resize:'200x200'), class:"rounded-circle" %>
       <% else %>
        <%= image_tag 'no_image.jpg' %>
       <% end %>
     </div>
     <div class="col-md-8">
+      <div class="row">
       <%= @user.name %>
       <% if @user == current_user %>
          <%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-primary btn-sm ml-5" %>
       <% else %>
           <% if current_user.following?(@user) %>
-            <%= link_to "Unfollow", user_relationship_path(@user), class:"btn btn-info btn-sm", method: :delete %>
+            <%= link_to "Unfollow", user_relationship_path(@user), class:"btn btn-info btn-sm mr-4 ml-2", method: :delete %>
           <% else %>
-            <%= link_to "Follow", user_relationships_path(@user), class:"btn btn-success btn-sm",method: :post %>
+            <%= link_to "Follow", user_relationships_path(@user), class:"btn btn-success btn-sm mr-4 ml-2",method: :post %>
           <% end %>
       <% end %>
+
+      <% if @user.id == current_user.id %>
+      <% else %>
+        <% if @isRoom == true %>
+          <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, :value=> @user.id %>
+            <% end %>
+            <%= f.submit "チャットを始める" %>
+          <% end %>
+        <% end %>
+      <% end %>
+      </div>
       <br>
       <p>投稿<%= @student_post.count + @teacher_post.count %>件  　フォロー<%= link_to @user.following_user.count, user_followings_path(@user) %>人  　フォロワー<%= link_to @user.followed_user.count, user_followers_path(@user) %>人  </p>
       <%= @user.introduction %>
@@ -61,6 +77,7 @@
                 <td><%= comment.user.name %></td>
                 <td><%= comment.comment %></td>
              </tr>
+             <br>
             <% end %>
           </div>
 
@@ -111,6 +128,7 @@
                 <td><%= comment.user.name %></td>
                 <td><%= comment.comment %></td>
              </tr>
+             <br>
             <% end %>
           </div>
 
