@@ -16,7 +16,10 @@ module MeetSnow
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    
+    #時間を日本時間に設定
     config.time_zone = 'Tokyo'
+    #デフォルトで日本語に設定(内容はlocales/ja.yml)
     config.i18n.default_locale = :ja
   end
 end

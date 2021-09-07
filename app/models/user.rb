@@ -10,16 +10,20 @@ class User < ApplicationRecord
   has_many :favorite_teachers, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :comment_teachers, dependent: :destroy
-
+  
+  #DM機能関連
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries
-
+  
+  #フォローフォロワー機能関連
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id",dependent: :destroy
   has_many :following_user, through: :follower, source: :followed
   has_many :followed, class_name: "Relationship",foreign_key: "followed_id", dependent: :destroy
   has_many :followed_user, through: :followed, source: :follower
 
+
+  #フォロー機能作成時において、使えるメソッドを追加
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
@@ -34,7 +38,7 @@ class User < ApplicationRecord
 
 
 
-  #メソッドの追加
+  #イメージメソッドの追加
   has_one_attached :image
 
   #画像のバリデーション

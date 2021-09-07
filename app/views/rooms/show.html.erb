@@ -1,6 +1,7 @@
 <h1 class="text-center">DM</h1>
 <div class="row">
   <div class="col-md-2"></div>
+  <!--DMでの相手の一覧表示記入場所 始まり-->
   <div class="col-md-3 border" style="width:100%; height:540px;">
     <h5 class="mt-3">相手一覧(⬇︎ここに一覧表示させたい)</h5>
     <hr>
@@ -10,7 +11,7 @@
         <% if user == current_user %>
         <% else %>
           <div class="rounded bg-dm px-md-4 py-md-2 mb-2 row" style="width:110%; height:60px;">
-          <%#= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2 mr-2" %>
+            <!--画像-->
            <div>
             <% if user.image.attached? %>
               <%= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2 mr-3" %>
@@ -18,6 +19,7 @@
               <%= image_tag 'no_image.jpg', class:"rounded-circle rounded-circle2 mr-3" %>
             <% end %>
            </div>
+            <!--名前,最後のメッセージ,その時間-->
             <div class="text-muted ">
               <%= link_to user.name,room_path(room) %><br>
               <%= room.messages.order('created_at DESC').limit(1).first.message.truncate(12) %>..
@@ -30,10 +32,13 @@
     <% end %>
     </div>
   </div>
+  <!--DMでの相手の一覧表示記入場所 終わり-->
+  <!--DMで相手とのやり取りする場所 始まり-->
   <div class="col-md-4 border" style="width:100%; height:540px;">
     <% @entries.each do |entry| %>
       <% if entry.user_id == current_user.id %>
       <% else %>
+        <!--やり取りする相手の名前表示-->
         <h5 class="mt-3"><a href="/users/<%= entry.user.id %>"><%= entry.user.name %>さん</a></h5>
       <% end %>
     <% end %>
@@ -42,10 +47,12 @@
       <% if @messages.present? %>
         <% @messages.each do |message| %>
           <% if message.user.id == current_user.id %>
+          <!--自分の送信した文字が表示される側-->
           <div class="d-flex flex-row-reverse">
             <p class="rounded-pill bg-dm px-md-3 py-md-2" style="max-width:80%;text-align: left"><%= message.message %></p>
           </div>
           <% else %>
+          <!--相手の送信した文字が表示される側-->
           <div class="d-flex flex-row">
            <p class="rounded-pill border px-md-3 py-md-2" style="max-width:80%;text-align: left"><%= message.message %></p>
            </div>
@@ -55,6 +62,8 @@
         <h3 class="text-center">メッセージはまだありません</h3>
       <% end %>
     </div>
+  <!--DMで相手とのやり取りする場所 終わり-->
+  <!--メッセージ記入場所-->
     <div class="mt-3">
       <%= form_with model: @message, local:true do |f| %>
         <%= f.text_field :message, :placeholder => "メッセージを入力して下さい" , :size => 37 %>
