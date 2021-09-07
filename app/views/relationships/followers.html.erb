@@ -14,14 +14,14 @@
  </div>
 
   <div class="row ml-4">
-
+    <!--画面左側-->
     <div class="student-left col-md-3">
       <%= link_to new_student_post_path do %>
             <i class="fas fa-plus-square text-dark fa-2x new-button"></i>
             <span class="h2 text-dark">新規投稿する</span>
       <% end %>
     </div>
-
+    <!--画面真ん中の一覧表示がされてる範囲(フォロー一覧)-->
     <div class="student-center col-md-3 overflow-auto" style="width:100%; height:500px;">
       <div>
         <% @users.each do |user| %>
@@ -43,22 +43,8 @@
           <br>
         <% end %>
       </div>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p><p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
     </div>
+    <!--画面真ん中の一覧表示がされてる範囲(フォロワー一覧)-->
     <div class="student-center col-md-3 overflow-auto" style="width:100%; height:500px;">
       <div>
         <% @users_follower.each do |user| %>
@@ -80,21 +66,15 @@
           <br>
         <% end %>
       </div>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p><p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
-      <p>aaaaa</p>
+      <!--ーーーーーーーーーーーーーーーーーーーーーーここから下は試しに書いてるだけーーーーーーーーーーーーーーーーーーーーーーーーー-->
+      <p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p>
+      <p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p>
+      <p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p>
+      <p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p>
+      <p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p>
+      <p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p>
+      <!--ーーーーーーーーーーーーーーーーーーーーーーここから上は試しに書いてるだけーーーーーーーーーーーーーーーーーーーーーーーーー-->
     </div>
+    <!--画面右側-->
     <div class="col-md-3"><p>aaaaa</p></div>
   </div>

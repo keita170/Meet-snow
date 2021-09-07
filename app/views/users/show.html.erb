@@ -1,7 +1,7 @@
 <div class="container">
   <!--プロフィール欄 ここから-->
   <div class="row">
-    <div class="col-md-2 offset-md-2 mx-auto">
+    <div class="col-md-2 offset-md-2">
       <!--プロフィール画像-->
       <% if @user.image.attached? %>
         <%= image_tag @user.image.variant(resize:'200x200'), class:"rounded-circle" %>
@@ -11,18 +11,17 @@
     </div>
     <div class="col-md-8">
       <div class="row">
-      <%= @user.name %>
+      <p class="ml-3 profile-name"><%= @user.name %></p>
       <!--プロフィール編集or フォロー機能-->
       <% if @user == current_user %>
-         <%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-primary btn-sm ml-5" %>
+        <p><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-primary btn-sm ml-2" %></p>
       <% else %>
           <% if current_user.following?(@user) %>
-            <%= link_to "Unfollow", user_relationship_path(@user), class:"btn btn-info btn-sm mr-4 ml-2", method: :delete %>
+            <p><%= link_to "Unfollow", user_relationship_path(@user), class:"btn btn-info btn-sm mr-4 ml-2", method: :delete %></p>
           <% else %>
-            <%= link_to "Follow", user_relationships_path(@user), class:"btn btn-success btn-sm mr-4 ml-2",method: :post %>
+            <p><%= link_to "Follow", user_relationships_path(@user), class:"btn btn-success btn-sm mr-4 ml-2",method: :post %></p>
           <% end %>
       <% end %>
-      
       <!--ダイレクトメッセージ機能-->
       <% if @user.id == current_user.id %>
       <% else %>
@@ -38,7 +37,6 @@
         <% end %>
       <% end %>
       </div>
-      <br>
       <!--投稿数,フォロー,フォロワー表示-->
       <p>投稿<%= @student_post.count + @teacher_post.count %>件  　フォロー<%= link_to @user.following_user.count, user_followings_path(@user) %>人  　フォロワー<%= link_to @user.followed_user.count, user_followers_path(@user) %>人  </p>
       <%= @user.introduction %>
