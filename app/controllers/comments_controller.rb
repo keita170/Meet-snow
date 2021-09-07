@@ -6,15 +6,16 @@ class CommentsController < ApplicationController
     @comment.student_post_id = @student_post.id
     @comment.save
     #非同期化のためにコメントオフ
-    redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
   end
 
   def destroy
-    # @student_post = StudentPost.find(params[:student_post_id])
+    @student_post = StudentPost.find(params[:student_post_id])
     # comment = Comment.find(params[:id])
     comment = Comment.find_by(id: params[:id], student_post_id: params[:student_post_id])
     comment.destroy
-    redirect_back(fallback_location: root_path)
+    #非同期化のためにコメントオフ
+    # redirect_back(fallback_location: root_path)
   end
 
   private

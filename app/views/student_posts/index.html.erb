@@ -41,12 +41,12 @@
            </span>
           </div>
           <!--コメント表示機能-->
-          <id class="comment_area">
+          <div class="comment_area">
             <%= render 'comments/comment', student: student %>
-          </id>
+          </div>
           <!--コメント投稿機能-->
           <div class="commnt-student-make border-top pt-3">
-            <%= form_with(model:[student, @comment], local:true) do |f| %>
+            <%= form_with(model:[student, @comment], remote:true) do |f| %>
             <%= f.text_area :comment, size:"50x1", class:"inputComment" %><br>
             <%= f.submit "コメント", class:"btn btn-light" %>
             <% end %>
@@ -115,8 +115,8 @@
           <h5 class="card-title text-center"><%= student.body %></h5>
         </div>
         <div class="text-muted">
-        　<span>条件:<%= student.title %>
-        　<% if student.favorited_by?(current_user) %>
+          <span>条件:<%= student.title %>
+          <% if student.favorited_by?(current_user) %>
             <%= link_to student_post_favorite_path(id: student.id, student_post_id: student.id), method: :delete do %>
             <i class="fas fa-heart"></i><%= student.favorites.count %>
             <% end %>

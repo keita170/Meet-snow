@@ -22,9 +22,11 @@
             <!--名前,最後のメッセージ,その時間-->
             <div class="text-muted ">
               <%= link_to user.name,room_path(room) %><br>
-              <%= room.messages.order('created_at DESC').limit(1).first.message.truncate(12) %>..
-              <% @post = room.messages.order('created_at DESC').limit(1).first %>
-              <%= time_ago_in_words(@post.created_at) %>
+              <% if room.messages.count > 0 %>
+                <%= room.messages.order('created_at DESC').limit(1).first.message.truncate(12) %>..
+                <% @post = room.messages.order('created_at DESC').limit(1).first %>
+                <%= time_ago_in_words(@post.created_at) %>
+              <% end %>
             </div>
           </div>
         <% end %>

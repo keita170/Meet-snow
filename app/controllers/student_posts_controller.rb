@@ -4,7 +4,6 @@ class StudentPostsController < ApplicationController
   def index
     @student_post = StudentPost.all.order('created_at DESC')
     @comment = Comment.new
-
   end
 
   def new

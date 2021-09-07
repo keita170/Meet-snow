@@ -6,7 +6,7 @@
      <% if comment.user == current_user %>
       <!--<button type="button" class="btn btn-white btn-sm" data-toggle="collapse" data-target="#demo">▼</button>-->
       <!--<div id="demo" class="collapse">-->
-      <%= link_to "削除", student_post_comment_path(comment, student), class:"text-danger", method: :delete %>
+      <%= link_to "削除", student_post_comment_path(id: comment.id, student_post_id: student.id), class:"text-danger", method: :delete, remote: true %>
       <!--</div>-->
      <% end %>
     </td>
