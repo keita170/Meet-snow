@@ -5,7 +5,7 @@ class CreateTeacherPosts < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.text :body, null: false
       t.integer :field, null: false
-
+      t.integer :status
       t.timestamps
     end
   end

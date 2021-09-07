@@ -1,10 +1,10 @@
 class StudentPostsController < ApplicationController
-  
+
 
   def index
-    @student_post = StudentPost.all
+    @student_post = StudentPost.all.order('created_at DESC')
     @comment = Comment.new
-    
+
   end
 
   def new
@@ -28,10 +28,16 @@ class StudentPostsController < ApplicationController
     redirect_to student_posts_path
   end
 
+  def destroy
+    @student_post = StudentPost.find(params[:id])
+    @student_post.destroy
+    redirect_to student_posts_path
+  end
+
   private
 
   def student_post_params
-    params.require(:student_post).permit(:title, :body, :field)
+    params.require(:student_post).permit(:title, :body, :field, :status)
   end
 
 end

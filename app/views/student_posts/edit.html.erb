@@ -17,14 +17,20 @@
         <div class="field mb-3">
           <%= f.label :"分野",class:"h4" %>
         　<%= f.select :field, [["フリースタイル", "フリースタイル"], ["グラトリ", "グラトリ"], ["カービング", "カービング"], ["その他", "その他"]], include_blank: "選択して下さい" %>
+        　<%= f.radio_button :status,:受付中,  checked: "checked",class:"ml-2" %>
+          <%= f.label :status, "受付中" %>
+          <%= f.radio_button :status, :締め切り %>
+          <%= f.label :status, "締め切り" %>
         </div>
 
         <div class="actions mb-3">
           <%= f.submit "編集内容を保存", class: 'btn btn-primary mx-auto'  %>
+
         </div>
       <% end %>
-
-
+      </div>
+      <div class="text-right">
+        <%= link_to "投稿を削除する", student_post_path(@student_post), method: :delete, class:"btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
       </div>
     </div>
   </div>

@@ -18,7 +18,12 @@
         <div class="card-body">
           <!--投稿内容表示-->
           <h5 class="card-title">
-            <%= student.field %>
+            <%= student.field %>:
+            <% if student.status == "受付中" %>
+              <span class="text-primary"><%= student.status %></span>
+            <% else %>
+              <span class="text-danger"><%= student.status %></span>
+            <% end %>
             <% if student.user == current_user %>
             <%= link_to "編集する",  edit_student_post_path(student) ,class:"btn btn-primary btn-sm ml-5" %>
             <% else %>
@@ -29,10 +34,10 @@
           <div class="text-muted mb-1">
            <span>条件:<%= student.title %>
 
-           <div class="favorite-<%= student.id %>">
-             <!--いいね機能 非同期化してます-->
-              <%= render 'favorites/favorite', student: student %>
-           </div>
+             <div class="favorite-<%= student.id %>">
+               <!--いいね機能 非同期化してます-->
+                <%= render 'favorites/favorite', student: student %>
+             </div>
            </span>
           </div>
           <!--コメント表示機能-->

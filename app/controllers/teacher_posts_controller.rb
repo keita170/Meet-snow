@@ -1,7 +1,7 @@
 class TeacherPostsController < ApplicationController
 
   def index
-    @teacher_post = TeacherPost.all
+    @teacher_post = TeacherPost.all.order('created_at DESC')
     @comment_teacher = CommentTeacher.new
   end
 
@@ -26,11 +26,16 @@ class TeacherPostsController < ApplicationController
     redirect_to teacher_posts_path
   end
 
+  def destroy
+    @teacher_post = TeacherPost.find(params[:id])
+    @teacher_post.destroy
+    redirect_to teacher_posts_path
+  end
 
   private
 
   def teacher_post_params
-    params.require(:teacher_post).permit(:title, :body, :field)
+    params.require(:teacher_post).permit(:title, :body, :field, :status)
   end
 
 end

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @teacher_post = @user.teacher_posts
     @comment = Comment.new
     @comment_teacher = CommentTeacher.new
+    
     #DM機能のための記述
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)

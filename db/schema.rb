@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_013237) do
     t.string "title", null: false
     t.text "body", null: false
     t.integer "field", null: false
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -120,6 +121,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_013237) do
     t.string "title", null: false
     t.text "body", null: false
     t.integer "field", null: false
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
