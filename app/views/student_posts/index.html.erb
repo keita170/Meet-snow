@@ -26,30 +26,19 @@
             <% end %>
           </h5>
           <p class="card-text"><%= student.body %></p>
-          <div class="text-muted mb-2">
+          <div class="text-muted mb-1">
            <span>条件:<%= student.title %>
-           <!--いいね機能-->
-           <% if student.favorited_by?(current_user) %>
-            <%= link_to student_post_favorite_path(id: student.id, student_post_id: student.id), method: :delete do %>
-            <i class="fas fa-heart"></i><%= student.favorites.count %>
-            <% end %>
-           <% else %>
-            <%= link_to student_post_favorites_path(id: student.id, student_post_id: student.id), method: :post do %>
-            <i class="far fa-heart"></i><%= student.favorites.count %>
-            <% end %>
-           <% end %>
+
+           <div class="favorite-<%= student.id %>">
+             <!--いいね機能 非同期化してます-->
+              <%= render 'favorites/favorite', student: student %>
+           </div>
            </span>
           </div>
           <!--コメント表示機能-->
-          <div class="comment-student">
-            <% student.comments.each do |comment| %>
-             <tr>
-                <td><%= link_to comment.user.name, user_path(comment.user) %></td>
-                <td><%= comment.comment %></td>
-             </tr>
-             <br>
-            <% end %>
-          </div>
+          <id class="comment_area">
+            <%= render 'comments/comment', student: student %>
+          </id>
           <!--コメント投稿機能-->
           <div class="commnt-student-make border-top pt-3">
             <%= form_with(model:[student, @comment], local:true) do |f| %>
@@ -57,6 +46,14 @@
             <%= f.submit "コメント", class:"btn btn-light" %>
             <% end %>
           </div>
+          <!--コメント投稿機能 非同期化-->
+          <!--<div class="commnt-student-make border-top pt-3">-->
+            <%#= form_with(model:[student, @comment], remote:true) do |f| %>
+            <%#= f.text_area :comment, size:"50x1", class:"inputComment" %>
+            <!--<br>-->
+            <%#= f.submit "コメント", class:"btn btn-light" %>
+            <%# end %>
+          <!--</div>-->
         </div>
       </div>
       <% end %>
