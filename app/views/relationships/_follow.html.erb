@@ -1,0 +1,21 @@
+<!--画面真ん中の一覧表示がされてる範囲(フォロー一覧)-->
+<div>
+  <% users_follower.each do |user| %>
+    <% if user.image.attached? %>
+      <%= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2 mr-3" %>
+    <% else %>
+     <%= image_tag 'no_image.jpg', class:"rounded-circle rounded-circle2 mr-3" %>
+    <% end %>
+    <%= user.name %>
+    <% if user == current_user %>
+     <%= link_to "プロフィール編集", edit_user_path(user), class:"btn btn-primary btn-sm" %>
+    <% else %>
+        <% if current_user.following?(user) %>
+          <%= link_to "Unfollow", user_relationship_path(id: user.id, user_id: user.id), class:"btn btn-info btn-sm", method: :delete %>
+        <% else %>
+          <%= link_to "Follow", user_relationships_path(id: user.id, user_id: user.id), class:"btn btn-success btn-sm",method: :post %>
+        <% end %>
+    <% end %>
+    <br>
+  <% end %>
+</div>

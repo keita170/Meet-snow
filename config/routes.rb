@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admins, controllers: {
+  sessions: 'admins/sessions'
+}
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -9,6 +11,9 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings'
     get 'followers' => 'relationships#followers'
+    collection do
+      get :favorites
+    end
   end
 
 
@@ -27,8 +32,10 @@ Rails.application.routes.draw do
   resources :messages, only: [:create, :show]
   resources :rooms, only: [:create, :show, :index]
 
+  get 'search' => 'searches#search'
 
-  namespace :admin do
+
+  namespace :admins do
     resources :users, only: [:index, :edit, :update]
   end
 

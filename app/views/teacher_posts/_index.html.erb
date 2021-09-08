@@ -1,0 +1,40 @@
+<% teacher_post.each do |teacher| %>
+      <div class="card mb-2" style="width: 42rem;">
+        <div class="card-body">
+          <!--投稿内容表示-->
+          <h5 class="card-title">
+            <%= teacher.field %>:
+            <% if teacher.status == "受付中" %>
+              <span class="text-primary"><%= teacher.status %></span>
+            <% else %>
+              <span class="text-danger"><%= teacher.status %></span>
+            <% end %>
+            <% if teacher.user == current_user %>
+            <%= link_to "編集する",  edit_teacher_post_path(teacher) ,class:"btn btn-primary btn-sm ml-5" %>
+            <% else %>
+            <%= link_to "連絡を取る", user_path(teacher.user) ,class:"btn btn-primary btn-sm ml-5" %>
+            <% end %>
+          </h5>
+          <p class="card-text"><%= teacher.body %></p>
+          <div class="text-muted">
+            <span>条件:<%= teacher.title %>
+             <div class="favorite-<%= teacher.id %>">
+             <!--いいね機能 非同期化してます-->
+              <%= render 'favorite_teachers/favorite', teacher: teacher %>
+             </div>
+           </span>
+          </div>
+          <div class="comment-<%= teacher.id %>">
+            <!--コメント表示機能-->
+            <%= render 'comment_teachers/comment', teacher: teacher %>
+          </div>
+          <!--コメント投稿機能-->
+          <div class="commnt-student-make border-top pt-3">
+            <%= form_with(model:[teacher, comment_teacher], remote:true) do |f| %>
+            <%= f.text_area :comment, size:"50x1", class:"inputComment" %><br>
+            <%= f.submit "コメント", class:"btn btn-light" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>

@@ -31,7 +31,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to teacher_posts_path, class:"nav-link" do %>
+              <%= link_to favorites_users_path(current_user), class:"nav-link" do %>
               <span class="fas fa-heart text-dark"> Favorite</span>
               <% end %>
             </li>
@@ -41,7 +41,17 @@
               <% end %>
             </li>
 
-            <% else %>
+            <% elsif admin_signed_in? %>
+            <li>
+              <%= link_to admins_users_path, class:"nav-link" do %>
+              <span class="fas fa-heart text-dark"> ユーザー一覧</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to root_path, class:"nav-link" do %>
+              <span class="fas fa-user text-dark"> Topページへ</span>
+              <% end %>
+            </li>
             <% end %>
            </ul>
           </div>

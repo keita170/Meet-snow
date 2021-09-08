@@ -33,6 +33,7 @@ class StudentPostsController < ApplicationController
     redirect_to student_posts_path
   end
 
+ 
   private
 
   def student_post_params

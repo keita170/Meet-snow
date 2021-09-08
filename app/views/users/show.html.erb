@@ -1,151 +1,23 @@
 <div class="container">
-  <!--プロフィール欄 ここから-->
-  <div class="row">
-    <div class="col-md-2 offset-md-2">
-      <!--プロフィール画像-->
-      <% if @user.image.attached? %>
-        <%= image_tag @user.image.variant(resize:'200x200'), class:"rounded-circle" %>
-      <% else %>
-       <%= image_tag 'no_image.jpg', class:"rounded-circle" %>
-      <% end %>
-    </div>
-    <div class="col-md-8">
-      <div class="row">
-      <p class="ml-3 profile-name"><%= @user.name %></p>
-      <!--プロフィール編集or フォロー機能-->
-      <% if @user == current_user %>
-        <p><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-primary btn-sm ml-2" %></p>
-      <% else %>
-          <% if current_user.following?(@user) %>
-            <p><%= link_to "Unfollow", user_relationship_path(@user), class:"btn btn-info btn-sm mr-4 ml-2", method: :delete %></p>
-          <% else %>
-            <p><%= link_to "Follow", user_relationships_path(@user), class:"btn btn-success btn-sm mr-4 ml-2",method: :post %></p>
-          <% end %>
-      <% end %>
-      <!--ダイレクトメッセージ機能-->
-      <% if @user.id == current_user.id %>
-      <% else %>
-        <% if @isRoom == true %>
-          <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
-        <% else %>
-          <%= form_for @room do |f| %>
-            <%= fields_for @entry do |e| %>
-              <%= e.hidden_field :user_id, :value=> @user.id %>
-            <% end %>
-            <%= f.submit "チャットを始める" %>
-          <% end %>
-        <% end %>
-      <% end %>
-      </div>
-      <!--投稿数,フォロー,フォロワー表示-->
-      <p>投稿<%= @student_post.count + @teacher_post.count %>件  　フォロー<%= link_to @user.following_user.count, user_followings_path(@user) %>人  　フォロワー<%= link_to @user.followed_user.count, user_followers_path(@user) %>人  </p>
-      <%= @user.introduction %>
-    </div>
-  </div>
-  <!--プロフィール欄 ここまで-->
+
+  <%= render 'users/profile', user: @user, isRoom: @isRoom, roomId: @roomId, entry: @entry, student_post: @student_post, teacher_post: @teacher_post %>
+
   <div class="row mt-5">
     <!--生徒側投稿一覧 ここから-->
     <div class="student col-md-10 offset-md-2">
       <h2 class="text-center">〜生徒側で投稿した一覧〜</h2>
-      <% @student_post.each do |student| %>
-      <div class="card mb-2" style="width: 42rem;">
-        <div class="card-body">
-          <!--投稿内容表示-->
-          <h5 class="card-title">
-            <%= student.field %>
-            <% if student.user == current_user %>
-            <%= link_to "編集する",  edit_student_post_path(student) ,class:"btn btn-primary btn-sm ml-5" %>
-            <% else %>
-            <%= link_to "連絡を取る", user_path(student.user) ,class:"btn btn-primary btn-sm ml-5" %>
-            <% end %>
-          </h5>
-          <p class="card-text"><%= student.body %></p>
-          <div class="text-muted mb-2">
-            <span>条件:<%= student.title %>
-            <!--いいね機能-->
-             <% if student.favorited_by?(current_user) %>
-              <%= link_to student_post_favorite_path(id: student.id, student_post_id: student.id), method: :delete do %>
-              <i class="fas fa-heart"></i><%= student.favorites.count %>
-              <% end %>
-             <% else %>
-              <%= link_to student_post_favorites_path(id: student.id, student_post_id: student.id), method: :post do %>
-              <i class="far fa-heart"></i><%= student.favorites.count %>
-              <% end %>
-             <% end %>
-            </span>
-          </div>
-          <!--コメント表示機能-->
-          <div class="comment-student">
-            <% student.comments.each do |comment| %>
-             <tr>
-                <td><%= comment.user.name %></td>
-                <td><%= comment.comment %></td>
-             </tr>
-             <br>
-            <% end %>
-          </div>
-          <!--コメント投稿機能-->
-          <div class="commnt-student-make border-top pt-3">
-            <%= form_with(model:[student, @comment], local:true) do |f| %>
-            <%= f.text_area :comment, size:"50x1", class:"inputComment" %><br>
-            <%= f.submit "送信", class:"btn btn-light" %>
-            <% end %>
-          </div>
-        </div>
+      <div class="student_post-tbody">
+        <%= render 'student_posts/index', student_post: @student_post, comment: @comment %>
       </div>
-      <% end %>
     </div>
     <!--生徒側投稿一覧 ここまで-->
+
     <!--先生側投稿一覧 ここから-->
     <div class="teacher col-md-10 offset-md-2 mt-5">
       <h2 class="text-center">〜先生側で投稿した一覧〜</h2>
-      <% @teacher_post.each do |teacher| %>
-      <div class="card mb-2" style="width: 42rem;">
-        <div class="card-body">
-          <!--投稿内容表示-->
-          <h5 class="card-title">
-            <%= teacher.field %>
-            <% if teacher.user == current_user %>
-            <%= link_to "編集する",  edit_teacher_post_path(teacher) ,class:"btn btn-primary btn-sm ml-5" %>
-            <% else %>
-            <%= link_to "連絡を取る", user_path(teacher.user) ,class:"btn btn-primary btn-sm ml-5" %>
-            <% end %>
-          </h5>
-          <p class="card-text"><%= teacher.body %></p>
-          <div class="text-muted mb-2">
-            <span>条件:<%= teacher.title %>
-            <!--いいね機能-->
-             <% if teacher.favorited_by?(current_user) %>
-              <%= link_to teacher_post_favorite_path(id: teacher.id, teacher_post_id: teacher.id), method: :delete do %>
-              <i class="fas fa-heart"></i><%= teacher.favorite_teachers.count %>
-              <% end %>
-             <% else %>
-              <%= link_to teacher_post_favorite_teachers_path(id: teacher.id, teacher_post_id: teacher.id), method: :post do %>
-              <i class="far fa-heart"></i><%= teacher.favorite_teachers.count %>
-              <% end %>
-             <% end %>
-            </span>
-          </div>
-          <!--コメント表示機能-->
-          <div class="comment-student">
-            <% teacher.comment_teachers.each do |comment| %>
-             <tr>
-                <td><%= comment.user.name %></td>
-                <td><%= comment.comment %></td>
-             </tr>
-             <br>
-            <% end %>
-          </div>
-          <!--コメント投稿機能-->
-          <div class="commnt-student-make border-top pt-3">
-            <%= form_with(model:[teacher, @comment_teacher], local:true) do |f| %>
-            <%= f.text_area :comment, size:"50x1", class:"inputComment" %><br>
-            <%= f.submit "コメント", class:"btn btn-light" %>
-            <% end %>
-          </div>
-        </div>
+      <div class="teacher_post-tbody">
+        <%= render 'teacher_posts/index', teacher_post: @teacher_post, comment_teacher: @comment_teacher %>
       </div>
-      <% end %>
     </div>
   </div>
   <!--先生側投稿一覧 ここまで-->

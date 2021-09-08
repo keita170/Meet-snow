@@ -1,0 +1,27 @@
+
+
+<h2 class="text-center mt-3 mb-3">いいねした投稿一覧(生徒側)</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
+      <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
+      <%= render 'users/favorites', favorite_list: @favorite_list %>
+      <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
+<h2 class="text-center mt-3 mb-3">いいねした投稿一覧(先生側)</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
+      <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
+      <%= render 'users/favorite-teacher', favorite_list: @favorite_list_teacher %>
+      <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

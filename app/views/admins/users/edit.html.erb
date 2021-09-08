@@ -1,0 +1,36 @@
+<h1 class="text-center mt-3 mb-3"><%= @user.name %>さんの情報</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
+      <%= form_with model: @user, url: admins_user_path,local: true do |f| %>
+
+      <div class="field mb-3 mt-4">
+        <%= f.label :"名前",class:"mr-2" %>
+        <%= @user.name %>
+      </div>
+
+      <div class="field mb-3">
+        <%= f.label :"メールアドレス",class:"mr-2" %>
+        <%= @user.email %>
+      </div>
+
+      <div class="field mb-3">
+        　<%= f.radio_button :is_valid,:true, class:"ml-2" %>
+          <%= f.label :is_valid, "有効", value: true %>
+          <%= f.radio_button :is_valid, :false %>
+          <%= f.label :is_valid, "アカウント停止", value: false %>
+      </div>
+
+      <div class="actions mb-3">
+        <%= f.submit "編集内容を保存", class: 'btn btn-primary mx-auto'  %>
+      </div>
+      <% end %>
+      <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
