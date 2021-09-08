@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
 
   def destroy
     @student_post = StudentPost.find(params[:student_post_id])
-    # comment = Comment.find(params[:id])
     comment = Comment.find_by(id: params[:id], student_post_id: params[:student_post_id])
     comment.destroy
     #非同期化のためにコメントオフ

@@ -39,19 +39,13 @@
              </div>
            </span>
           </div>
-          <!--コメント表示機能-->
-          <div class="comment-student">
-            <% teacher.comment_teachers.each do |comment| %>
-             <tr>
-                <td><%= link_to comment.user.name, user_path(comment.user) %></td>
-                <td><%= comment.comment %></td>
-             </tr>
-             <br>
-            <% end %>
+          <div class="comment-<%= teacher.id %>">
+            <!--コメント表示機能-->
+            <%= render 'comment_teachers/comment', teacher: teacher %>
           </div>
           <!--コメント投稿機能-->
           <div class="commnt-student-make border-top pt-3">
-            <%= form_with(model:[teacher, @comment_teacher], local:true) do |f| %>
+            <%= form_with(model:[teacher, @comment_teacher], remote:true) do |f| %>
             <%= f.text_area :comment, size:"50x1", class:"inputComment" %><br>
             <%= f.submit "コメント", class:"btn btn-light" %>
             <% end %>

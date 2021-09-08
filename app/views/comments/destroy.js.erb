@@ -1,2 +1,2 @@
-$(".comment_area").html("<%= j( render 'comments/comment', student: @student_post) %>")
+$(".comment-<%= @student_post.id %>").html("<%= j( render 'comments/comment', student: @student_post) %>")
 alert('コメント消せてる');
