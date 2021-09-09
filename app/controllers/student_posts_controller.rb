@@ -2,11 +2,11 @@ class StudentPostsController < ApplicationController
 
 
   def index
-    @student_post = StudentPost.all.order('created_at DESC')
+    @student_post = StudentPost.all.order('status, created_at DESC')
     @comment = Comment.new
 
     if params[:field] == "分野検索"
-      @student_post = StudentPost.all.order('created_at DESC')
+      @student_post = StudentPost.all.order('status, created_at DESC')
     elsif params[:field] == "フリースタイル"
       @student_post = StudentPost.where(field: params[:field])
     elsif params[:field] == "グラトリ"

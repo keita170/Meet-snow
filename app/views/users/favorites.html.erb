@@ -5,10 +5,10 @@
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-9">
-      <%= link_to "条件でソート", favorites_users_path(current_user, sort:'[status] desc'), class:"btn btn-sm btn-outline-dark " %>
-      <%= link_to "分野でソート", favorites_users_path(current_user), class:"btn btn-sm btn-outline-dark " %>
-      <%= link_to "コメント数でソート", favorites_users_path(current_user), class:"btn btn-sm btn-outline-dark " %>
-      <%= link_to "新着順でソート", favorites_users_path(current_user), class:"btn btn-sm btn-outline-dark " %>
+      <%= link_to "状況でソート", favorites_users_path(current_user, sort:'status'), class:"btn btn-sm btn-outline-dark " %>
+      <%= link_to "分野でソート", favorites_users_path(current_user, sort:'field'), class:"btn btn-sm btn-outline-dark " %>
+      <%= link_to "コメント数でソート", favorites_users_path(current_user, sort:'comment'), class:"btn btn-sm btn-outline-dark " %>
+      <%#= link_to "新着順でソート", favorites_users_path(current_user), class:"btn btn-sm btn-outline-dark " %>
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
       <%= render 'users/favorites', favorite_list: @favorite_list %>
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->

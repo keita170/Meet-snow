@@ -1,9 +1,20 @@
 <h1 class="text-center mt-3 mb-3">ユーザー一覧</h1>
 
+<div class="d-flex align-items-center justify-content-center">
+  <%= link_to "id順でソート", admins_users_path(sort:'id'), class:"btn btn-sm btn-outline-dark mr-1" %>
+  <%= link_to "id逆順", admins_users_path(sort:'id-reverse'), class:"btn btn-sm btn-outline-dark mr-1" %>
+  <%= link_to "投稿数でソート", admins_users_path(sort:'post'), class:"btn btn-sm btn-outline-dark mr-1" %>
+  <%= link_to "フォロー数", admins_users_path(sort:'follow'), class:"btn btn-sm btn-outline-dark mr-1" %>
+  <%= link_to "フォロワー数", admins_users_path(sort:'follower'), class:"btn btn-sm btn-outline-dark mr-1" %>
+  <%= link_to "ステータスでソート", admins_users_path(sort:'is_valid'), class:"btn btn-sm btn-outline-dark mr-1" %>
+  <%= link_to "ステータス逆順", admins_users_path(sort:'is_valid-reverse'), class:"btn btn-sm btn-outline-dark " %>
+</div>
 <div class="container">
+
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-9">
+
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
       <table class="table table-hover">
         <thead>

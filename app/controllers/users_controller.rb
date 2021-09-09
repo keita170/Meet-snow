@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @student_post = @user.student_posts
-    @teacher_post = @user.teacher_posts
+    @student_post = @user.student_posts.order('status, created_at DESC')
+    @teacher_post = @user.teacher_posts.order('status, created_at DESC')
     @comment = Comment.new
     @comment_teacher = CommentTeacher.new
 
@@ -44,19 +44,30 @@ class UsersController < ApplicationController
 
   def favorites
     # ログイン中のユーザーのお気に入りのstudent_post_idカラムを取得
-    favorites = Favorite.where(user_id: current_user.id).pluck(:student_post_id)
-    @favorite_list = StudentPost.find(favorites)
-    
-    # if params[:sort] 
-    #   @favorite_list = StudentPost.find(favorites).status
-    # else
-    #   @favorite_list = StudentPost.find(favorites)
-    # end
-    
-    
+    favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
+    @favorite_list = StudentPost.order('status, created_at DESC').find(favorites)
+
+    if params[:sort] == 'status'
+      favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
+      @favorite_list = StudentPost.order('status, created_at DESC').find(favorites)
+    elsif params[:sort] == 'field'
+      favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
+      @favorite_list = StudentPost.order('status, field, created_at DESC').find(favorites)
+    elsif params[:sort] == 'comment'
+      favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
+      @favorite_list = StudentPost.includes(:commented_users).sort{ |a, b| b.comments.count <=> a.comments.count }.find(favorites)
+
+      # @my_post_like_ranks = current_user.posts.sort { |a, b| b.likes.count <=> a.likes.count }
+      # @favorite_list = StudentPost.includes(:commented_users).sort{|a,b| b.commented_users.includes(:comments).size <=> a.commented_users.includes(:comments).size}.find(favorites)
+
+      # .joins(:friends).where("friends.id IS NOT NULL")
+      # .includes(:followed_user).sort{|a,b| b.followed_user.includes(:followed).size <=> a.followed_user.includes(:followed).size}
+    end
+
+
     # ログイン中のユーザーのお気に入りのteacher_post_idカラムを取得
-    favorite_teachers = FavoriteTeacher.where(user_id: current_user.id).pluck(:teacher_post_id)
-    @favorite_list_teacher = TeacherPost.find(favorite_teachers)
+    favorite_teachers = FavoriteTeacher.where(user_id: current_user.id).order('created_at DESC').pluck(:teacher_post_id)
+    @favorite_list_teacher = TeacherPost.order('status, created_at DESC').find(favorite_teachers)
   end
 
 
