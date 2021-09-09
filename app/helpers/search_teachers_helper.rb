@@ -1,0 +1,2 @@
+module SearchTeachersHelper
+end

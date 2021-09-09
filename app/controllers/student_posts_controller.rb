@@ -4,6 +4,19 @@ class StudentPostsController < ApplicationController
   def index
     @student_post = StudentPost.all.order('created_at DESC')
     @comment = Comment.new
+
+    if params[:field] == "分野検索"
+      @student_post = StudentPost.all.order('created_at DESC')
+    elsif params[:field] == "フリースタイル"
+      @student_post = StudentPost.where(field: params[:field])
+    elsif params[:field] == "グラトリ"
+      @student_post = StudentPost.where(field: params[:field])
+    elsif params[:field] == "カービング"
+      @student_post = StudentPost.where(field: params[:field])
+    elsif params[:field] == "その他"
+      @student_post = StudentPost.where(field: params[:field])
+    end
+
   end
 
   def new
@@ -33,7 +46,7 @@ class StudentPostsController < ApplicationController
     redirect_to student_posts_path
   end
 
- 
+
   private
 
   def student_post_params

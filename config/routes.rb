@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resources :rooms, only: [:create, :show, :index]
 
   get 'search' => 'searches#search'
+  get 'search_teacher' => 'search_teachers#search'
 
 
   namespace :admins do

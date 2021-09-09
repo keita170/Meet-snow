@@ -3,6 +3,18 @@ class TeacherPostsController < ApplicationController
   def index
     @teacher_post = TeacherPost.all.order('created_at DESC')
     @comment_teacher = CommentTeacher.new
+
+    if params[:field] == "分野検索"
+      @teacher_post = TeacherPost.all.order('created_at DESC')
+    elsif params[:field] == "フリースタイル"
+      @teacher_post = TeacherPost.where(field: params[:field])
+    elsif params[:field] == "グラトリ"
+      @teacher_post = TeacherPost.where(field: params[:field])
+    elsif params[:field] == "カービング"
+      @teacher_post = TeacherPost.where(field: params[:field])
+    elsif params[:field] == "その他"
+      @teacher_post = TeacherPost.where(field: params[:field])
+    end
   end
 
   def new

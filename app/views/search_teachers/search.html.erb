@@ -1,20 +1,32 @@
-<div class="student-title mb-5">
-  <h1 class="text-center">〜教わりたい方人募集中〜</h1>
-  <div class="col-md-6 offset-md-4">
-    <div class="row">
-    <%= form_with url: teacher_posts_path, method: :get, local:true do |f| %>
-      <%= f.select :field, options_for_select({"分野検索" => "分野検索","フリースタイル" => "フリースタイル", "グラトリ" => "グラトリ", "カービング" => "カービング", "その他" => "その他"}) %>
-      <%= f.submit '検索', class:"btn btn-sm btn-outline-dark mr-5" %>
-    <% end %>
-
-    <%= form_with url: search_teacher_path, method: :get, local:true do |f| %>
-      <%= f.text_field :key_word, value: @key_word, placeholder:'キーワード検索', class:'search_word' %>
-      <%= f.submit '検索', class:"btn btn-sm btn-outline-dark"%>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col md-12">
+      <h3>検索結果:<%= @teacher_post.count %>件</h3>
+      <h5>
+        <% if @key_word == "" %>
+          文字が入ってないので、全件表示します
+        <% else %>
+          [<%= @key_word %>]に該当する投稿
+        <% end %>
+      </h5>
     </div>
   </div>
 </div>
 
+<div class="student-title mb-5">
+  <h1 class="text-center">〜教えてくれる人募集中〜</h1>
+  <div class="col-md-6 offset-md-4">
+    <%#= form_with url: search_path, method: :get, local:true do |f| %>
+      <%#= f.select :field, options_for_select({"フリースタイル" => "フリースタイル", "グラトリ" => "グラトリ", "カービング" => "カービング", "その他" => "その他"}) %>
+      <%#= f.submit '検索'%>
+    <%# end %>
+
+    <%= form_with url: search_teacher_path, method: :get, local:true do |f| %>
+      <%= f.text_field :key_word, value: @key_word, placeholder:'キーワード検索', class:'search_word' %>
+      <%= f.submit '検索'%>
+    <% end %>
+  </div>
+</div>
   <div class="row ml-5">
     <!--画面左側の新規投稿ページへのリンクがある範囲-->
     <div class="student-left col-md-3">

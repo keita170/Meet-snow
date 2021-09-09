@@ -46,6 +46,14 @@ class UsersController < ApplicationController
     # ログイン中のユーザーのお気に入りのstudent_post_idカラムを取得
     favorites = Favorite.where(user_id: current_user.id).pluck(:student_post_id)
     @favorite_list = StudentPost.find(favorites)
+    
+    # if params[:sort] 
+    #   @favorite_list = StudentPost.find(favorites).status
+    # else
+    #   @favorite_list = StudentPost.find(favorites)
+    # end
+    
+    
     # ログイン中のユーザーのお気に入りのteacher_post_idカラムを取得
     favorite_teachers = FavoriteTeacher.where(user_id: current_user.id).pluck(:teacher_post_id)
     @favorite_list_teacher = TeacherPost.find(favorite_teachers)

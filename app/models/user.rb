@@ -36,7 +36,7 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
-
+  scope :status, -> {order(status: :desc)}
 
   #イメージメソッドの追加
   has_one_attached :image
