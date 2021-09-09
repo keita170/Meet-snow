@@ -5,6 +5,8 @@ class StudentPost < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :commented_users, through: :comments, source: :user
 
+  has_many :notifications, dependent: :destroy
+
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
@@ -15,17 +17,23 @@ class StudentPost < ApplicationRecord
     where(["title LIKE? OR body LIKE?", "%#{keyword}%", "%#{keyword}%"])
   end
 
-  # def self.search(keyword)
-  #   student_post = StudentPost.where(["title like? OR body like? OR field like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
-  # end
-
-  # def self.search(key_word)
-  #   if key_word == ''
-  #     student_post = StudentPost.all
-  #   else
-  #     student_post = StudentPost.where(['title LIKE? OR body LIKE? OR field LIKE?', "%#{key_word}%", "%#{key_word}%", "%#{key_word}%"])
-  #   end
-  # end
+    def create_notification_like!(current_user)
+      # すでに「いいね」されているか検索
+      temp = Notification.where(["visitor_id = ? and visited_id = ? and student_post_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
+      # いいねされていない場合のみ、通知レコードを作成
+      if temp.blank?
+        notification = current_user.active_notifications.new(
+          student_post_id: id,
+          visited_id: user_id,
+          action: 'favorite'
+        )
+        # 自分の投稿に対するいいねの場合は、通知済みとする
+        if notification.visitor_id == notification.visited_id
+          notification.checked = true
+        end
+        notification.save if notification.valid?
+      end
+    end
 
   scope :status, -> {order(status: :desc)}
 

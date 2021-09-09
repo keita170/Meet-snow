@@ -2,6 +2,7 @@
 
   <%= render 'users/profile', user: @user, isRoom: @isRoom, roomId: @roomId, entry: @entry, student_post: @student_post, teacher_post: @teacher_post %>
 
+  <%= link_to "通知ページへ", notifications_path %>
   <div class="row mt-5">
     <!--生徒側投稿一覧 ここから-->
     <div class="student col-md-10 offset-md-2">

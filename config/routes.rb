@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :student_posts, only: [:index, :new, :create, :edit, :update, :destroy] do
+  resources :student_posts, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
     resources :favorites, only: [:create]
     delete 'favorites' => 'favorites#destroy', as:'favorite'
     resources :comments, only: [:create, :destroy]
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get 'search' => 'searches#search'
   get 'search_teacher' => 'search_teachers#search'
 
+  resources :notifications, only: :index
 
   namespace :admins do
     resources :users, only: [:index, :edit, :update]

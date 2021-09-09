@@ -8,15 +8,20 @@ class StudentPostsController < ApplicationController
     if params[:field] == "分野検索"
       @student_post = StudentPost.all.order('status, created_at DESC')
     elsif params[:field] == "フリースタイル"
-      @student_post = StudentPost.where(field: params[:field])
+      @student_post = StudentPost.where(field: params[:field]).order('status, created_at DESC')
     elsif params[:field] == "グラトリ"
-      @student_post = StudentPost.where(field: params[:field])
+      @student_post = StudentPost.where(field: params[:field]).order('status, created_at DESC')
     elsif params[:field] == "カービング"
-      @student_post = StudentPost.where(field: params[:field])
+      @student_post = StudentPost.where(field: params[:field]).order('status, created_at DESC')
     elsif params[:field] == "その他"
-      @student_post = StudentPost.where(field: params[:field])
+      @student_post = StudentPost.where(field: params[:field]).order('status, created_at DESC')
     end
 
+  end
+  
+  def show
+    @student_post = StudentPost.find(params[:id])
+    @comment = Comment.new
   end
 
   def new

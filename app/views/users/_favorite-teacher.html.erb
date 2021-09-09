@@ -21,7 +21,10 @@
             <td><%= post.title %></td>
             <td><%= post.comment_teachers.count %></td>
             <td>
+              <% if post.user == current_user %>
+              <% else %>
                 <%= link_to "連絡する", user_path(post.user), class:"btn btn-success btn-sm" %>
+              <% end %>
             </td>
           </tr>
             <% end %>

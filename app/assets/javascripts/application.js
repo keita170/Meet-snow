@@ -18,3 +18,10 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+/*global $*/
+/*global IntersectionObserver*/
+/*global activatePagination*/
+/*global requestAnimFrame*/
+
+
