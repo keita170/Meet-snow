@@ -11,6 +11,9 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
       t.string :action, default: '', null: false
       t.boolean :checked, default: false, null: false
 
+      t.string :room_id
+      t.string :message_id
+
 
       t.timestamps
     end

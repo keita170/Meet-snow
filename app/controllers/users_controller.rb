@@ -53,10 +53,17 @@ class UsersController < ApplicationController
     elsif params[:sort] == 'field'
       favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
       @favorite_list = StudentPost.order('status, field, created_at DESC').find(favorites)
+
+
     elsif params[:sort] == 'comment'
       favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
-      @favorite_list = StudentPost.includes(:commented_users).sort{ |a, b| b.comments.count <=> a.comments.count }.find(favorites)
-
+      favorite_list = StudentPost.includes(:commented_users).sort{ |a, b| b.comments.count <=> a.comments.count }.find(favorites)
+      @favorite_list = []
+      favorites.count.times do
+        @favorite_list << favorite_list.next
+      end
+      # loop { @favorite_list << favorite_list.next }
+      # byebug
       # @my_post_like_ranks = current_user.posts.sort { |a, b| b.likes.count <=> a.likes.count }
       # @favorite_list = StudentPost.includes(:commented_users).sort{|a,b| b.commented_users.includes(:comments).size <=> a.commented_users.includes(:comments).size}.find(favorites)
 

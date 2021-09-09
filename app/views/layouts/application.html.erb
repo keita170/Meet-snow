@@ -41,6 +41,18 @@
               <% end %>
             </li>
 
+            <li>
+              <%= link_to(notifications_path) do %>
+                <% if unchecked_notifications.any? %>
+                  <span class="fa-stack">
+                    <i class="far fa-bell fa-lg" style="font-size: 1.5em;" ></i>
+                    <i class="fas fa-circle n-circle fa-stack-1x" style="font-size: 0.7em;" ></i>
+                  </span>
+                <% else %>
+                  <i class="far fa-bell fa-lg" style="font-size: 1.5em;" ></i>
+                <% end %>
+              <% end %>
+            </li>
             <% elsif admin_signed_in? %>
             <li>
               <%= link_to admins_users_path, class:"nav-link" do %>

@@ -103,6 +103,8 @@ ActiveRecord::Schema.define(version: 2021_09_09_060116) do
     t.integer "comment_teacher_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
+    t.string "room_id"
+    t.string "message_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["comment_id"], name: "index_notifications_on_comment_id"

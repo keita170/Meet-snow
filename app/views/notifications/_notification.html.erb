@@ -23,21 +23,23 @@
           <%= "にいいねしました" %>
         <% when 'comment' then %>
           <% if notification.student_post.user_id == visited.id %>
-            <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
-          <% else %>
-            <span>
-              <%= link_to post_path(notification.post) do %>
+            <%= link_to "あなたの投稿", notification.student_post, style: "font-weight: bold;" %>
+          <!--<%# else %>-->
+          <!--  <span>-->
+          <!--    <%#= link_to post_path(notification.post) do %>-->
                 <%#= image_tag avatar_url(notification.post.user).to_s, class: "icon_mini" %>
-                <strong>
-                  <%= notification.post.user.name + 'さんの投稿' %>
-                </strong>
-              <% end %>
-            </span>
+          <!--      <strong>-->
+          <!--        <%#= notification.post.user.name + 'さんの投稿' %>-->
+          <!--      </strong>-->
+          <!--    <#% end %>-->
+          <!--  </span>-->
           <% end %>
           <%= "にコメントしました" %>
           <p class="text-muted.mb-0">
             <%= Comment.find_by(id: notification.comment_id)&.comment %>
           </p>
+        <% when 'dm' then %>
+          <%= "あなたにDMを送りました" %>
       <% end %>
     </span>
   </div>
