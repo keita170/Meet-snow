@@ -8,6 +8,7 @@
     <meta name ="viewport" content="width=device-width, initial-scale=1, maximim-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
@@ -37,19 +38,19 @@
             </li>
             <li>
               <%= link_to user_path(current_user), class:"nav-link" do %>
-              <span class="fas fa-user text-dark"> User</span>
+              <span class="fas fa-user text-dark "> User</span>
               <% end %>
             </li>
 
             <li>
-              <%= link_to(notifications_path) do %>
+              <%= link_to notifications_path(current_user), class:"nav-link" do %>
                 <% if unchecked_notifications.any? %>
                   <span class="fa-stack">
-                    <i class="far fa-bell fa-lg" style="font-size: 1.5em;" ></i>
+                    <i class="fas fa-bell text-dark" style="font-size: 1.5em;" ></i>
                     <i class="fas fa-circle n-circle fa-stack-1x" style="font-size: 0.7em;" ></i>
                   </span>
                 <% else %>
-                  <i class="far fa-bell fa-lg" style="font-size: 1.5em;" ></i>
+                  <i class="fas fa-bell text-dark" style="font-size: 1.5em;" ></i>
                 <% end %>
               <% end %>
             </li>

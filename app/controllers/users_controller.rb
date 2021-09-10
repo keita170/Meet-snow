@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
 
   def show
+    
     @user = User.find(params[:id])
     @student_post = @user.student_posts.order('status, created_at DESC')
     @teacher_post = @user.teacher_posts.order('status, created_at DESC')
@@ -29,6 +30,10 @@ class UsersController < ApplicationController
         @entry = Entry.new
       end
     end
+    
+    @user_evaluation = UserEvaluation.new
+    
+    
   end
 
   def edit
@@ -43,7 +48,7 @@ class UsersController < ApplicationController
 
 
   def favorites
-    # ログイン中のユーザーのお気に入りのstudent_post_idカラムを取得
+    # ログイン中のユーザーのお気に入りのteacher_post_idカラムを取得
     favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
     @favorite_list = StudentPost.order('status, created_at DESC').find(favorites)
 
@@ -75,8 +80,30 @@ class UsersController < ApplicationController
     # ログイン中のユーザーのお気に入りのteacher_post_idカラムを取得
     favorite_teachers = FavoriteTeacher.where(user_id: current_user.id).order('created_at DESC').pluck(:teacher_post_id)
     @favorite_list_teacher = TeacherPost.order('status, created_at DESC').find(favorite_teachers)
-  end
 
+    if params[:sort] == 'status-teacher'
+      favorite_teachers= FavoriteTeacher.where(user_id: current_user.id).order('created_at DESC').pluck(:teacher_post_id)
+      @favorite_list_teacher = TeacherPost.order('status, created_at DESC').find(favorite_teachers)
+    elsif params[:sort] == 'field-teacher'
+      favorite_teachers= FavoriteTeacher.where(user_id: current_user.id).order('created_at DESC').pluck(:teacher_post_id)
+      @favorite_list_teacher = TeacherPost.order('status, field, created_at DESC').find(favorite_teachers)
+
+
+    elsif params[:sort] == 'comment-teacher'
+      favorite_teachers= FavoriteTeacher.where(user_id: current_user.id).order('created_at DESC').pluck(:teacher_post_id)
+      favorite_list_teacher = TeacherPost.includes(:commented_users).sort{ |a, b| b.comment_teachers.count <=> a.comment_teachers.count }.find(favorite_teachers)
+      @favorite_list_teacher = []
+      favorite_teachers.count.times do
+        @favorite_list_teacher << favorite_list_teacher.next
+      end
+    end
+  end
+  
+  def index
+  end
+  
+  def create
+  end
 
 
   private

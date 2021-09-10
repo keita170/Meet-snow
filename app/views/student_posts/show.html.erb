@@ -1,39 +1,39 @@
 <div class="card mb-2" style="width: 42rem;">
-        <div class="card-body">
-          <!--投稿内容表示-->
-          <h5 class="card-title">
-            <%= @student_post.field %>:
-            <% if @student_post.status == "受付中" %>
-              <span class="text-primary"><%= @student_post.status %></span>
-            <% else %>
-              <span class="text-danger"><%= @student_post.status %></span>
-            <% end %>
-            <% if @student_post.user == current_user %>
-            <%= link_to "編集する",  edit_student_post_path(@student_post) ,class:"btn btn-primary btn-sm ml-5" %>
-            <% else %>
-            <%= link_to "連絡を取る", user_path(@student_post.user) ,class:"btn btn-primary btn-sm ml-5" %>
-            <% end %>
-          </h5>
-          <p class="card-text"><%= @student_post.body %></p>
-          <div class="text-muted mb-1">
-           <span>条件:<%= @student_post.title %>
+  <div class="card-body">
+    <!--投稿内容表示-->
+    <h5 class="card-title">
+      <%= @student_post.field %>:
+      <% if @student_post.status == "受付中" %>
+        <span class="text-primary"><%= @student_post.status %></span>
+      <% else %>
+        <span class="text-danger"><%= @student_post.status %></span>
+      <% end %>
+      <% if @student_post.user == current_user %>
+      <%= link_to "編集する",  edit_student_post_path(@student_post) ,class:"btn btn-primary btn-sm ml-5" %>
+      <% else %>
+      <%= link_to "連絡を取る", user_path(@student_post.user) ,class:"btn btn-primary btn-sm ml-5" %>
+      <% end %>
+    </h5>
+    <p class="card-text"><%= @student_post.body %></p>
+    <div class="text-muted mb-1">
+     <span>条件:<%= @student_post.title %>
 
-             <div class="favorite-<%= @student_post.id %>">
-               <!--いいね機能 非同期化してます-->
-                <%= render 'favorites/favorite', student: @student_post %>
-             </div>
-           </span>
-          </div>
-          <!--コメント表示機能-->
-          <div class="comment-<%= @student_post.id %>">
-            <%= render 'comments/comment', student: @student_post %>
-          </div>
-          <!--コメント投稿機能-->
-          <div class="commnt-student-make border-top pt-3">
-            <%= form_with(model:[@student_post, @comment], remote:true) do |f| %>
-            <%= f.text_area :comment, size:"50x1", class:"inputComment" %><br>
-            <%= f.submit "コメント", class:"btn btn-light" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+       <div class="favorite-<%= @student_post.id %>">
+         <!--いいね機能 非同期化してます-->
+          <%= render 'favorites/favorite', student: @student_post %>
+       </div>
+     </span>
+    </div>
+    <!--コメント表示機能-->
+    <div class="comment-<%= @student_post.id %>">
+      <%= render 'comments/comment', student: @student_post %>
+    </div>
+    <!--コメント投稿機能-->
+    <div class="commnt-student-make border-top pt-3">
+      <%= form_with(model:[@student_post, @comment], remote:true) do |f| %>
+      <%= f.text_area :comment, size:"50x1", class:"inputComment" %><br>
+      <%= f.submit "コメント", class:"btn btn-light" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,11 @@ class TeacherPostsController < ApplicationController
     end
   end
 
+  def show
+    @teacher_post = TeacherPost.find(params[:id])
+    @comment_teacher = CommentTeacher.new
+  end
+
   def new
     @teacher_post = TeacherPost.new
   end

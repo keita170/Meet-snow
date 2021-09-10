@@ -5,7 +5,11 @@ class CommentTeachersController < ApplicationController
     @comment = current_user.comment_teachers.new(comment_teacher_params)
     @comment.teacher_post_id = @teacher_post.id
     @comment.save
-    # @teacher_post.create_notification_comment!(current_user, @comment.id)
+    @teacher_post.create_notification_comment!(current_user, @comment.id)
+    respond_to do |format|
+      format.html {redirect_to request.referrer}
+      format.js
+    end
     #非同期化のためにコメントオフ
     # redirect_back(fallback_location: root_path)
   end

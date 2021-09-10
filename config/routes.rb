@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root 'homes#top'
 
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: [:show, :edit, :update, :index] do
     resources :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings'
     get 'followers' => 'relationships#followers'
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'review' => 'users#review'
 
   resources :student_posts, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
     resources :favorites, only: [:create]
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  resources :teacher_posts, only: [:index, :new, :create, :edit, :update, :destroy] do
+  resources :teacher_posts, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
     resources :favorite_teachers, only: [:create]
     delete 'favorites' => 'favorite_teachers#destroy', as:'favorite'
     resources :comment_teachers, only: [:create, :destroy]

@@ -9,21 +9,21 @@
         <strong>
           <%= visitor.name %>
         </strong>
-      <%= 'さんが' %>
       <% end %>
+      <%= 'さんが' %>
 
       <% case notification.action %>
         <% when 'follow' then %>
           <%= "あなたをフォローしました" %>
         <% when 'favorite' then %>
-          <%= link_to 'あなたの投稿', notification.student_post, style: "font-weight: bold;" %>
+          <%= link_to 'あなたの《生徒側》投稿', notification.student_post, style: "font-weight: bold;" %>
           <%= "にいいねしました" %>
         <% when 'favorite_teacher' then %>
-          <%= link_to 'あなたの投稿', notification.teacher_post, style: "font-weight: bold;" %>
+          <%= link_to 'あなたの《先生側》投稿', notification.teacher_post, style: "font-weight: bold;" %>
           <%= "にいいねしました" %>
         <% when 'comment' then %>
           <% if notification.student_post.user_id == visited.id %>
-            <%= link_to "あなたの投稿", notification.student_post, style: "font-weight: bold;" %>
+            <%= link_to "あなたの《生徒側》投稿", notification.student_post, style: "font-weight: bold;" %>
           <!--<%# else %>-->
           <!--  <span>-->
           <!--    <%#= link_to post_path(notification.post) do %>-->
@@ -34,12 +34,32 @@
           <!--    <#% end %>-->
           <!--  </span>-->
           <% end %>
-          <%= "にコメントしました" %>
-          <p class="text-muted.mb-0">
+          <%= "にコメントしました" %>:
+          <span class="text-muted mb-0">
             <%= Comment.find_by(id: notification.comment_id)&.comment %>
-          </p>
+          </span>
+        <% when 'comment_teacher' then %>
+          <% if notification.teacher_post.user_id == visited.id %>
+            <%= link_to "あなたの《先生側》投稿", notification.teacher_post, style: "font-weight: bold;" %>
+          <!--<%# else %>-->
+          <!--  <span>-->
+          <!--    <%#= link_to post_path(notification.post) do %>-->
+                <%#= image_tag avatar_url(notification.post.user).to_s, class: "icon_mini" %>
+          <!--      <strong>-->
+          <!--        <%#= notification.post.user.name + 'さんの投稿' %>-->
+          <!--      </strong>-->
+          <!--    <#% end %>-->
+          <!--  </span>-->
+          <% end %>
+          <%= "にコメントしました" %>:
+          <span class="text-muted mb-0">
+            <%= Comment.find_by(id: notification.comment_teacher_id)&.comment %>
+          </span>
         <% when 'dm' then %>
-          <%= "あなたにDMを送りました" %>
+          <%= "あなたにDMを送りました" %>:
+          <span class="text-muted mb-0">
+            <%= Message.find_by(id: notification.message_id)&.message %>
+          </span>
       <% end %>
     </span>
   </div>
