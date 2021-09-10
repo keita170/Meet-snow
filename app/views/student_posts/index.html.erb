@@ -8,7 +8,7 @@
     <% end %>
 
     <%= form_with url: search_path, method: :get, local:true do |f| %>
-      <%= f.text_field :keyword, value: @keyword, placeholder:'キーワード検索', class:'search_word' %>
+      <%= f.text_field :user_keyword, value: @user_keyword, placeholder:'キーワード検索', class:'search_word' %>
       <%= f.submit '検索', class:"btn btn-sm btn-outline-dark"%>
     <% end %>
     </div>

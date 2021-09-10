@@ -3,37 +3,17 @@
   <%= render 'users/profile', user: @user, isRoom: @isRoom, roomId: @roomId, entry: @entry, student_post: @student_post, teacher_post: @teacher_post %>
 
   <%= link_to "通知ページへ", notifications_path %>
-  <%= link_to "評価ページへ", review_path %>
+  <%= link_to "評価ページへ", evaluations_path %>
   <div class="row mt-5">
-    <div class="col-md-4 evaluation-user">
-      <%= form_with model: @user_evaluation, local: true do |f| %>
-        <div class="field mb-3 mt-4">
-          <%= f.label :"投稿内容",class:"mr-2 h4" %>
-          <%= f.text_area :content, size: "30x6", class: "form-control", placeholder: "◯◯ができません！教えてくれる方募集します！or ずっと教えてもらえるコーチを探しています！条件に合う方いたらお願いします！など" %>
-        </div>
-        
-        <div class="field mb-3">
-          <%= f.label :"分野",class:"h4" %>
-          <%= f.select :field, [["フリースタイル", "フリースタイル"], ["グラトリ", "グラトリ"], ["カービング", "カービング"], ["その他", "その他"]], include_blank: "選択して下さい" %>
-
-          <%= f.radio_button :recomment,:受付中,  checked: "checked",class:"ml-2" %>
-          <%= f.label :recomment, "受付中" %>
-          <% f.radio_button :recomment, :締め切り %>
-          <% f.label :recomment, "締め切り" %>
-        </div>
-        <div class="actions mb-3">
-          <%= f.submit "新規投稿する", class: 'btn btn-primary mx-auto'  %>
-        </div>
-      <% end %>
-    </div>
+    
     <!--生徒側投稿一覧 ここから-->
     <div class="student col-md-8">
       <h2 class="text-center">このユーザーに対しての評価</h2>
       <div class="student_post-tbody">
-        
+
       </div>
     </div>
-    
+
     <div class="student col-md-8 mt-5">
       <h2 class="text-center">〜生徒側で投稿した一覧〜</h2>
       <div class="student_post-tbody">

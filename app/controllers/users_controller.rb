@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
 
   def show
-    
+
     @user = User.find(params[:id])
     @student_post = @user.student_posts.order('status, created_at DESC')
     @teacher_post = @user.teacher_posts.order('status, created_at DESC')
@@ -30,10 +30,10 @@ class UsersController < ApplicationController
         @entry = Entry.new
       end
     end
+
     
-    @user_evaluation = UserEvaluation.new
-    
-    
+
+
   end
 
   def edit
@@ -98,10 +98,10 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+
   def index
   end
-  
+
   def create
   end
 

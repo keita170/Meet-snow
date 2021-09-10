@@ -1,0 +1,81 @@
+<div class="row ml-3">
+  <div class="col-md-5 evaluation-user">
+  <%= form_with model:@evaluation, local: true do |f| %>
+
+
+    <div class="field mb-3 mt-4">
+      <p class="ml-3">
+        <%= f.select :user_option, options_for_select(@users.map do |user| [user.name, user.id] end), { prompt: '選択してください' } %>
+        <%= f.label :user, "さんへの評価" %>
+      </p>
+    </div>
+    <div class="field mb-3 mt-4">
+      <%= f.label :comment,"評価内容",class:"mr-2 h4" %>
+      <%= f.text_area :comment, size: "30x6", class: "form-control", placeholder: "ずっと笑顔で楽しくできました！ or 募集内容と全く違いました" %>
+    </div>
+
+    <div class="field mb-3">
+      <span>"※もう2度と受けたくないが多発した場合、<strong class="text-danger">利用停止</strong>の処置を取ります"</span><br>
+      <%= f.radio_button :content,:もう一度お願いしたい,  checked: "checked",class:"ml-2" %>
+      <%= f.label :content, "もう一度お願いしたい",class:"font-weight-bold" %>
+      <%= f.radio_button :content, :タイミングが合えば %>
+      <%= f.label :content, "タイミングが合えば",class:"font-weight-bold" %>
+      <%= f.radio_button :content, :もう２度とお願いしません %>
+      <%= f.label :content, "もう２度と受けません",class:"font-weight-bold" %>
+    </div>
+
+    <div id="evaluation_stars" class="mb-2">
+      <%= f.label :evaluation,'5.0段階評価'  %>
+    </div>
+    <script>
+      $('#evaluation_stars').raty({
+        size     : 36,
+        starOn: '<%= asset_path('star-on.png') %>',
+        starOff: '<%= asset_path('star-off.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'evaluation[evaluation]',
+        half: true,
+      });
+    </script>
+
+    <div class="actions mb-3">
+      <%= f.submit "新規投稿する", class: 'btn btn-primary mx-auto'  %>
+    </div>
+  <% end %>
+</div>
+
+<div class="col-md-6">
+  <h2 class="text-center mt-3 mb-3">評価一覧</h2>
+    <%= form_with url: search_user_path, method: :get, local:true do |f| %>
+      <%= f.text_field :user_keyword, value: @user_keyword, placeholder:'ユーザー名検索', class:'search_word' %>
+      <%= f.submit '検索', class:"btn btn-sm btn-outline-dark"%>
+    <% end %>
+  <% @evaluations.each do |eva| %>
+    <div class="row">
+      <span class="h5 mr-4"><%= eva.user_select %></span>
+
+      <div id="evaluation-rate<%= eva.id %>"><%= "評価:" %></div>
+      <script>
+
+        $('#evaluation-rate<%= eva.id %>').raty({
+          size     : 18,
+          starOn: '<%= asset_path('star-on.png') %>',
+          starOff: '<%= asset_path('star-off.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          score: <%= eva.evaluation %>,
+          half: true,
+          readOnly: true,
+        });
+      </script>
+      <span class="ml-3">次は、、、<%= eva.content %></span>
+      <% if eva.user == current_user %>
+      　<%= link_to "削除", evaluation_path(eva), method: :delete, class:"ml-3" %>
+      <% end %>
+    </div>
+    <hr>
+    <span class="text-muted">内容:</span><span class="font-weight-bold"><%= eva.comment %></span><hr>
+  <% end %>
+
+</div>
+</div>
+

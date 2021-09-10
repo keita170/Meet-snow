@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'review' => 'users#review'
+  resources :evaluations, only: [:create, :index, :destroy]
 
   resources :student_posts, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
     resources :favorites, only: [:create]
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   get 'search' => 'searches#search'
   get 'search_teacher' => 'search_teachers#search'
+  get 'search_user' => 'search_users#search'
 
   resources :notifications, only: :index
 
