@@ -14,7 +14,7 @@ class StudentPost < ApplicationRecord
 
 
   def self.search(keyword)
-    where(["title LIKE? OR body LIKE?", "%#{keyword}%", "%#{keyword}%"])
+    where(["body LIKE?", "%#{keyword}%"])
   end
 
   def create_notification_like!(current_user)

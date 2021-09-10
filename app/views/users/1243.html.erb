@@ -2,18 +2,16 @@
   <h1 class="text-center">〜教えてくれる人募集中〜</h1>
   <div class="col-md-6 offset-md-4">
     <div class="row">
-    
-
-    <%#= form_with url: search_path, method: :get, local:true do |f| %>
-      <%#= f.text_field :keyword, value: @keyword, placeholder:'キーワード検索', class:'search_word' %>
-      <%#= f.submit '検索', class:"btn btn-sm btn-outline-dark"%>
-    <%# end %>
-
-    <%= form_with url: student_posts_path, method: :get, class:"search__form", remote:true do |f| %>
-      <%= f.text_field :keyword, value: @keyword, placeholder:'キーワード検索', class:'search__form__input searchTerm' %>
-      <%= f.submit '検索', class:"btn btn-sm btn-outline-dark"%>
+    <%= form_with url: student_posts_path, method: :get, local:true do |f| %>
+      <%= f.select :field, options_for_select({"分野検索" => "分野検索","フリースタイル" => "フリースタイル", "グラトリ" => "グラトリ", "カービング" => "カービング", "その他" => "その他"}) %>
+      <%= f.submit '検索', class:"btn btn-sm btn-outline-dark mr-5" %>
     <% end %>
 
+    <%= form_with url: search_path, method: :get, local:true do |f| %>
+      <%= f.text_field :keyword, value: @keyword, placeholder:'キーワード検索', class:'search_word' %>
+      <%= f.submit '検索', class:"btn btn-sm btn-outline-dark"%>
+    <% end %>
+    
     </div>
   </div>
 </div>
@@ -28,7 +26,7 @@
     <!--画面真ん中の一覧表示がされてる範囲-->
     <div class="student-center col-md-6 overflow-auto" style="width:100%; height:800px;">
       <!--投稿一覧 ここから-->
-      <div id="index">
+      <div class="student_post-tbody">
         <%= render 'student_posts/index', student_post: @student_post, comment: @comment %>
       </div>
       <!--投稿一覧 ここまで-->
