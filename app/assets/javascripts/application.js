@@ -30,78 +30,12 @@
 /*global searchResult*/
 /*global url*/
 /*global location*/
+/*global appendErrMsgToHTML*/
+/*global appendUser*/
 
 
-// $(document).addEventListener('turbolinks:load',function(){
-//   $('.search__form__input').on('keyup', function(e){
-//         Rails.fire($(".search__form")[0], "submit");
-//     });
-// });
 
-$(document).on('turbolinks:load', function() {
-  $(document).on('input', '.search__form__input', function(){
-    // tbodyの中身を一度空にする
-    $('#index').html('');
-    // 検索ワードの取得
-    const keyword = $(this).val();
-    // #indexにajax通信
-    $.ajax({
-      type: 'GET',
-      url: '/student_posts/search',
-      data: {keyword},
-      dataType: 'json'
-    })
-    .done(function(data){
-      data.forEach(function(data){
-        const html = `
 
-            ${data.body}
-
-        `;
-        $('#index').prepend(html);
-      });
-    })
-  });
-});
-
-// function buildHTML(dataFromSearchFunction){
-//     let html = `
-//     <li>${dataFromSearchFunction.name}</li>
-//     `
-//     searchResult.append(html);
-//   }
-
-//   // 該当するデータがなかった時に呼ばれる関数
-//   function NoResult(message){
-//     let html = `
-//     <li>${message}</li>
-//     `
-//     searchResult.append(html);
-//   }
-
-//   function search(target){
-//     $.ajax({
-//       type: 'GET',
-//       url: '/student_posts/search',
-//       data: {key: target},
-//       dataType: 'json'
-//     })
-//     .done(function(data){
-//       // 通信が成功した時の処理
-//       searchResult.empty(); //再度検索した際に前のデータを消す処理
-//       if (data.length !== 0) {
-//         data.forEach(function(data) { //dataは配列型に格納されているのでEach文で処理
-//           buildHTML(data)
-//         });
-//       } else {
-//         NoResult('該当する商品はありません')
-//       }
-//     })
-//     .fail(function(data){
-// 　　　// 通信が失敗した時の処理
-//       alert('非同期通信に失敗しました');
-//     })
-//   }
 $(document).on('turbolinks:load', function(){
   const inputForm = $('.search__form__input');
   const url = location.href;
@@ -109,7 +43,25 @@ $(document).on('turbolinks:load', function(){
 
   function builtHTML(data){
     let html = `
-    <li>${data.body}</li>
+     <div class="card mb-2" style="width: 42rem;">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a href="student_posts/${data.id}">${data.field}</a>:
+          <script>
+          if (${data.status} == "受付中") {
+           <p>受付中</p>
+          }else{
+            <p>受</p>
+          }
+          </script>
+        </h5>
+        <p class="card-text">${data.body}</p>
+        <div class="text-muted mb-1">
+          <span>条件:${data.title}</span>
+
+        </div>
+      </div>
+    </div>
     `
     searchResult.append(html);
   }
@@ -150,3 +102,89 @@ $(document).on('turbolinks:load', function(){
     })
   }
 });
+
+
+// $(document).on('turbolinks:load', function(){
+
+//     var search_list = $("#index");
+//     var member_list = $("#member-append");
+
+//     function appendUser(student_post){
+//         var html =
+//                     `<div class="chat-group-student_post clearfix">
+//                         </div>`;
+//                     search_list.append(html);
+//     }
+
+//     function appendErrMsgToHTML(msg){
+//         var html =
+//                     `<div class="chat-group-student_post clearfix">
+//                         <p class="chat-group-student_post__title">${msg}</p>
+//                     </div>`;
+//                     search_list.append(html);
+//     }
+
+//   $('.search__form__input').on('keyup', function(e){
+//         var input = $(".search__form__input").val();
+
+//         $.ajax({
+//             type: 'GET',                // HTTPメソッドはGETで
+//             url:  '/student_posts/serach',             // /student_postsのURLに (これによりstudent_postsコントローラのindexアクションが起動)
+//             data: { keyword: input},    // keyword: inputを送信する
+//             dataType: 'json'            // サーバから値を返す際はjsonである
+//         })
+
+//         .done(function(student_posts){                // student_postsにjson形式のstudent_post変数が代入される。複数形なので配列型で入ってくる
+
+//             if (input.length === 0) {         // フォームの文字列長さが0であれば、インクリメンタルサーチ結果を表示しないようにする
+//                 $('#index').empty();
+//               }
+
+//             else if (input.length !== 0){     // 値が等しくないもしくは型が等しくなければtrueを返す。
+//                 $('#index').empty();
+//                 student_posts.forEach(function(student_post){ // users情報をひとつずつとりだしてuserに代入
+//                     appendUser(student_post)
+//                 });
+//             }
+
+//             else {
+//                 $('#index').empty(); // ユーザーが見つからなければ「見つからない」を返す。
+//                 appendErrMsgToHTML("一致するユーザーが見つかりません");
+//             }
+//         })
+
+//         .fail(function() {
+//             alert('ユーザー検索に失敗しました');
+//         });
+//     });
+// });
+
+// $(function() {
+//   $(".search__form__input").on("keyup", function(){
+
+//     var input = $(".search__form__input").val();
+
+//     $.ajax({
+//       type: 'GET',
+//       url: '/student_posts/search',
+//       data: { keyword: input },
+//       dataType: 'json'
+//     })
+
+//     .done(function(products) {
+//       $("#index").empty();
+//       if (products.length !==0) {
+//         $("#index").append(
+
+
+//         );
+//       }
+//       else {
+//         $("#index").append("検索結果がありません");
+//       }
+//     })
+//     .fail(function(){
+//       alert('映画検索に失敗しました');
+//     })
+//   });
+// });

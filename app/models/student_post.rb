@@ -7,17 +7,24 @@ class StudentPost < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
   has_many :view_counts, dependent: :destroy
+  
+  
 
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-  
+
   #検索用
   def self.search(keyword)
     where(["body LIKE?", "%#{keyword}%"])
   end
-  
+
+  # def self.search(search)
+  #   return StudentPost.all() unless search
+  #   StudentPost.where('body LIKE(?)', "%#{search}%")
+  # end
+
   #ランクキング機能で使用する
   def self.one_week
     StudentPost.joins(:favorites).where(favorites: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day}).group(:student_post_id).order("count(student_post_id) desc").limit(3)
@@ -28,7 +35,7 @@ class StudentPost < ApplicationRecord
   def self.one_week_post
     StudentPost.joins(:view_counts).where(view_counts: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day}).group(:student_post_id).order("count(student_post_id) desc").limit(3)
   end
-  
+
   #いいねでの通知機能
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
@@ -47,7 +54,7 @@ class StudentPost < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   #コメントでの通知機能
   def create_notification_comment!(current_user, comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
@@ -73,9 +80,9 @@ class StudentPost < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-  
+
   scope :status, -> {order(status: :desc)}
-  
+
   enum field: { フリースタイル: 0, グラトリ: 1, カービング: 2, その他: 3 }
   enum status: { 受付中: 0, 締め切り: 1 }
 end

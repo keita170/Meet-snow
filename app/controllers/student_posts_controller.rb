@@ -82,12 +82,13 @@ class StudentPostsController < ApplicationController
 
   def search
     # @productsは次に紹介するjbuilderで必要になるインスタンス変数です
-    # @student_post = StudentPost.where(['body LIKE(?)', "%#{params[:keyword]}%"])
-    @student_post = StudentPost.search(params[:keyword])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    @student_post = StudentPost.where(['body LIKE(?)', "%#{params[:keyword]}%"]).order('created_at DESC')
+    # byebug
+    # @student_post = StudentPost.search(params[:keyword])
+    
+
+    render :json => @student_post
+
   end
 
 
