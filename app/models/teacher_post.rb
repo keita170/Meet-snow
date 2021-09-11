@@ -15,6 +15,14 @@ class TeacherPost < ApplicationRecord
     where(["title LIKE? OR body LIKE?", "%#{key_word}%", "%#{key_word}%"])
   end
 
+  def self.one_week
+    TeacherPost.joins(:favorite_teachers).where(favorite_teachers: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day}).group(:teacher_post_id).order("count(teacher_post_id) desc").limit(3)
+  end
+  def self.one_week_comment
+    TeacherPost.joins(:comment_teachers).where(comment_teachers: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day}).group(:teacher_post_id).order("count(teacher_post_id) desc").limit(3)
+  end
+
+
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and teacher_post_id = ? and action = ? ", current_user.id, user_id, id, 'favorite_teacher'])

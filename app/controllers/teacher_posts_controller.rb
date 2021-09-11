@@ -15,6 +15,11 @@ class TeacherPostsController < ApplicationController
     elsif params[:field] == "その他"
       @teacher_post = TeacherPost.where(field: params[:field])
     end
+    
+    @favorite_rank = TeacherPost.one_week
+    @comment_rank = TeacherPost.one_week_comment
+    @ranking_users = User.one_week_teacher_post
+    
   end
 
   def show

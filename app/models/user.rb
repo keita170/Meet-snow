@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :comment_teachers, dependent: :destroy
 
   has_many :evaluations, dependent: :destroy
+  
+  has_many :view_counts, dependent: :destroy
 
   #DM機能関連
   has_many :messages, dependent: :destroy
@@ -55,6 +57,10 @@ class User < ApplicationRecord
   
   def self.one_week_student_post
     User.where(id: StudentPost.group(:user_id).where(created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day).order('count(user_id) desc').limit(3).pluck(:user_id)).includes(:student_posts).sort{|a,b| b.student_posts.includes(:id).size  <=> a.student_posts.includes(:id).size}
+  end
+  
+  def self.one_week_teacher_post
+    User.where(id: TeacherPost.group(:user_id).where(created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day).order('count(user_id) desc').limit(3).pluck(:user_id)).includes(:teacher_posts).sort{|a,b| b.teacher_posts.includes(:id).size  <=> a.teacher_posts.includes(:id).size}
   end
 
 

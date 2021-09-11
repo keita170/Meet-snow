@@ -41,12 +41,15 @@ class StudentPostsController < ApplicationController
     @favorite_rank = StudentPost.one_week
     @comment_rank = StudentPost.one_week_comment
     @ranking_users = User.one_week_student_post
-
+    @ranking_posts = StudentPost.one_week_post
   end
 
   def show
     @student_post = StudentPost.find(params[:id])
     @comment = Comment.new
+    unless ViewCount.find_by(user_id: current_user, student_post_id: @student_post.id)
+      current_user.view_counts.create(student_post_id: @student_post.id)
+    end
   end
 
   def new

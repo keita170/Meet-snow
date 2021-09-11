@@ -17,7 +17,7 @@
 
   <div class="row ml-5">
     <!--画面左側の新規投稿ページへのリンクがある範囲-->
-    <div class="student-left col-md-3">
+    <div class="student-left col-md-2">
       <%= link_to new_teacher_post_path do %>
             <i class="fas fa-plus-square text-dark fa-2x new-button"></i>
             <span class="h2 text-dark">新規投稿する</span>
@@ -35,5 +35,19 @@
       <p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p>
       <!--ーーーーーーーーーーーーーーーーーーーーーーここから上は試しに書いてるだけーーーーーーーーーーーーーーーーーーーーーーーーー-->
     </div>
-    <div class="col-md-3"><p>aaaaa</p></div>
+    <div class="col-md-4">
+      <h4>週間いいね獲得ランキング</h4>
+      <% @favorite_rank.each.with_index(1) do |teacher, i| %>
+      <p>第<%= i %>位<%= teacher.title %>:<%= teacher.favorite_teachers.count %>いいね</p>
+      <% end %>
+      <h4>週間コメント獲得ランキング</h4>
+      <% @comment_rank.each.with_index(1) do |teacher, i| %>
+      <p>第<%= i %>位<%= teacher.title %>:<%= teacher.comment_teachers.count %>コメント</p>
+      <% end %>
+
+      <h4>週間投稿数ランキング</h4>
+      <% @ranking_users.each.with_index(1) do |user, i| %>
+      <p>第<%= i %>位<%= user.name %>:<%= user.teacher_posts.count %>件</p>
+      <% end %>
+    </div>
   </div>

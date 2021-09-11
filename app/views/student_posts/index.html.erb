@@ -35,16 +35,22 @@
     <div class="col-md-3">
       <h4>週間いいね獲得ランキング</h4>
       <% @favorite_rank.each.with_index(1) do |student, i| %>
-      <p>第<%= i %>位<%= student.title %>:<%= student.favorites.count %>いいね</p>
+      <p>第<%= i %>位<%= link_to student.title, student_post_path(student) %>:<%= student.favorites.count %>いいね</p>
       <% end %>
       <h4>週間コメント獲得ランキング</h4>
       <% @comment_rank.each.with_index(1) do |student, i| %>
-      <p>第<%= i %>位<%= student.title %>:<%= student.comments.count %>コメント</p>
+      <p>第<%= i %>位<%= link_to student.title, student_post_path(student) %>:<%= student.comments.count %>コメント</p>
+      <% end %>
+
+      <h4>週間人気記事</h4>
+      <% @ranking_posts.each.with_index(1) do |student, i| %>
+      <p>第<%= i %>位<%= link_to student.title, student_post_path(student) %>:<%= student.view_counts.count %>ビュー</p>
       <% end %>
 
       <h4>週間投稿数ランキング</h4>
       <% @ranking_users.each.with_index(1) do |user, i| %>
-      <p>第<%= i %>位<%= user.name %>:<%= user.student_posts.count %>件</p>
+      <p>第<%= i %>位<%= link_to user.name, user_path(user) %>:<%= user.student_posts.count %>件</p>
       <% end %>
     </div>
+
   </div>

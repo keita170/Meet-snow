@@ -5,30 +5,26 @@
   <%= link_to "通知ページへ", notifications_path %>
   <%= link_to "評価ページへ", evaluations_path %>
   <div class="row mt-5">
-    
-    <!--生徒側投稿一覧 ここから-->
-    <div class="student col-md-8">
-      <h2 class="text-center">このユーザーに対しての評価</h2>
-      <div class="student_post-tbody">
-
-      </div>
+    <div class="student-left col-md-3">
+      <%= link_to new_teacher_post_path do %>
+            <i class="fas fa-plus-square text-dark fa-2x new-button"></i>
+            <span class="h2 text-dark">新規投稿する</span>
+      <% end %>
     </div>
 
     <div class="student col-md-8 mt-5">
       <h2 class="text-center">〜生徒側で投稿した一覧〜</h2>
       <div class="student_post-tbody">
+        <!--生徒側投稿一覧 ここから-->
         <%= render 'student_posts/index', student_post: @student_post, comment: @comment %>
+        <!--生徒側投稿一覧 ここまで-->
       </div>
-    </div>
-    <!--生徒側投稿一覧 ここまで-->
-
-    <!--先生側投稿一覧 ここから-->
-    <div class="teacher col-md-8 mt-5">
       <h2 class="text-center">〜先生側で投稿した一覧〜</h2>
       <div class="teacher_post-tbody">
+        <!--先生側投稿一覧 ここから-->
         <%= render 'teacher_posts/index', teacher_post: @teacher_post, comment_teacher: @comment_teacher %>
+        <!--先生側投稿一覧 ここまで-->
       </div>
     </div>
   </div>
-  <!--先生側投稿一覧 ここまで-->
 </div>

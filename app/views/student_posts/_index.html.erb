@@ -4,7 +4,7 @@
     <div class="card-body">
       <!--投稿内容表示-->
       <h5 class="card-title">
-        <%= student.field %>:
+        <%= link_to student.field, student_post_path(student) %>:
         <% if student.status == "受付中" %>
           <span class="text-primary"><%= student.status %></span>
         <% else %>

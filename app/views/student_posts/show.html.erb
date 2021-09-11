@@ -14,7 +14,7 @@
       <%= link_to "連絡を取る", user_path(@student_post.user) ,class:"btn btn-primary btn-sm ml-5" %>
       <% end %>
     </h5>
-    <p class="card-text"><%= @student_post.body %></p>
+    <p class="card-text"><%= @student_post.body %>閲覧数：<%= @student_post.view_counts.count %></p>
     <div class="text-muted mb-1">
      <span>条件:<%= @student_post.title %>
 
