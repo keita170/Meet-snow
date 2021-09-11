@@ -16,6 +16,13 @@ class StudentPost < ApplicationRecord
   def self.search(keyword)
     where(["body LIKE?", "%#{keyword}%"])
   end
+  
+  def self.one_week
+    StudentPost.joins(:favorites).where(favorites: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day}).group(:student_post_id).order("count(student_post_id) desc").limit(3)
+  end
+  def self.one_week_comment
+    StudentPost.joins(:comments).where(comments: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day}).group(:student_post_id).order("count(student_post_id) desc").limit(3)
+  end
 
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
@@ -61,6 +68,7 @@ class StudentPost < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+  
 
   scope :status, -> {order(status: :desc)}
 

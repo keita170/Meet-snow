@@ -35,3 +35,45 @@
     <div class="col-md-3"><p>aaaaa</p></div>
   </div>
 
+<!--ーーーーーーーーーーーーーーーーーーーーーーー下はインクリ上は通常ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー-->
+
+
+<div class="student-title mb-5">
+  <h1 class="text-center">〜教えてくれる人募集中〜</h1>
+  <div class="col-md-6 offset-md-4">
+    <div class="row">
+    
+
+    <%#= form_with url: search_path, method: :get, local:true do |f| %>
+      <%#= f.text_field :keyword, value: @keyword, placeholder:'キーワード検索', class:'search_word' %>
+      <%#= f.submit '検索', class:"btn btn-sm btn-outline-dark"%>
+    <%# end %>
+
+    <%= form_with url: student_posts_path, method: :get, class:"search__form", remote:true do |f| %>
+      <%= f.text_field :keyword, value: @keyword, placeholder:'キーワード検索', class:'search__form__input searchTerm' %>
+      <%= f.submit '検索', class:"btn btn-sm btn-outline-dark"%>
+    <% end %>
+
+    </div>
+  </div>
+</div>
+  <div class="row ml-5 mb-5">
+    <!--画面左側の新規投稿ページへのリンクがある範囲-->
+    <div class="student-left col-md-3">
+      <%= link_to new_student_post_path do %>
+            <i class="fas fa-plus-square text-dark fa-2x new-button"></i>
+            <span class="h2 text-dark">新規投稿する</span>
+      <% end %>
+    </div>
+    <!--画面真ん中の一覧表示がされてる範囲-->
+    <div class="student-center col-md-6 overflow-auto" style="width:100%; height:800px;">
+      <!--投稿一覧 ここから-->
+      <div id="index">
+        <%= render 'student_posts/index', student_post: @student_post, comment: @comment %>
+      </div>
+      <!--投稿一覧 ここまで-->
+    </div>
+    <!--画面右側の範囲-->
+    <div class="col-md-3"><p>aaaaa</p></div>
+  </div>
+
