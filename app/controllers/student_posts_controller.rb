@@ -37,7 +37,7 @@ class StudentPostsController < ApplicationController
     elsif params[:field] == "その他"
       @student_post = StudentPost.where(field: params[:field]).order('status, created_at DESC')
     end
-
+    #ランキング機能
     @favorite_rank = StudentPost.one_week
     @comment_rank = StudentPost.one_week_comment
     @ranking_users = User.one_week_student_post
@@ -47,6 +47,7 @@ class StudentPostsController < ApplicationController
   def show
     @student_post = StudentPost.find(params[:id])
     @comment = Comment.new
+    #閲覧数
     unless ViewCount.find_by(user_id: current_user, student_post_id: @student_post.id)
       current_user.view_counts.create(student_post_id: @student_post.id)
     end
@@ -77,6 +78,16 @@ class StudentPostsController < ApplicationController
     @student_post = StudentPost.find(params[:id])
     @student_post.destroy
     redirect_to student_posts_path
+  end
+
+  def search
+    # @productsは次に紹介するjbuilderで必要になるインスタンス変数です
+    # @student_post = StudentPost.where(['body LIKE(?)', "%#{params[:keyword]}%"])
+    @student_post = StudentPost.search(params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
 

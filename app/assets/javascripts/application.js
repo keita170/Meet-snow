@@ -27,6 +27,9 @@
 /*global activatePagination*/
 /*global requestAnimFrame*/
 /*global Rails*/
+/*global searchResult*/
+/*global url*/
+/*global location*/
 
 
 // $(document).addEventListener('turbolinks:load',function(){
@@ -44,7 +47,7 @@ $(document).on('turbolinks:load', function() {
     // #indexにajax通信
     $.ajax({
       type: 'GET',
-      url: '/student_posts',
+      url: '/student_posts/search',
       data: {keyword},
       dataType: 'json'
     })
@@ -53,13 +56,97 @@ $(document).on('turbolinks:load', function() {
         const html = `
 
             ${data.body}
-            ${data.title}
-            ${data.status}
-            ${data.field}
 
         `;
         $('#index').prepend(html);
       });
     })
   });
+});
+
+// function buildHTML(dataFromSearchFunction){
+//     let html = `
+//     <li>${dataFromSearchFunction.name}</li>
+//     `
+//     searchResult.append(html);
+//   }
+
+//   // 該当するデータがなかった時に呼ばれる関数
+//   function NoResult(message){
+//     let html = `
+//     <li>${message}</li>
+//     `
+//     searchResult.append(html);
+//   }
+
+//   function search(target){
+//     $.ajax({
+//       type: 'GET',
+//       url: '/student_posts/search',
+//       data: {key: target},
+//       dataType: 'json'
+//     })
+//     .done(function(data){
+//       // 通信が成功した時の処理
+//       searchResult.empty(); //再度検索した際に前のデータを消す処理
+//       if (data.length !== 0) {
+//         data.forEach(function(data) { //dataは配列型に格納されているのでEach文で処理
+//           buildHTML(data)
+//         });
+//       } else {
+//         NoResult('該当する商品はありません')
+//       }
+//     })
+//     .fail(function(data){
+// 　　　// 通信が失敗した時の処理
+//       alert('非同期通信に失敗しました');
+//     })
+//   }
+$(document).on('turbolinks:load', function(){
+  const inputForm = $('.search__form__input');
+  const url = location.href;
+  const searchResult = $('#index');
+
+  function builtHTML(data){
+    let html = `
+    <li>${data.body}</li>
+    `
+    searchResult.append(html);
+  }
+
+  function NoResult(message){
+    let html = `
+    <li>${message}</li>
+    `
+    searchResult.append(html);
+  }
+
+  // フォームに入力すると発火する
+  inputForm.on('keyup', function(){
+    const target = $(this).val();
+    search(target);
+  });
+
+  // ajax処理
+  function search(target){
+    $.ajax({
+      type: 'GET',
+      url: '/student_posts/search',
+      data: {keyword: target},
+      dataType: 'json'
+    })
+    .done(function(data){
+      searchResult.empty(); //再度検索した際に前のデータを消す処理
+      if (data.length !== 0) {
+        data.forEach(function(data) { //dataは配列型に格納されているのでEach文で回す
+          builtHTML(data)
+        });
+      } else {
+        NoResult('該当する商品はありません')
+      }
+    })
+    .fail(function(data){
+      alert('非同期通信に失敗しました');
+    })
+  }
 });

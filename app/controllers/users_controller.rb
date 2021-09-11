@@ -51,18 +51,17 @@ class UsersController < ApplicationController
     # ログイン中のユーザーのお気に入りのteacher_post_idカラムを取得
     favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
     @favorite_list = StudentPost.order('status, created_at DESC').find(favorites)
-
+    #ソート機能
     if params[:sort] == 'status'
       favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
       @favorite_list = StudentPost.order('status, created_at DESC').find(favorites)
     elsif params[:sort] == 'field'
       favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
       @favorite_list = StudentPost.order('status, field, created_at DESC').find(favorites)
-
-
     elsif params[:sort] == 'comment'
       favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
       favorite_list = StudentPost.includes(:commented_users).sort{ |a, b| b.comments.count <=> a.comments.count }.find(favorites)
+      #enumeratorとして出されてしまってるので以下、enumeratorから1つずつ取り出してる記述
       @favorite_list = []
       favorites.count.times do
         @favorite_list << favorite_list.next
@@ -80,29 +79,22 @@ class UsersController < ApplicationController
     # ログイン中のユーザーのお気に入りのteacher_post_idカラムを取得
     favorite_teachers = FavoriteTeacher.where(user_id: current_user.id).order('created_at DESC').pluck(:teacher_post_id)
     @favorite_list_teacher = TeacherPost.order('status, created_at DESC').find(favorite_teachers)
-
+    #先生側ソート機能
     if params[:sort] == 'status-teacher'
       favorite_teachers= FavoriteTeacher.where(user_id: current_user.id).order('created_at DESC').pluck(:teacher_post_id)
       @favorite_list_teacher = TeacherPost.order('status, created_at DESC').find(favorite_teachers)
     elsif params[:sort] == 'field-teacher'
       favorite_teachers= FavoriteTeacher.where(user_id: current_user.id).order('created_at DESC').pluck(:teacher_post_id)
       @favorite_list_teacher = TeacherPost.order('status, field, created_at DESC').find(favorite_teachers)
-
-
     elsif params[:sort] == 'comment-teacher'
       favorite_teachers= FavoriteTeacher.where(user_id: current_user.id).order('created_at DESC').pluck(:teacher_post_id)
       favorite_list_teacher = TeacherPost.includes(:commented_users).sort{ |a, b| b.comment_teachers.count <=> a.comment_teachers.count }.find(favorite_teachers)
+      #enumeratorとして出されてしまってるので以下、enumeratorから1つずつ取り出してる記述
       @favorite_list_teacher = []
       favorite_teachers.count.times do
         @favorite_list_teacher << favorite_list_teacher.next
       end
     end
-  end
-
-  def index
-  end
-
-  def create
   end
 
 

@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create]
     delete 'favorites' => 'favorites#destroy', as:'favorite'
     resources :comments, only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
   end
 
   resources :teacher_posts, only: [:index, :new, :create, :edit, :update, :destroy, :show] do

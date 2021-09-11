@@ -10,9 +10,9 @@ class User < ApplicationRecord
   has_many :favorite_teachers, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :comment_teachers, dependent: :destroy
-
+  #評価機能
   has_many :evaluations, dependent: :destroy
-  
+  #閲覧数機能
   has_many :view_counts, dependent: :destroy
 
   #DM機能関連
@@ -25,7 +25,7 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed
   has_many :followed, class_name: "Relationship",foreign_key: "followed_id", dependent: :destroy
   has_many :followed_user, through: :followed, source: :follower
-
+  #通知機能
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
@@ -42,8 +42,8 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
-
-
+  
+  #フォローでの通知機能
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
     if temp.blank?
@@ -54,7 +54,7 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+  #ランキング機能で使用する
   def self.one_week_student_post
     User.where(id: StudentPost.group(:user_id).where(created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day).order('count(user_id) desc').limit(3).pluck(:user_id)).includes(:student_posts).sort{|a,b| b.student_posts.includes(:id).size  <=> a.student_posts.includes(:id).size}
   end
