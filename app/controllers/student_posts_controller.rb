@@ -42,7 +42,7 @@ class StudentPostsController < ApplicationController
     @comment_rank = StudentPost.one_week_comment
     @ranking_users = User.one_week_student_post
     @ranking_posts = StudentPost.one_week_post
-    
+
   end
 
   def show
@@ -61,6 +61,7 @@ class StudentPostsController < ApplicationController
   def create
     @student_post = StudentPost.new(student_post_params)
     @student_post.user_id = current_user.id
+    @student_post.user_name = @student_post.user.name
     @student_post.save
     redirect_to student_posts_path
   end
@@ -86,7 +87,7 @@ class StudentPostsController < ApplicationController
     @student_post = StudentPost.search(params[:keyword])
     # byebug
     # @student_post = StudentPost.search(params[:keyword])
-    
+    # @student_post.user.name = @student_post.user_name
 
     render :json => @student_post
 

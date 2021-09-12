@@ -9,17 +9,15 @@ $(document).on('turbolinks:load', function(){
 
   function builtHTML(data){
     let html = `
-     <div class="card mb-2" style="width: 42rem;">
+     <div class="index-post card mb-2 col-md-12 border border-info" style="width: 42rem;">
       <div class="card-body">
         <h5 class="card-title">
-          <a href="student_posts/${data.id}">${data.field}</a>:${data.status}
-          <script>
-          </script>
+          <a href="student_posts/${data.id}" class="link">${data.field}:<span class="font-weight-bold">${data.status}</span></a> ←詳細ページへ
         </h5>
-        <p class="card-text">${data.body}</p>
-        <div class="text-muted mb-1">
-          <span>条件:${data.title}</span>
-
+        <p class="card-text font-weight-bold">${data.body}</p>
+        <div>
+          <span class="text-muted mb-1">条件:${data.title}</span>
+          <a href="users/${data.user_id}" class="link font-weight-bold">${data.user_name}</a>さんの投稿
         </div>
       </div>
     </div>
