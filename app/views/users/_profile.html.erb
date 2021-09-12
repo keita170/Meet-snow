@@ -37,7 +37,7 @@
       <% end %>
       </div>
       <!--投稿数,フォロー,フォロワー表示-->
-      <p>投稿<%= student_post.count + teacher_post.count %>件  　フォロー<%= link_to user.following_user.count, user_followings_path(user),class:"link" %>人  　フォロワー<%= link_to user.followed_user.count, user_followers_path(user),class:"link" %>人  </p>
+      <p>投稿<%= student_post.count + teacher_post.count %>件  　フォロー<%= link_to user.following_user.count, user_followings_path(user),class:"link" %>人  　フォロワー<%= link_to user.following_user.count, user_followers_path(user),class:"link" %>人  </p>
       <%= user.introduction %>
     </div>
   </div>

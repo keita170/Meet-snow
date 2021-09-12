@@ -1,23 +1,22 @@
 <!--画面真ん中の一覧表示がされてる範囲(フォワー一覧)-->
-    <div class="student-center col-md-3 overflow-auto" style="width:100%; height:500px;">
-      <div>
+
+      <div class="mb-1">
         <% users.each do |user| %>
           <% if user.image.attached? %>
-            <%= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2 mr-3" %>
+            <%= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2 mr-3 mb-1" %>
           <% else %>
-           <%= image_tag 'no_image.jpg', class:"rounded-circle rounded-circle2 mr-3" %>
+           <%= image_tag 'no_image.jpg', class:"rounded-circle rounded-circle2 mr-3 mb-1" %>
           <% end %>
-          <%= link_to user.name, user_path(user) %>
+          <%= link_to user.name, user_path(user), class:"link" %>
           <% if user == current_user %>
-           <%= link_to "プロフィール編集", edit_user_path(user), class:"btn btn-primary btn-sm" %>
+           <%= link_to "プロフィール編集", edit_user_path(user), class:"btn btn-outline-primary btn-sm" %>
           <% else %>
               <% if current_user.following?(user) %>
-                <%= link_to "Unfollow", user_relationship_path(id: user.id, user_id: user.id), class:"btn btn-info btn-sm", method: :delete %>
+                <%= link_to "Unfollow", user_relationship_path(id: user.id, user_id: user.id), class:"btn btn-outline-info btn-sm", method: :delete %>
               <% else %>
-                <%= link_to "Follow", user_relationships_path(id: user.id, user_id: user.id), class:"btn btn-success btn-sm",method: :post %>
+                <%= link_to "Follow", user_relationships_path(id: user.id, user_id: user.id), class:"btn btn-outline-success btn-sm",method: :post %>
               <% end %>
           <% end %>
           <br>
         <% end %>
       </div>
-    </div>

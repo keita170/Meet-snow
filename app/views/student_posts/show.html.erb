@@ -1,9 +1,10 @@
-<div class="student-title pt-2 pb-2 mb-4 index-search d-flex align-items-center justify-content-center">
+<div class="student-title pt-2 pb-2 mb-4 index-search d-flex align-items-center justify-content-center border-bottom">
   <div class="col-md-5">
     <hr><h3 class="text-center"><%= link_to @student_post.user.name, user_path(@student_post.user), class:"link" %>さんの投稿詳細ページ</h3><hr>
   </div>
 </div>
-<div class="card mb-2 d-flex mx-auto mb-5" style="width: 42rem;">
+
+<div class="index-search card mb-2 d-flex mx-auto mb-5 border border-info" style="width: 42rem;">
   <div class="card-body">
     <!--投稿内容表示-->
     <h5 class="card-title">
@@ -48,8 +49,8 @@
     <!--コメント投稿機能-->
     <div class="commnt-student-make border-top pt-3">
       <%= form_with(model:[@student_post, @comment], remote:true) do |f| %>
-      <%= f.text_area :comment, size:"50x1", class:"inputComment" %><br>
-      <%= f.submit "コメント", class:"btn btn-light" %>
+      <%= f.text_area :comment, size:"50x1", class:"inputComment border border-info" %><br>
+      <%= f.submit "コメント", class:"btn btn-outline-info" %>
       <% end %>
     </div>
   </div>

@@ -1,22 +1,27 @@
+<div class="student-title pt-2 pb-2 mb-4 index-search d-flex align-items-center justify-content-center border-bottom">
+  <div class="col-md-5">
+    <hr><h3 class="text-center">投稿編集ページ</h3><hr>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1 class="meet_snow text-center mx-auto mt-3">〜生徒側の新規投稿ページ〜</h1>
-      <div class="bg-info d-flex mx-auto justify-content-center align-items-center rounded mt-3 mb-2" style="height:430px; width:700px;">
+      <div class="index-search d-flex mx-auto justify-content-center align-items-center rounded mt-3 mb-5 border border-info" style="height:430px; width:700px;">
         <%= form_with model:@student_post, local: true do |f| %>
 
 
         <div class="field mb-3 mt-4">
           <%= f.label :"投稿内容",class:"mr-2 h4" %>
-          <%= f.text_area :body, size: "30x6", class: "form-control", placeholder: "◯◯ができません！教えてくれる方募集します！or ずっと教えてもらえるコーチを探しています！条件に合う方いたらお願いします！など" %>
+          <%= f.text_area :body, size: "30x6", class: "form-control border border-info", placeholder: "◯◯ができません！教えてくれる方募集します！or ずっと教えてもらえるコーチを探しています！条件に合う方いたらお願いします！など" %>
         </div>
         <div class="field mb-3">
           <%= f.label :"先生の条件",class:"mr-2 h4" %>
-          <%= f.text_field :title, size: "2x3", class: "form-control", placeholder: "◯◯をできる方であれば誰でもなど" %>
+          <%= f.text_field :title, size: "2x3", class: "form-control border border-info", placeholder: "◯◯をできる方であれば誰でもなど" %>
         </div>
         <div class="field mb-3">
           <%= f.label :"分野",class:"h4" %>
-        　<%= f.select :field, [["フリースタイル", "フリースタイル"], ["グラトリ", "グラトリ"], ["カービング", "カービング"], ["その他", "その他"]], include_blank: "選択して下さい" %>
+        　<%= f.select :field, [["フリースタイル", "フリースタイル"], ["グラトリ", "グラトリ"], ["カービング", "カービング"], ["その他", "その他"]], include_blank: "選択して下さい", class:"border border-info" %>
         　<%= f.radio_button :status,:受付中,  checked: "checked",class:"ml-2" %>
           <%= f.label :status, "受付中" %>
           <%= f.radio_button :status, :締め切り %>
@@ -24,7 +29,7 @@
         </div>
 
         <div class="actions mb-3">
-          <%= f.submit "編集内容を保存", class: 'btn btn-primary mx-auto'  %>
+          <%= f.submit "編集内容を保存", class: 'btn btn-outline-secondary mx-auto'  %>
         </div>
       <% end %>
       </div>

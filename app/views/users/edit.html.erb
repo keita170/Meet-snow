@@ -1,34 +1,36 @@
+<div class="student-title pt-2 pb-2 mb-4 index-search d-flex align-items-center justify-content-center border-bottom">
+  <div class="col-md-5">
+    <hr><h3 class="text-center">ユーザー情報編集ページ</h3><hr>
+  </div>
+</div>
 
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div class="bg-info d-flex mx-auto justify-content-center align-items-center rounded mt-5 mb-5" style="height:450px; width:700px;">
+      <div class="index-search d-flex mx-auto justify-content-center align-items-center rounded mt-2 mb-5 border border-info" style="height:450px; width:700px;">
         <%= form_with model: @user, local: true do |f| %>
-
-        <h1 class="meet_snow display-4">あなたの情報</h1>
-
         <div class="field mb-3 mt-4">
-          <%= f.label :"名前",class:"mr-2" %>
-          <%= f.text_field :name %>
+          <%= f.label :"名前",class:"mr-2 " %>
+          <%= f.text_field :name, class:"border border-info" %>
         </div>
         <div class="field mb-3">
           <%= f.label :"画像",class:"mr-2" %>
-          <%= f.file_field :image %>
+          <%= f.file_field :image, class:"" %>
         </div>
         <div class="field mb-3">
           <%= f.label :"自己紹介" %>
-        　<%= f.text_area :introduction, autofocus: true,class:"form-control" %>
+        　<%= f.text_area :introduction, size:"60x4", autofocus: true,class:"form-control border border-info" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "編集内容を保存", class: 'btn btn-primary mx-auto'  %>
+          <%= f.submit "編集内容を保存", class: 'btn btn-outline-info mx-auto'  %>
         </div>
       <% end %>
 
       </div>
     </div>
     <div class="col-md-12 logout-button">
-      <p class="text-right"><%= link_to "ログアウトする", destroy_user_session_path, method: :delete, data: {confirm: "本当にログアウトしますか？"} %></p>
+      <p class="text-right"><%= link_to "ログアウトする", destroy_user_session_path, class:"btn btn-outline-primary", method: :delete, data: {confirm: "本当にログアウトしますか？"} %></p>
     </div>
   </div>
 </div>

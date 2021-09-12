@@ -6,5 +6,5 @@ class Evaluation < ApplicationRecord
     where(["user_select LIKE?", "%#{user_keyword}%"])
   end
 
-  enum content: { もう一度お願いしたい: 0, タイミングが合えば: 1, もう２度とお願いしません: 2 }
+  enum content: { またお願いしたい: 0, タイミングが合えば: 1, もう２度とお願いしません: 2 }
 end

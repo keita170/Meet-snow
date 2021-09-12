@@ -13,7 +13,7 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-white border-bottom">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-white border-bottom border-info">
         <div class="container">
           <a class="navbar-brand text-info" href="/">
             <span>Meet snow</span>
@@ -59,7 +59,7 @@
                 <% end %>
               <% end %>
             </li>
-            
+
             <% elsif admin_signed_in? %>
             <li>
               <%= link_to admins_users_path, class:"nav-link" do %>
@@ -79,7 +79,7 @@
     </header>
     <%= yield %>
     <footer>
-      <div class="index-search"><br>
+      <div class="index-search border-top border-info"><br>
       <p class="text-center">c</p>
       <br>
       </div>

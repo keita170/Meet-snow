@@ -1,13 +1,19 @@
+<div class="student-title pt-2 pb-2 mb-4 index-search d-flex align-items-center justify-content-center border-bottom">
+  <div class="col-md-5">
+    <hr><h3 class="text-center ">フォロー/フォロワーページ</h3><hr>
+  </div>
+</div>
+
  <div class="row">
    <div class="col-md-3"></div>
    <div class="col-md-3">
      <div class="student-title">
-        <h4 class="text-center">フォロワー</h4>
+        <hr><h4 class="text-center">フォロワー</h4><hr>
       </div>
    </div>
    <div class="col-md-3">
      <div class="student-title">
-        <h4 class="text-center">フォロー中</h4>
+        <hr><h4 class="text-center">フォロー中</h4><hr>
       </div>
    </div>
    <div class="col-md-3"></div>
@@ -16,19 +22,13 @@
   <div class="row ml-4">
     <!--画面左側-->
     <div class="student-left col-md-3">
-      <%= link_to new_student_post_path do %>
-            <i class="fas fa-plus-square text-dark fa-2x new-button"></i>
-            <span class="h2 text-dark">新規投稿する</span>
-      <% end %>
     </div>
+    <div class="student-center col-md-3 overflow-auto border mr-1" style="width:10pxpx; height:500px;">
     <%= render 'relationships/follower', users: @users %>
-    <div class="student-center col-md-3 overflow-auto" style="width:100%; height:500px;">
+    </div>
+    <div class="student-center col-md-3 overflow-auto border ml-" style="width:100%; height:500px;">
     <%= render 'relationships/follow', users_follower: @users_follower %>
-
-      <!--ーーーーーーーーーーーーーーーーーーーーーーここから下は試しに書いてるだけーーーーーーーーーーーーーーーーーーーーーーーーー-->
-      <p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p><p>O</p>
-      <!--ーーーーーーーーーーーーーーーーーーーーーーここから上は試しに書いてるだけーーーーーーーーーーーーーーーーーーーーーーーーー-->
     </div>
     <!--画面右側-->
-    <div class="col-md-3"><p>aaaaa</p></div>
+    <div class="col-md-3"></div>
   </div>
