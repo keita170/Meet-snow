@@ -1,13 +1,23 @@
 
+<div class="student-title pt-2 pb-2 mb-4 index-search d-flex align-items-center justify-content-center">
+  <div class="col-md-5">
+    <hr><h3 class="text-center">いいねした投稿一覧</h3><hr>
+  </div>
+</div>
 
-<h2 class="text-center mt-3 mb-3">いいねした投稿一覧(生徒側)</h2>
+<div class="student-title pt-2 pb-2 mb-4 d-flex align-items-center justify-content-center">
+ <div class="col-md-2 ">
+   <hr><h4 class="text-center">生徒側</h4><hr>
+ </div>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-9">
-      <%= link_to "新着順でソート", favorites_users_path(current_user, sort:'status'), class:"btn btn-sm btn-outline-dark " %>
-      <%= link_to "分野でソート", favorites_users_path(current_user, sort:'field'), class:"btn btn-sm btn-outline-dark " %>
-      <%= link_to "コメント数でソート", favorites_users_path(current_user, sort:'comment'), class:"btn btn-sm btn-outline-dark " %>
+      <%= link_to "新着順でソート", favorites_users_path(current_user, sort:'status'), class:"btn btn-sm btn-outline-info " %>
+      <%= link_to "分野でソート", favorites_users_path(current_user, sort:'field'), class:"btn btn-sm btn-outline-info " %>
+      <%= link_to "コメント数でソート", favorites_users_path(current_user, sort:'comment'), class:"btn btn-sm btn-outline-info " %>
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
       <%= render 'users/favorites', favorite_list: @favorite_list %>
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
@@ -16,14 +26,19 @@
   </div>
 </div>
 
-<h2 class="text-center mt-3 mb-3">いいねした投稿一覧(先生側)</h2>
-<div class="container">
+<div class="student-title pt-2 pb-2 mb-4 d-flex align-items-center justify-content-center">
+ <div class="col-md-2 ">
+   <hr><h4 class="text-center">先生側</h4><hr>
+ </div>
+</div>
+
+<div class="container mb-5">
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-9">
-      <%= link_to "新着順でソート", favorites_users_path(current_user, sort:'status-teacher'), class:"btn btn-sm btn-outline-dark " %>
-      <%= link_to "分野でソート", favorites_users_path(current_user, sort:'field-teacher'), class:"btn btn-sm btn-outline-dark " %>
-      <%= link_to "コメント数でソート", favorites_users_path(current_user, sort:'comment-teacher'), class:"btn btn-sm btn-outline-dark " %>
+      <%= link_to "新着順でソート", favorites_users_path(current_user, sort:'status-teacher'), class:"btn btn-sm btn-outline-info " %>
+      <%= link_to "分野でソート", favorites_users_path(current_user, sort:'field-teacher'), class:"btn btn-sm btn-outline-info " %>
+      <%= link_to "コメント数でソート", favorites_users_path(current_user, sort:'comment-teacher'), class:"btn btn-sm btn-outline-info " %>
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
       <%= render 'users/favorite-teacher', favorite_list: @favorite_list_teacher %>
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->

@@ -4,18 +4,19 @@ class TeacherPost < ApplicationRecord
   has_many :favorite_teachers, dependent: :destroy
   has_many :comment_teachers, dependent: :destroy
   has_many :commented_users, through: :comment_teachers, source: :user
+  has_many :teacher_view_counts, dependent: :destroy
 
   has_many :notifications, dependent: :destroy
 
   def favorited_by?(user)
     favorite_teachers.where(user_id: user.id).exists?
   end
-  
+
   #検索機能
   def self.search_teacher(key_word)
     where(["title LIKE? OR body LIKE?", "%#{key_word}%", "%#{key_word}%"])
   end
-  
+
   #ランキング機能
   def self.one_week
     TeacherPost.joins(:favorite_teachers).where(favorite_teachers: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day}).group(:teacher_post_id).order("count(teacher_post_id) desc").limit(3)
@@ -23,7 +24,10 @@ class TeacherPost < ApplicationRecord
   def self.one_week_comment
     TeacherPost.joins(:comment_teachers).where(comment_teachers: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day}).group(:teacher_post_id).order("count(teacher_post_id) desc").limit(3)
   end
-  
+  def self.one_week_post
+    TeacherPost.joins(:teacher_view_counts).where(teacher_view_counts: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day}).group(:teacher_post_id).order("count(teacher_post_id) desc").limit(3)
+  end
+
   #いいね通知機能
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
@@ -42,7 +46,7 @@ class TeacherPost < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   #コメント通知機能
   def create_notification_comment!(current_user, comment_teacher_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る

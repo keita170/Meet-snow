@@ -5,7 +5,7 @@
           <h5 class="card-title">
             <%= link_to teacher.field, teacher_post_path(teacher), class:"link" %>:
             <% if teacher.status == "受付中" %>
-              <span class="font-weight-bold text-muted"><%= teacher.status %></span>
+              <span class="font-weight-bold"><%= teacher.status %></span>
             <% else %>
               <span class="text-danger font-weight-bold"><%= teacher.status %></span>
             <% end %>

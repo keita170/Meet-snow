@@ -33,12 +33,17 @@
             </li>
             <li>
               <%= link_to favorites_users_path(current_user), class:"nav-link" do %>
-              <span class="fas fa-heart link"> Favorite</span>
+              <span class="fas fa-heart link "style="font-size: 1.5em;"> </span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to evaluations_path, class:"nav-link" do %>
+              <span class="fas fa-thumbtack link " style="font-size: 1.5em;"> </span>
               <% end %>
             </li>
             <li>
               <%= link_to user_path(current_user), class:"nav-link" do %>
-              <span class="fas fa-user link "> User</span>
+              <span class="fas fa-user link " style="font-size: 1.5em;"> </span>
               <% end %>
             </li>
 
@@ -54,6 +59,7 @@
                 <% end %>
               <% end %>
             </li>
+            
             <% elsif admin_signed_in? %>
             <li>
               <%= link_to admins_users_path, class:"nav-link" do %>

@@ -1,3 +1,8 @@
+<div class="student-title pt-2 pb-2 mb-4 index-search d-flex align-items-center justify-content-center">
+  <div class="col-md-5">
+    <hr><h3 class="text-center">評価ページ</h3><hr>
+  </div>
+</div>
 <div class="row ml-3">
   <div class="col-md-5 evaluation-user">
   <%= form_with model:@evaluation, local: true do |f| %>
@@ -16,11 +21,11 @@
 
     <div class="field mb-3">
       <span>"※もう2度と受けたくないが多発した場合、<strong class="text-danger">利用停止</strong>の処置を取ります"</span><br>
-      <%= f.radio_button :content,:もう一度お願いしたい,  checked: "checked",class:"ml-2" %>
+      <%= f.radio_button :content,:もう一度お願いしたい,  checked: "checked",class:"ml-2 radio_button" %>
       <%= f.label :content, "もう一度お願いしたい",class:"font-weight-bold" %>
-      <%= f.radio_button :content, :タイミングが合えば %>
+      <%= f.radio_button :content, :タイミングが合えば,class:"radio_button" %>
       <%= f.label :content, "タイミングが合えば",class:"font-weight-bold" %>
-      <%= f.radio_button :content, :もう２度とお願いしません %>
+      <%= f.radio_button :content, :もう２度とお願いしません,class:"radio_button" %>
       <%= f.label :content, "もう２度とお願いしません",class:"font-weight-bold" %>
     </div>
 
@@ -39,16 +44,16 @@
     </script>
 
     <div class="actions mb-3">
-      <%= f.submit "新規投稿する", class: 'btn btn-primary mx-auto'  %>
+      <%= f.submit "新規投稿する", class: 'btn btn-outline-info mx-auto'  %>
     </div>
   <% end %>
 </div>
 
 <div class="col-md-6">
-  <h2 class="text-center mt-3 mb-3">評価一覧</h2>
+  <h2 class="text-center mt-3 mb-3">評価一覧</h2><hr>
     <%= form_with url: search_user_path, method: :get, local:true do |f| %>
-      <%= f.text_field :user_keyword, value: @user_keyword, placeholder:'ユーザー名検索', class:'search_word' %>
-      <%= f.submit '検索', class:"btn btn-sm btn-outline-dark"%>
+      <%= f.text_field :user_keyword, value: @user_keyword, placeholder:'ユーザー名検索', class:'search_word border border-info mb-3' %>
+      <%= f.submit '検索', class:"btn btn-sm btn-outline-info"%>
     <% end %>
   <% @evaluations.each do |eva| %>
     <div class="row">
@@ -69,7 +74,7 @@
       </script>
       <span class="ml-3">次は、、、<%= eva.content %></span>
       <% if eva.user == current_user %>
-      　<%= link_to "削除", evaluation_path(eva), method: :delete, class:"ml-3" %>
+      　<%= link_to "削除", evaluation_path(eva), method: :delete, class:"ml-3 link" %>
       <% end %>
     </div>
     <hr>

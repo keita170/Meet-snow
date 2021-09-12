@@ -1,10 +1,14 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-
+<div class="student-title pt-2 pb-2 mb-4 index-search d-flex align-items-center justify-content-center">
+  <div class="col-md-5">
+    <hr><h3 class="text-center">通知一覧</h3><hr>
+  </div>
+</div>
 <div class="col-md-6 mx-auto">
   <div class="form-inline">
     <span>
-      <%= link_to user_path(visitor) do %>
+      <%= link_to user_path(visitor), class:"link" do %>
         <%#= image_tag avatar_url(visitor).to_s, class: "icon_mini" %>
         <strong>
           <%= visitor.name %>
@@ -14,16 +18,16 @@
 
       <% case notification.action %>
         <% when 'follow' then %>
-          <%= "あなたをフォローしました" %>
+          <span class="link"><%= "あなたをフォローしました" %></span>
         <% when 'favorite' then %>
-          <%= link_to 'あなたの《生徒側》投稿', notification.student_post, style: "font-weight: bold;" %>
+          <%= link_to 'あなたの《生徒側》投稿', notification.student_post, class:"link", style: "font-weight: bold;" %>
           <%= "にいいねしました" %>
         <% when 'favorite_teacher' then %>
-          <%= link_to 'あなたの《先生側》投稿', notification.teacher_post, style: "font-weight: bold;" %>
+          <%= link_to 'あなたの《先生側》投稿', notification.teacher_post, class:"link", style: "font-weight: bold;" %>
           <%= "にいいねしました" %>
         <% when 'comment' then %>
           <% if notification.student_post.user_id == visited.id %>
-            <%= link_to "あなたの《生徒側》投稿", notification.student_post, style: "font-weight: bold;" %>
+            <%= link_to "あなたの《生徒側》投稿", notification.student_post, class:"link", style: "font-weight: bold;" %>
           <!--<%# else %>-->
           <!--  <span>-->
           <!--    <%#= link_to post_path(notification.post) do %>-->
@@ -40,7 +44,7 @@
           </span>
         <% when 'comment_teacher' then %>
           <% if notification.teacher_post.user_id == visited.id %>
-            <%= link_to "あなたの《先生側》投稿", notification.teacher_post, style: "font-weight: bold;" %>
+            <%= link_to "あなたの《先生側》投稿", notification.teacher_post, class:"link", style: "font-weight: bold;" %>
           <!--<%# else %>-->
           <!--  <span>-->
           <!--    <%#= link_to post_path(notification.post) do %>-->

@@ -1,26 +1,21 @@
-<div class="container">
 
-  <%= render 'users/profile', user: @user, isRoom: @isRoom, roomId: @roomId, entry: @entry, student_post: @student_post, teacher_post: @teacher_post %>
-
-  <%= link_to "通知ページへ", notifications_path %>
-  <%= link_to "評価ページへ", evaluations_path %>
-  <%= link_to "ユーザー一覧ページへ", users_path %>
+<div class="student-title pt-4 pb-4 mb-4 index-search">
+  <%= render 'users/profile', user: @user, isRoom: @isRoom, roomId: @roomId, entry: @entry, student_post: @student_post, teacher_post: @teacher_post, room: @room %>
+</div>
+<div class="container mb-5">
   <div class="row mt-5">
-    <div class="student-left col-md-3">
-      <%= link_to new_teacher_post_path do %>
-            <i class="fas fa-plus-square text-dark fa-2x new-button"></i>
-            <span class="h2 text-dark">新規投稿する</span>
-      <% end %>
+    <div class="student-left col-md-2">
+      <%= link_to "ユーザー一覧ページへ", users_path,class:"link" %>
     </div>
 
-    <div class="student col-md-8 mt-5">
-      <h2 class="text-center">〜生徒側で投稿した一覧〜</h2>
-      <div class="student_post-tbody">
+    <div class="student col-md-8 offset-md-1 mt-3">
+      <hr><h2 class="text-center">生徒側一覧</h2><hr>
+      <div class="student_post-tbody mb-3">
         <!--生徒側投稿一覧 ここから-->
         <%= render 'student_posts/index', student_post: @student_post, comment: @comment %>
         <!--生徒側投稿一覧 ここまで-->
       </div>
-      <h2 class="text-center">〜先生側で投稿した一覧〜</h2>
+      <hr><h2 class="text-center">先生側一覧</h2><hr>
       <div class="teacher_post-tbody">
         <!--先生側投稿一覧 ここから-->
         <%= render 'teacher_posts/index', teacher_post: @teacher_post, comment_teacher: @comment_teacher %>

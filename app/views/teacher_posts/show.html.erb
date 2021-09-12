@@ -1,5 +1,10 @@
-<div class="student-title pt-4 pb-4 mb-4 index-search"></div>
-<div class="card mb-2 d-flex mx-auto" style="width: 42rem;">
+<div class="student-title pt-2 pb-2 mb-4 index-search d-flex align-items-center justify-content-center">
+  <div class="col-md-5">
+    <hr><h3 class="text-center"><%= link_to @teacher_post.user.name, user_path(@teacher_post.user), class:"link" %>さんの投稿詳細ページ</h3><hr>
+  </div>
+</div>
+</div>
+<div class="card mb-2 d-flex mx-auto mb-5" style="width: 42rem;">
   <div class="card-body">
     <!--投稿内容表示-->
     <h5 class="card-title">
@@ -15,7 +20,7 @@
       <%= link_to "連絡を取る", user_path(@teacher_post.user) ,class:"btn btn-secondary btn-sm ml-5" %>
       <% end %>
     </h5>
-    
+
     <div class="card-text font-weight-bold row">
       <div class="col-md-1">
       <% if @teacher_post.user.image.attached? %>
@@ -24,10 +29,10 @@
        <%= image_tag 'no_image.jpg', class:"rounded-circle rounded-circle2" %>
       <% end %>
       </div>
-      <div class="col-md-10"><%= @teacher_post.body %><br>閲覧数：<%#= @teacher_post.view_counts.count %></div>
+      <div class="col-md-10"><%= @teacher_post.body %></div>
     </div>
-    
-    
+
+
     <div class="text-muted mb-1">
      <span>条件:<%= @teacher_post.title %>
 

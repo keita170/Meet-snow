@@ -19,12 +19,17 @@ class TeacherPostsController < ApplicationController
     @favorite_rank = TeacherPost.one_week
     @comment_rank = TeacherPost.one_week_comment
     @ranking_users = User.one_week_teacher_post
+    @ranking_posts = TeacherPost.one_week_post
     
   end
 
   def show
     @teacher_post = TeacherPost.find(params[:id])
     @comment_teacher = CommentTeacher.new
+    #閲覧数
+    unless TeacherViewCount.find_by(user_id: current_user, teacher_post_id: @teacher_post.id)
+      current_user.teacher_view_counts.create(teacher_post_id: @teacher_post.id)
+    end
   end
 
   def new

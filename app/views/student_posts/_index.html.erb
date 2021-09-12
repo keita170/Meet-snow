@@ -6,7 +6,7 @@
       <h5 class="card-title">
         <%= link_to student.field, student_post_path(student), class:"link" %>:
         <% if student.status == "受付中" %>
-          <span class="font-weight-bold text-muted"><%= student.status %></span>
+          <span class="font-weight-bold"><%= student.status %></span>
         <% else %>
           <span class="text-danger font-weight-bold"><%= student.status %></span>
         <% end %>
@@ -50,5 +50,5 @@
   </div>
   <% end %>
 <% else %>
-  <p class="mx-auto white">検索に合致するものはありません</p>
+  
 <% end %>

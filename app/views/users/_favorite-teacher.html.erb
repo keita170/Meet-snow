@@ -13,17 +13,17 @@
             <% favorite_list.each do |post| %>
           <tr>
               <% if post.status == "受付中" %>
-                  <th class="text-primary"><%= post.status %></th>
+                  <th class="font-weight-bold"><%= post.status %></th>
                 <% else %>
                   <th class="text-danger"><%= post.status %></th>
               <% end %>
-              <td class="font-weight-bold"><%= post.field %></td>
+              <td class="font-weight-bold"><%= link_to post.field, teacher_post_path(post), class:"link" %></td>
             <td><%= post.title %></td>
             <td><%= post.comment_teachers.count %></td>
             <td>
               <% if post.user == current_user %>
               <% else %>
-                <%= link_to "連絡する", user_path(post.user), class:"btn btn-success btn-sm" %>
+                <%= link_to "連絡する", user_path(post.user), class:"btn btn-secondary btn-sm" %>
               <% end %>
             </td>
           </tr>

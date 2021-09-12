@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :evaluations, dependent: :destroy
   #閲覧数機能
   has_many :view_counts, dependent: :destroy
+  has_many :teacher_view_counts, dependent: :destroy
 
   #DM機能関連
   has_many :messages, dependent: :destroy
