@@ -1,20 +1,33 @@
-<div class="card mb-2" style="width: 42rem;">
+<div class="student-title pt-4 pb-4 mb-4 index-search"></div>
+<div class="card mb-2 d-flex mx-auto" style="width: 42rem;">
   <div class="card-body">
     <!--投稿内容表示-->
     <h5 class="card-title">
-      <%= @teacher_post.field %>:
+      <%= link_to @teacher_post.field, teacher_post_path(@teacher_post), class:"link" %>:
       <% if @teacher_post.status == "受付中" %>
-        <span class="text-primary"><%= @teacher_post.status %></span>
+        <span class="font-weight-bold text-muted"><%= @teacher_post.status %></span>
       <% else %>
-        <span class="text-danger"><%= @teacher_post.status %></span>
+        <span class="text-danger font-weight-bold"><%= @teacher_post.status %></span>
       <% end %>
       <% if @teacher_post.user == current_user %>
-      <%= link_to "編集する",  edit_student_post_path(@teacher_post) ,class:"btn btn-primary btn-sm ml-5" %>
+      <%= link_to "編集する",  edit_student_post_path(@teacher_post) ,class:"btn btn-outline-secondary btn-sm ml-5" %>
       <% else %>
-      <%= link_to "連絡を取る", user_path(@teacher_post.user) ,class:"btn btn-primary btn-sm ml-5" %>
+      <%= link_to "連絡を取る", user_path(@teacher_post.user) ,class:"btn btn-secondary btn-sm ml-5" %>
       <% end %>
     </h5>
-    <p class="card-text"><%= @teacher_post.body %></p>
+    
+    <div class="card-text font-weight-bold row">
+      <div class="col-md-1">
+      <% if @teacher_post.user.image.attached? %>
+        <%= image_tag @teacher_post.user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2" %>
+      <% else %>
+       <%= image_tag 'no_image.jpg', class:"rounded-circle rounded-circle2" %>
+      <% end %>
+      </div>
+      <div class="col-md-10"><%= @teacher_post.body %><br>閲覧数：<%#= @teacher_post.view_counts.count %></div>
+    </div>
+    
+    
     <div class="text-muted mb-1">
      <span>条件:<%= @teacher_post.title %>
 

@@ -17,7 +17,7 @@ class StudentPost < ApplicationRecord
 
   #検索用
   def self.search(keyword)
-    where(["body LIKE?", "%#{keyword}%"])
+    where(["body LIKE? OR title LIKE?", "%#{keyword}%", "%#{keyword}%"]).order('created_at DESC')
   end
 
   # def self.search(search)

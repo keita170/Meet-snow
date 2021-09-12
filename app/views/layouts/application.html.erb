@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MeetSnow</title>
+    <title class="text-blue">MeetSnow</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,9 +13,9 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-white mb-3 border-bottom">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-white border-bottom">
         <div class="container">
-          <a class="navbar-brand text-dark" href="/">
+          <a class="navbar-brand text-info" href="/">
             <span>Meet snow</span>
           </a>
           <div>
@@ -23,22 +23,22 @@
             <% if user_signed_in? %>
             <li>
               <%= link_to student_posts_path, class:"nav-link" do %>
-              <span class="fas fa-baby text-dark"> Student</span>
+              <span class="fas fa-baby link"> Student</span>
               <% end %>
             </li>
             <li>
               <%= link_to teacher_posts_path, class:"nav-link" do %>
-              <span class="fas fa-user-graduate text-dark" > Teacher</span>
+              <span class="fas fa-user-graduate link" > Teacher</span>
               <% end %>
             </li>
             <li>
               <%= link_to favorites_users_path(current_user), class:"nav-link" do %>
-              <span class="fas fa-heart text-dark"> Favorite</span>
+              <span class="fas fa-heart link"> Favorite</span>
               <% end %>
             </li>
             <li>
               <%= link_to user_path(current_user), class:"nav-link" do %>
-              <span class="fas fa-user text-dark "> User</span>
+              <span class="fas fa-user link "> User</span>
               <% end %>
             </li>
 
@@ -46,23 +46,23 @@
               <%= link_to notifications_path(current_user), class:"nav-link" do %>
                 <% if unchecked_notifications.any? %>
                   <span class="fa-stack">
-                    <i class="fas fa-bell text-dark" style="font-size: 1.5em;" ></i>
+                    <i class="fas fa-bell link" style="font-size: 1.5em;" ></i>
                     <i class="fas fa-circle n-circle fa-stack-1x" style="font-size: 0.7em;" ></i>
                   </span>
                 <% else %>
-                  <i class="fas fa-bell text-dark" style="font-size: 1.5em;" ></i>
+                  <i class="fas fa-bell link" style="font-size: 1.5em;" ></i>
                 <% end %>
               <% end %>
             </li>
             <% elsif admin_signed_in? %>
             <li>
               <%= link_to admins_users_path, class:"nav-link" do %>
-              <span class="fas fa-heart text-dark"> ユーザー一覧</span>
+              <span class="fas fa-heart link"> ユーザー一覧</span>
               <% end %>
             </li>
             <li>
               <%= link_to root_path, class:"nav-link" do %>
-              <span class="fas fa-user text-dark"> Topページへ</span>
+              <span class="fas fa-user link"> Topページへ</span>
               <% end %>
             </li>
             <% end %>
@@ -72,5 +72,11 @@
       </nav>
     </header>
     <%= yield %>
+    <footer>
+      <div class="index-search"><br>
+      <p class="text-center">c</p>
+      <br>
+      </div>
+    </footer>
   </body>
 </html>

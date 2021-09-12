@@ -42,6 +42,7 @@ class StudentPostsController < ApplicationController
     @comment_rank = StudentPost.one_week_comment
     @ranking_users = User.one_week_student_post
     @ranking_posts = StudentPost.one_week_post
+    
   end
 
   def show
@@ -82,7 +83,7 @@ class StudentPostsController < ApplicationController
 
   def search
     # @productsは次に紹介するjbuilderで必要になるインスタンス変数です
-    @student_post = StudentPost.where(['body LIKE(?)', "%#{params[:keyword]}%"]).order('created_at DESC')
+    @student_post = StudentPost.search(params[:keyword])
     # byebug
     # @student_post = StudentPost.search(params[:keyword])
     

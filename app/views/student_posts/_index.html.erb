@@ -1,40 +1,49 @@
 <% if student_post.present? %>
   <% student_post.each do |student| %>
-  <div class="card mb-2" style="width: 42rem;">
+  <div class="card mb-2 index-post">
     <div class="card-body">
       <!--投稿内容表示-->
       <h5 class="card-title">
-        <%= link_to student.field, student_post_path(student) %>:
+        <%= link_to student.field, student_post_path(student), class:"link" %>:
         <% if student.status == "受付中" %>
-          <span class="text-primary"><%= student.status %></span>
+          <span class="font-weight-bold text-muted"><%= student.status %></span>
         <% else %>
-          <span class="text-danger"><%= student.status %></span>
+          <span class="text-danger font-weight-bold"><%= student.status %></span>
         <% end %>
         <% if student.user == current_user %>
-        <%= link_to "編集する",  edit_student_post_path(student) ,class:"btn btn-primary btn-sm ml-5" %>
+        <%= link_to "編集する",  edit_student_post_path(student) ,class:"btn btn-outline-secondary btn-sm ml-5" %>
         <% else %>
-        <%= link_to "連絡を取る", user_path(student.user) ,class:"btn btn-primary btn-sm ml-5" %>
+        <%= link_to "連絡を取る", user_path(student.user) ,class:"btn btn-secondary btn-sm ml-5" %>
         <% end %>
       </h5>
-      <p class="card-text"><%= student.body %></p>
-      <div class="text-muted mb-1">
-       <span>条件:<%= student.title %></span>
-  
+      <hr>
+      <div class="card-text font-weight-bold row">
+        <div class="col-md-1">
+        <% if student.user.image.attached? %>
+          <%= image_tag student.user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2" %>
+        <% else %>
+         <%= image_tag 'no_image.jpg', class:"rounded-circle rounded-circle2" %>
+        <% end %>
+        </div>
+        　<div class="col-md-10"><%= student.body %></div>
+      </div>
+      
+      <div class="text-muted mb-1 row ml-2">
          <div class="favorite-<%= student.id %>">
            <!--いいね機能 非同期化してます-->
             <%= render 'favorites/favorite', student: student %>
          </div>
-       
+       <span class="ml-2">条件:<%= student.title %></span>
       </div>
       <!--コメント表示機能-->
       <div class="comment-<%= student.id %>">
         <%= render 'comments/comment', student: student %>
       </div>
       <!--コメント投稿機能-->
-      <div class="commnt-student-make border-top pt-3">
+      <div class="commnt-student-make border-top">
         <%= form_with(model:[student, comment], remote:true) do |f| %>
-        <%= f.text_area :comment, size:"50x1", class:"inputComment" %><br>
-        <%= f.submit "コメント", class:"btn btn-light" %>
+        <%= f.text_area :comment, size:"40x1", class:"inputComment" %>
+        <%= f.submit "コメント", class:"btn btn-sm btn-outline-dark" %>
         <% end %>
       </div>
     </div>

@@ -1,0 +1,56 @@
+<h1 class="text-center mt-3 mb-3">ユーザー一覧</h1>
+
+<div class="d-flex align-items-center justify-content-center">
+</div>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
+
+      <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">画像</th>
+            <th scope="col">名前</th>
+            <th scope="col">投稿数</th>
+            <th scope="col">フォロー数</th>
+            <th scope="col">フォロワー</th>
+            <th scope="col">ステータス</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <th scope="row"><%= user.id %></th>
+            <td>
+              <% if user.image.attached? %>
+                <%= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2" %>
+              <% else %>
+               <%= image_tag 'no_image.jpg', class:"rounded-circle rounded-circle2" %>
+              <% end %>
+            </td>
+            <td><%= user.name %></td>
+            <td><%= user.student_posts.count + user.teacher_posts.count %></td>
+            <td><%= user.following_user.count %></td>
+            <td><%= user.followed_user.count %></td>
+            <td>
+              <% if user.is_valid == true %>
+                <p class="text-success">有効</p>
+              <% else %>
+                <p class="text-secondary">アカウント停止</p>
+              <% end %>
+            </td>
+            <td><%= link_to "編集", edit_admins_user_path(user), class:"btn btn-primary btn-sm" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
