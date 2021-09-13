@@ -36,7 +36,7 @@ class User < ApplicationRecord
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
-
+  
   def unfollow(user_id)
     follower.find_by(followed_id: user_id).destroy
   end
@@ -45,7 +45,7 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
-  #検索用
+  #ユーザー検索用、インクリメンタルサーチ
   def self.search(keyword)
     where(["name LIKE?","#{keyword}%"]).order('created_at DESC')
   end
@@ -61,7 +61,8 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  #ランキング機能で使用する
+  
+  #ランキング機能で使用するメソッド
   def self.one_week_student_post
     User.where(id: StudentPost.group(:user_id).where(created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day).order('count(user_id) desc').limit(3).pluck(:user_id)).includes(:student_posts).sort{|a,b| b.student_posts.includes(:id).size  <=> a.student_posts.includes(:id).size}
   end

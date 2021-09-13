@@ -5,7 +5,7 @@ class TeacherPostsController < ApplicationController
   def index
     @teacher_post = TeacherPost.page(params[:page]).order('status, created_at DESC').per(10)
     @comment_teacher = CommentTeacher.new
-
+    #絞り込み機能
     if params[:field] == "分野検索"
       @teacher_post = TeacherPost.page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "フリースタイル"

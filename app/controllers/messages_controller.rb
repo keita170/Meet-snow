@@ -24,7 +24,9 @@ class MessagesController < ApplicationController
       end
       notification.save if notification.valid?
 
-      redirect_to "/rooms/#{@message.room_id}"
+      # redirect_to "/rooms/#{@message.room_id}"
+      redirect_to room_path(@message.room_id, anchor: 'saikabu')
+
     else
       redirect_back(fallback_location: root_path)
     end

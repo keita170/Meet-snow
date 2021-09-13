@@ -11,21 +11,16 @@ class StudentPost < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :field, presence: true
-
-
+  
+  #いいね機能実装にて使用
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
 
-  #検索用
+  #キーワード検索用
   def self.search(keyword)
     where(["body LIKE? OR title LIKE?", "%#{keyword}%", "%#{keyword}%"]).order('created_at DESC')
   end
-
-  # def self.search(search)
-  #   return StudentPost.all() unless search
-  #   StudentPost.where('body LIKE(?)', "%#{search}%")
-  # end
 
   #ランクキング機能で使用する
   def self.one_week

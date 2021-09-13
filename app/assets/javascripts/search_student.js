@@ -1,15 +1,7 @@
 /*global $*/
 /*global location*/
 
-
-
-
-
-
-
-
-
-
+// student_post側のインクリメンタルサーチ記述
 $(document).on('turbolinks:load', function(){
   const inputForm = $('.search__form__input');
   const url = location.href;

@@ -5,4 +5,6 @@ class Message < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   validates :message, presence: true
+  
+  
 end
