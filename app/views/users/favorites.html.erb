@@ -20,6 +20,7 @@
       <%= link_to "コメント数でソート", favorites_users_path(current_user, sort:'comment'), class:"btn btn-sm btn-outline-info " %>
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
       <%= render 'users/favorites', favorite_list: @favorite_list %>
+ 
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
     </div>
     <div class="col-md-1"></div>
@@ -46,3 +47,4 @@
     <div class="col-md-1"></div>
   </div>
 </div>
+

@@ -5,7 +5,6 @@
 <div class="container mb-5">
   <div class="row mt-5">
     <div class="student-left col-md-2">
-      <%= link_to "ユーザー一覧ページへ", users_path,class:"link" %>
     </div>
 
     <div class="student col-md-8 offset-md-1 mt-3">
@@ -24,3 +23,7 @@
     </div>
   </div>
 </div>
+
+
+<%= paginate @teacher_post %>
+<%= paginate @student_post %>

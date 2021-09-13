@@ -28,6 +28,7 @@
       <!--投稿一覧 ここから-->
       <div id="index" class="student_post-tbody">
         <%= render 'student_posts/index', student_post: @student_post, comment: @comment %>
+
       </div>
       <!--投稿一覧 ここまで-->
     </div>
@@ -60,3 +61,5 @@
     </div>
   </div>
 </div>
+
+<%= paginate @student_post %>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers'
     collection do
       get :favorites
+      get 'search'
     end
   end
 
@@ -34,7 +35,7 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [:create, :show]
-  resources :rooms, only: [:create, :show, :index]
+  resources :rooms, only: [:create, :show, :index, :destroy]
 
   get 'search' => 'searches#search'
   get 'search_teacher' => 'search_teachers#search'

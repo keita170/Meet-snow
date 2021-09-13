@@ -1,8 +1,29 @@
-<% @rooms.each do |room| %>
-  <% room.users.each do |user| %>
-    <% if user == current_user %>
-    <% else %>
-      <%= user.name %>
-    <% end %>
-  <% end %>
-<% end %>
+
+
+<div class="student-title pt-2 pb-2 mb-4 d-flex align-items-center justify-content-center">
+  <div class="col-md-4 mb-3 mt-3">
+    <h5 class="text-left ml-3">↑メッセージ送りたい相手を検索しよう！</h5>
+  </div>
+</div>
+
+<div class="student-title pt-2 pb-2 mb-4 d-flex align-items-center justify-content-center">
+  <div class="col-md-4 mb-3">
+    <h5 class="text-left ml-3">↓今やり取りしてる相手一覧</h5>
+    <div class="row">
+      <div class="col-md-1">
+      <% @rooms.each do |room| %>
+        <% if room == nil %>
+          <p>今現在やり取りしてる人はいません</p>
+        <% else %>
+          <% room.users.each do |user| %>
+            <% if user == current_user %>
+            <% else %>
+              <%= link_to user.name, room_path(room), class:"link" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

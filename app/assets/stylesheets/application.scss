@@ -47,9 +47,11 @@
 // ページャのcss
  .pagination {
   justify-content: center;
-}
+  color:#17a2b8;
+};
 .pagination>li {
   border-radius: 15px;
+  color:#17a2b8;
 }
 .pagination>li>a {
   border: none;
@@ -95,4 +97,8 @@ color:#6FA8E1;
 
 .login_page {
   background-color:#6FA8E1;
+}
+
+.user_search {
+ background-color:#6FA8E1;
 }

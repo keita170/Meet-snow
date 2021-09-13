@@ -44,3 +44,13 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
+
+
+ja:
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left mr-1"></i>
+      last: <i class="fas fa-angle-double-right ml-1"></i>
+      previous: <i class="fas fa-angle-left mr-1"></i>
+      next: <i class="fas fa-angle-right ml-1"></i>
+      truncate: "..."

@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   def show
 
     @user = User.find(params[:id])
-    @student_post = @user.student_posts.order('status, created_at DESC')
-    @teacher_post = @user.teacher_posts.order('status, created_at DESC')
+    @student_post = @user.student_posts.page(params[:page]).order('status, created_at DESC').per(10)
+    @teacher_post = @user.teacher_posts.page(params[:page]).order('status, created_at DESC').per(10)
     @comment = Comment.new
     @comment_teacher = CommentTeacher.new
 
@@ -100,11 +100,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    @user = User.search(params[:keyword])
+    render :json => @user
+  end
+
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :image, :introduction)
+    params.require(:user).permit(:name, :image, :introduction, :status)
   end
 
   def set_user

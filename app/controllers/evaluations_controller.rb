@@ -1,7 +1,7 @@
 class EvaluationsController < ApplicationController
   def index
     @evaluation = Evaluation.new
-    @evaluations = Evaluation.all
+    @evaluations = Evaluation.page(params[:page]).order('created_at DESC').per(10)
     @users = User.all
   end
 

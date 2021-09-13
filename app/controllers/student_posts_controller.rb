@@ -2,40 +2,21 @@ class StudentPostsController < ApplicationController
 
 
   def index
-    # インクリメンタルサーチで試してる記述----------------------------------------
-    # keyword = params[:keyword]
-    # @student_post = StudentPost.search(keyword)
-    # @comment = Comment.new
-
-    # if params[:student_post].present? #[:student_post]に値が入ってたら
-    #   if params[:student_post].empty? #[:student_post]の中身が空だったら
-    #     @student_post = StudentPost.all
-    #     @comment = Comment.new
-    #   else #[:student_post]の中身が空じゃなかったら
-    #     @student_post = StudentPost.where('body LIKE?', "%#{params[:student_post][:keyword]}%")
-    #     @comment = Comment.new
-    #     # byebug
-    #   end
-    # else #[:student_post]が存在しなかったら
-    # # byebug
-    #   @student_post = StudentPost.all
-    #   @comment = Comment.new
-    # end
-    # インクリメンタルサーチで試してる記述----------------------------------------
-
-    @student_post = StudentPost.all.order('status, created_at DESC')
+    
+    # @student_post = StudentPost.all.order('status, created_at DESC')
+    @student_post = StudentPost.page(params[:page]).order('status, created_at DESC').per(10)
     @comment = Comment.new
 
     if params[:field] == "分野検索"
-      @student_post = StudentPost.all.order('status, created_at DESC')
+      @student_post = StudentPost.page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "フリースタイル"
-      @student_post = StudentPost.where(field: params[:field]).order('status, created_at DESC')
+      @student_post = StudentPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "グラトリ"
-      @student_post = StudentPost.where(field: params[:field]).order('status, created_at DESC')
+      @student_post = StudentPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "カービング"
-      @student_post = StudentPost.where(field: params[:field]).order('status, created_at DESC')
+      @student_post = StudentPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "その他"
-      @student_post = StudentPost.where(field: params[:field]).order('status, created_at DESC')
+      @student_post = StudentPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     end
     #ランキング機能
     @favorite_rank = StudentPost.one_week

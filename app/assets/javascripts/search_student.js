@@ -2,6 +2,14 @@
 /*global location*/
 
 
+
+
+
+
+
+
+
+
 $(document).on('turbolinks:load', function(){
   const inputForm = $('.search__form__input');
   const url = location.href;

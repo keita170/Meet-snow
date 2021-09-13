@@ -24,7 +24,7 @@
   </div>
 </div>
 <div class="container">
-  <div class="row ml-5">
+  <div class="row ml-5 mb-5">
     <!--画面左側の新規投稿ページへのリンクがある範囲-->
     <div class="student-left col-md-1 pr-5">
       <%= link_to new_teacher_post_path(class:"link") do %>
@@ -68,3 +68,5 @@
     </div>
   </div>
 </div>
+
+<%= paginate @teacher_post %>

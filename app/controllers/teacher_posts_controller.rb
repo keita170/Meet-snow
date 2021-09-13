@@ -1,19 +1,19 @@
 class TeacherPostsController < ApplicationController
 
   def index
-    @teacher_post = TeacherPost.all.order('status, created_at DESC')
+    @teacher_post = TeacherPost.page(params[:page]).order('status, created_at DESC').per(10)
     @comment_teacher = CommentTeacher.new
 
     if params[:field] == "分野検索"
-      @teacher_post = TeacherPost.all.order('status, created_at DESC')
+      @teacher_post = TeacherPost.page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "フリースタイル"
-      @teacher_post = TeacherPost.where(field: params[:field])
+      @teacher_post = TeacherPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "グラトリ"
-      @teacher_post = TeacherPost.where(field: params[:field])
+      @teacher_post = TeacherPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "カービング"
-      @teacher_post = TeacherPost.where(field: params[:field])
+      @teacher_post = TeacherPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "その他"
-      @teacher_post = TeacherPost.where(field: params[:field])
+      @teacher_post = TeacherPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     end
     
     @favorite_rank = TeacherPost.one_week

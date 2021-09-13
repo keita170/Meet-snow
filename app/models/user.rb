@@ -43,7 +43,12 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
-  
+
+  #検索用
+  def self.search(keyword)
+    where(["name LIKE?","#{keyword}%"]).order('created_at DESC')
+  end
+
   #フォローでの通知機能
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
@@ -59,7 +64,7 @@ class User < ApplicationRecord
   def self.one_week_student_post
     User.where(id: StudentPost.group(:user_id).where(created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day).order('count(user_id) desc').limit(3).pluck(:user_id)).includes(:student_posts).sort{|a,b| b.student_posts.includes(:id).size  <=> a.student_posts.includes(:id).size}
   end
-  
+
   def self.one_week_teacher_post
     User.where(id: TeacherPost.group(:user_id).where(created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day).order('count(user_id) desc').limit(3).pluck(:user_id)).includes(:teacher_posts).sort{|a,b| b.teacher_posts.includes(:id).size  <=> a.teacher_posts.includes(:id).size}
   end
@@ -75,6 +80,8 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (is_valid?)
   end
+
+  enum status: { 先生: 0, 生徒: 1 }
 
   private
 

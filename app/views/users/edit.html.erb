@@ -18,6 +18,13 @@
           <%= f.file_field :image, class:"" %>
         </div>
         <div class="field mb-3">
+          <span>ステータス：</span>
+          <%= f.radio_button :status, :先生, checked: "checked" ,class:"ml-2" %>
+          <%= f.label :status, "先生" %>
+          <%= f.radio_button :status, :生徒 %>
+          <%= f.label :status, "生徒" %>
+        </div>
+        <div class="field mb-3">
           <%= f.label :"自己紹介" %>
         　<%= f.text_area :introduction, size:"60x4", autofocus: true,class:"form-control border border-info" %>
         </div>
