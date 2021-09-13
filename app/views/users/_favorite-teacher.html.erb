@@ -4,6 +4,7 @@
             <th scope="col">状況</th>
             <th scope="col">分野</th>
             <th scope="col">条件</th>
+            <th scope="col">いいね数</th>
             <th scope="col">コメント数</th>
             <th scope="col"></th>
           </tr>
@@ -19,6 +20,7 @@
               <% end %>
               <td class="font-weight-bold"><%= link_to post.field, teacher_post_path(post), class:"link" %></td>
             <td><%= post.title %></td>
+            <td><%= post.favorite_teachers.count %></td>
             <td><%= post.comment_teachers.count %></td>
             <td>
               <% if post.user == current_user %>

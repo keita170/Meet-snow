@@ -8,7 +8,7 @@
     <% end %>
     <%= link_to user.name, user_path(user),class:"link"  %>
     <% if user == current_user %>
-     <%= link_to "プロフィール編集", edit_user_path(user), class:"btn btn-primary btn-sm" %>
+     <%= link_to "プロフィール編集", edit_user_path(user), class:"btn btn-outline-primary btn-sm" %>
     <% else %>
         <% if current_user.following?(user) %>
           <%= link_to "Unfollow", user_relationship_path(id: user.id, user_id: user.id), class:"btn btn-outline-info btn-sm", method: :delete %>

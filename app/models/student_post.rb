@@ -9,7 +9,7 @@ class StudentPost < ApplicationRecord
   has_many :view_counts, dependent: :destroy
   
   validates :title, presence: true
-  validates :body, presence: true
+  validates :body, presence: true, length: { maximum: 140 }
   validates :field, presence: true
   
   #いいね機能実装にて使用

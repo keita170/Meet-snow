@@ -17,13 +17,15 @@ module MeetSnow
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    #時間を日本時間に設定
-    config.time_zone = 'Tokyo'
+    
     #デフォルトで日本語に設定(内容はlocales/ja.yml)
     config.i18n.default_locale = :ja
 
-     #　以下の記述を追記する(設定必須)
+     #以下の記述を追記する(設定必須)
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    #時間を日本時間に設定
+    config.time_zone = 'Tokyo'
+    
   end
 end
 

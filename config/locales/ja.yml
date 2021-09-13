@@ -37,11 +37,6 @@ ja:
         other: "%{count}年以上前"
 
 
-
-
-
-
-ja:
   activerecord:
     # モデル名
     models:
@@ -53,22 +48,13 @@ ja:
         title: 条件 #変換後の日本語を記入
         body: 投稿内容 #変換後の日本語を記入
         field: 分野 #変換後の日本語を記入
+      teacher_post:
+        title: 条件 #変換後の日本語を記入
+        body: 投稿内容 #変換後の日本語を記入
+        field: 分野 #変換後の日本語を記入
 
 
 
-
-
-# ja:
-#   views:
-#     pagination:
-#       first: "&laquo; 最初"
-#       last: "最後 &raquo;"
-#       previous: "&lsaquo; 前"
-#       next: "次 &rsaquo;"
-#       truncate: "..."
-
-
-ja:
   views:
     pagination:
       first: <i class="fas fa-angle-double-left mr-1"></i>

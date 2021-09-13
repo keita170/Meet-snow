@@ -17,7 +17,7 @@
     <div class="col-md-9">
       <%= link_to "新着順でソート", favorites_users_path(current_user, sort:'status'), class:"btn btn-sm btn-outline-info " %>
       <%= link_to "分野でソート", favorites_users_path(current_user, sort:'field'), class:"btn btn-sm btn-outline-info " %>
-      <%= link_to "コメント数でソート", favorites_users_path(current_user, sort:'comment'), class:"btn btn-sm btn-outline-info " %>
+      <%#= link_to "コメント数でソート", favorites_users_path(current_user, sort:'comment'), class:"btn btn-sm btn-outline-info " %>
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
       <%= render 'users/favorites', favorite_list: @favorite_list %>
 
@@ -39,7 +39,7 @@
     <div class="col-md-9">
       <%= link_to "新着順でソート", favorites_users_path(current_user, sort:'status-teacher'), class:"btn btn-sm btn-outline-info " %>
       <%= link_to "分野でソート", favorites_users_path(current_user, sort:'field-teacher'), class:"btn btn-sm btn-outline-info " %>
-      <%= link_to "コメント数でソート", favorites_users_path(current_user, sort:'comment-teacher'), class:"btn btn-sm btn-outline-info " %>
+      <%#= link_to "コメント数でソート", favorites_users_path(current_user, sort:'comment-teacher'), class:"btn btn-sm btn-outline-info " %>
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
       <%= render 'users/favorite-teacher', favorite_list: @favorite_list_teacher %>
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->

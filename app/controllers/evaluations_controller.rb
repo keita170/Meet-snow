@@ -1,6 +1,5 @@
 class EvaluationsController < ApplicationController
   before_action :authenticate_user!
-  
   def index
     @evaluation = Evaluation.new
     @evaluations = Evaluation.page(params[:page]).order('created_at DESC').per(10)
