@@ -1,8 +1,9 @@
 
-<div class="student-title pt-4 pb-4 mb-4 index-search border-bottom">
+<div class="student-title pt-4 pb-4 index-search border-bottom">
   <%= render 'users/profile', user: @user, isRoom: @isRoom, roomId: @roomId, entry: @entry, student_post: @student_post, teacher_post: @teacher_post, room: @room %>
 </div>
-<div class="container mb-5">
+<%= render 'layouts/flash' %>
+<div class="container mb-5 mt-4">
   <div class="row mt-5">
     <div class="student-left col-md-2">
     </div>

@@ -1,4 +1,6 @@
 class EvaluationsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @evaluation = Evaluation.new
     @evaluations = Evaluation.page(params[:page]).order('created_at DESC').per(10)
@@ -10,13 +12,18 @@ class EvaluationsController < ApplicationController
     @evaluation.user_id = current_user.id
     @user = User.find(params[:evaluation][:user_option])
     @evaluation.user_select = @user.name
-    @evaluation.save
-    redirect_to evaluations_path
+    if @evaluation.save
+      flash[:notice] = '投稿しました'
+      redirect_to evaluations_path
+    else
+      render :index
+    end
   end
 
   def destroy
     @evaluation = Evaluation.find(params[:id])
     @evaluation.destroy
+    flash[:alert] = '投稿を削除しました'
     redirect_to evaluations_path
   end
 

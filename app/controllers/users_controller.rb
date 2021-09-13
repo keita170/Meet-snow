@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :set_user, only: [:likes]
 
   def index
@@ -46,6 +46,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    flash[:notice] = 'プロフィールを編集しました'
     redirect_to user_path(@user)
   end
 

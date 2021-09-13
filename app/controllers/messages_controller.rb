@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
   def show
   end
 
@@ -6,7 +7,7 @@ class MessagesController < ApplicationController
 
     if Entry.where(:user_id => current_user.id, :room_id => params[:message][:room_id]).present?
       @message = Message.create(params.require(:message).permit(:user_id, :message, :room_id).merge(:user_id => current_user.id))
-      
+
       @room = @message.room
       @roommembernotme = Entry.where(room_id: @room.id).where.not(user_id: current_user.id)
       @theid = @roommembernotme.find_by(room_id: @room.id)
@@ -22,7 +23,7 @@ class MessagesController < ApplicationController
           notification.checked = true
       end
       notification.save if notification.valid?
-      
+
       redirect_to "/rooms/#{@message.room_id}"
     else
       redirect_back(fallback_location: root_path)

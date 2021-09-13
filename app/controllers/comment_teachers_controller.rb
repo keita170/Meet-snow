@@ -1,5 +1,6 @@
 class CommentTeachersController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def create
     @teacher_post = TeacherPost.find(params[:teacher_post_id])
     @comment = current_user.comment_teachers.new(comment_teacher_params)

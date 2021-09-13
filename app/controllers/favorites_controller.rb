@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     #生徒側
@@ -10,7 +11,7 @@ class FavoritesController < ApplicationController
       format.html {redirect_to request.referrer}
       format.js
     end
-    
+
     #非同期化のためにコメントアウトにする
     # redirect_back(fallback_location: root_path)
   end

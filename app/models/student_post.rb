@@ -8,7 +8,9 @@ class StudentPost < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :view_counts, dependent: :destroy
   
-  
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :field, presence: true
 
 
   def favorited_by?(user)

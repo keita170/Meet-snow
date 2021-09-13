@@ -1,4 +1,4 @@
-<div class="student-title pt-4 pb-4 mb-4 index-search border-bottom border-bottom">
+<div class="student-title pt-4 pb-4 index-search border-bottom border-bottom">
   <div class="col-md-5 offset-md-3">
     <div class="row">
     <%= form_with url: teacher_posts_path, method: :get, local:true do |f| %>
@@ -13,7 +13,8 @@
     </div>
   </div>
 </div>
-<div class="container">
+<%= render 'layouts/flash' %>
+<div class="container mt-4">
   <div class="row mb-5">
     <!--画面左側の新規投稿ページへのリンクがある範囲-->
     <div class="student-left col-md-1 pr-5">

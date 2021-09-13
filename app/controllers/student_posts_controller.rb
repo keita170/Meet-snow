@@ -1,8 +1,8 @@
 class StudentPostsController < ApplicationController
-
+  before_action :authenticate_user!
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    
     # @student_post = StudentPost.all.order('status, created_at DESC')
     @student_post = StudentPost.page(params[:page]).order('status, created_at DESC').per(10)
     @comment = Comment.new
@@ -23,13 +23,11 @@ class StudentPostsController < ApplicationController
     @comment_rank = StudentPost.one_week_comment
     @ranking_users = User.one_week_student_post
     @ranking_posts = StudentPost.one_week_post
-
   end
 
   def show
-    @student_post = StudentPost.find(params[:id])
     @comment = Comment.new
-    #閲覧数
+    #閲覧数カウント
     unless ViewCount.find_by(user_id: current_user, student_post_id: @student_post.id)
       current_user.view_counts.create(student_post_id: @student_post.id)
     end
@@ -43,39 +41,44 @@ class StudentPostsController < ApplicationController
     @student_post = StudentPost.new(student_post_params)
     @student_post.user_id = current_user.id
     @student_post.user_name = @student_post.user.name
-    @student_post.save
-    redirect_to student_posts_path
+    if @student_post.save
+      flash[:notice] = '投稿しました'
+      redirect_to student_posts_path
+    else
+      render action: :new
+    end
   end
 
   def edit
-    @student_post = StudentPost.find(params[:id])
   end
 
   def update
-    @student_post = StudentPost.find(params[:id])
-    @student_post.update(student_post_params)
-    redirect_to student_posts_path
+    if @student_post.update(student_post_params)
+      flash[:notice] = '投稿を編集しました'
+      redirect_to student_posts_path
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @student_post = StudentPost.find(params[:id])
     @student_post.destroy
+    flash[:alert] = '投稿を削除しました'
     redirect_to student_posts_path
   end
 
   def search
-    # @productsは次に紹介するjbuilderで必要になるインスタンス変数です
+    # @student_postは次に紹介するjbuilderで必要になるインスタンス変数です
     @student_post = StudentPost.search(params[:keyword])
-    # byebug
-    # @student_post = StudentPost.search(params[:keyword])
-    # @student_post.user.name = @student_post.user_name
-
     render :json => @student_post
-
   end
 
 
   private
+
+  def set_user
+    @student_post = StudentPost.find(params[:id])
+  end
 
   def student_post_params
     params.require(:student_post).permit(:title, :body, :field, :status)

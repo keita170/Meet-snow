@@ -4,4 +4,6 @@ class Room < ApplicationRecord
   #entryを通すことによりroomでusersを使えるようにする
   has_many :users, through: :entries
   has_many :notifications, dependent: :destroy
+  
+  
 end

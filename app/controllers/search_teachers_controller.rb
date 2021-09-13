@@ -1,4 +1,5 @@
 class SearchTeachersController < ApplicationController
+  before_action :authenticate_user!
 
   def search
     @teacher_post = TeacherPost.search_teacher(params[:key_word]).page(params[:page]).reorder('status, created_at DESC').per(10)

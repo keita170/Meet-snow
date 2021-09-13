@@ -5,8 +5,11 @@ class TeacherPost < ApplicationRecord
   has_many :comment_teachers, dependent: :destroy
   has_many :commented_users, through: :comment_teachers, source: :user
   has_many :teacher_view_counts, dependent: :destroy
-
   has_many :notifications, dependent: :destroy
+  
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :field, presence: true
 
   def favorited_by?(user)
     favorite_teachers.where(user_id: user.id).exists?

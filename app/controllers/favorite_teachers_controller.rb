@@ -1,4 +1,6 @@
 class FavoriteTeachersController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @teacher_post = TeacherPost.find(params[:teacher_post_id])
     @favorite = current_user.favorite_teachers.new(teacher_post_id: @teacher_post.id)

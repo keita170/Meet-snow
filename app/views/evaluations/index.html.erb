@@ -1,9 +1,10 @@
-<div class="student-title pt-2 pb-2 mb-4 index-search d-flex align-items-center justify-content-center border-bottom">
+<div class="student-title pt-2 pb-2 index-search d-flex align-items-center justify-content-center border-bottom">
   <div class="col-md-5">
     <hr><h3 class="text-center">評価ページ</h3><hr>
   </div>
 </div>
-<div class="row ml-3 mb-5">
+<%= render 'layouts/flash' %>
+<div class="row ml-3 mb-5 mt-4">
   <div class="col-md-5 evaluation-user">
   <%= form_with model:@evaluation, local: true do |f| %>
 

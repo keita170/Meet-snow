@@ -19,15 +19,17 @@
           <a class="navbar-brand text-info" href="/">
             <span>Meet snow</span>
           </a>
-
-          <% if request.path.include?("users") %>
-            <%= form_with url: search_users_path, method: :get, remote:true do |f| %>
-              <%= f.text_field :keyword, value: @keyword, placeholder:'ユーザー検索', class:'search_user_user rounded',autocomplete: 'off' %>
+          <% if user_signed_in? %>
+            <% if request.path.include?("users") %>
+              <%= form_with url: search_users_path, method: :get, remote:true do |f| %>
+                <%= f.text_field :keyword, value: @keyword, placeholder:'ユーザー検索', class:'search_user_user rounded',autocomplete: 'off' %>
+              <% end %>
+            <% else %>
+              <%= form_with url: search_users_path, method: :get, remote:true do |f| %>
+                <%= f.text_field :keyword, value: @keyword, placeholder:'ユーザー検索', class:'search_user rounded',autocomplete: 'off' %>
+              <% end %>
             <% end %>
           <% else %>
-            <%= form_with url: search_users_path, method: :get, remote:true do |f| %>
-              <%= f.text_field :keyword, value: @keyword, placeholder:'ユーザー検索', class:'search_user rounded',autocomplete: 'off' %>
-            <% end %>
           <% end %>
           <div>
            <ul class="navbar-nav ml-auto">
@@ -70,16 +72,15 @@
                 <% end %>
               <% end %>
             </li>
-
             <% elsif admin_signed_in? %>
             <li>
               <%= link_to admins_users_path, class:"nav-link" do %>
-              <span class="fas fa-heart link"> ユーザー一覧</span>
+              <span class="fas fa-user link"> ユーザー</span>
               <% end %>
             </li>
             <li>
-              <%= link_to root_path, class:"nav-link" do %>
-              <span class="fas fa-user link"> Topページへ</span>
+              <%= link_to destroy_admin_session_path, class:"nav-link" ,method: :delete, data: {confirm: "本当にログアウトしますか？"} do %>
+              <span class="fas fa-hand-peace link"> ログアウト</span>
               <% end %>
             </li>
             <% end %>
