@@ -1,0 +1,36 @@
+ <%= form_with model:evaluation, local: true do |f| %>
+    <div class="field mb-3 mt-4">
+      <p class="ml-3 h5">「<%= user.name %>さんへの評価」</p>
+    </div>
+    <div class="field mb-3 mt-4">
+      <%= f.label :comment,"評価内容",class:"mr-2 h4" %>
+      <%= f.text_area :comment, size: "10x4", class: "form-control border border-info", placeholder: "ずっと笑顔で楽しくできました！ or 募集内容と全く違いました" %>
+    </div>
+
+    <div class="field mb-3">
+      <span>"※もう2度とお願いしないが多発した場合、<strong class="text-danger">利用停止</strong>する可能性があります"</span><br>
+      <%= f.radio_button :content,:またお願いしたい,  checked: "checked",class:"ml-1" %>
+      <%= f.label :content, "またお願いしたい",class:"font-weight-bold" %><br>
+      <%= f.radio_button :content, :タイミングが合えば %>
+      <%= f.label :content, "タイミングが合えば",class:"font-weight-bold" %><br>
+      <%= f.radio_button :content, :もう２度とお願いしません %>
+      <%= f.label :content, "もう２度とお願いしません",class:"font-weight-bold" %>
+    </div>
+
+    <div id="evaluation_stars" class="mb-2">
+      <%= f.label :evaluation,'5.0段階評価'  %>
+    </div>
+    <script>
+      $('#evaluation_stars').raty({
+        size     : 36,
+        starOn: '<%= asset_path('star-on.png') %>',
+        starOff: '<%= asset_path('star-off.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'user[evaluation]',
+        half: true,
+      });
+    </script>
+    <div class="actions mb-3">
+      <%= f.submit "新規投稿する", class: 'btn btn-outline-info mx-auto'  %>
+    </div>
+  <% end %>

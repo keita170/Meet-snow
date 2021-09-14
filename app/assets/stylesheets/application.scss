@@ -54,26 +54,8 @@
   justify-content: center;
   color:#17a2b8;
 };
-.pagination>li {
-  border-radius: 15px;
-  color:#17a2b8;
-}
-.pagination>li>a {
-  border: none;
-  color: black;
-  border-radius: 15px !important;
-}
-.pagination>.active>a {
-  background-color: #343A40 !important;
-  border-radius: 15px;
-  overflow: hidden;
-}
-.pagination>li>a:hover {
-  color: black;
-  background-color: #f3f0ec;
-}
 
-
+// リンクになってる文字全ての色調整
 .link {
     text-decoration: #17a2b8;
     color:#17a2b8;
@@ -95,10 +77,6 @@ color:#6FA8E1;
   background-color:#F4F7FA;
 }
 
-// .radio_button {
-//   background-color:#F4F7FA;
-//   color:#F4F7FA;
-// }
 
 .login_page {
   background-color:	#63C3D3;
@@ -107,13 +85,12 @@ color:#6FA8E1;
 .user_search {
  background-color:#6FA8E1;
 }
-
 .error-message {
   margin-left: 30px;
 }
 
 
-
+// ここから下全てはTopページに対しての記述です
 .line {
     width: 0%;
     height: 1px;
@@ -217,4 +194,18 @@ color:#6FA8E1;
   color: #fff;
   font-size: 80px;
   font-family: 'Permanent Marker', cursive;
+}
+
+.top-sub {
+  position: absolute;
+  right: 0;
+  top: 10%;
+  transform: translate(-30%,30%);
+  color: #000000;
+  font-size: 30px;
+  border: 1px solid;
+  padding: 10px;
+  font-family: serif;
+  z-index: 3;
+  background: rgba(115,115,115,0.2);
 }

@@ -7,23 +7,24 @@ class EvaluationsController < ApplicationController
   end
 
   def create
-    @evaluation = Evaluation.new(evaluation_params)
-    @evaluation.user_id = current_user.id
-    @user = User.find(params[:evaluation][:user_option])
-    @evaluation.user_select = @user.name
-    if @evaluation.save
-      flash[:notice] = '投稿しました'
-      redirect_to evaluations_path
-    else
-      render :index
-    end
+    byebug
+      @user = request.path.user
+      @evaluation = Evaluation.new(evaluation_params)
+      @evaluation.user_id = @user.id
+      if @evaluation.save
+        flash[:notice] = '投稿しました'
+        redirect_to user_path(@user)
+      else
+        render :index
+      end
   end
 
   def destroy
+    @user = User.find(params[:id])
     @evaluation = Evaluation.find(params[:id])
     @evaluation.destroy
     flash[:alert] = '投稿を削除しました'
-    redirect_to evaluations_path
+    redirect_to user_path(@user)
   end
 
 

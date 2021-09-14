@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     @teacher_post = @user.teacher_posts.page(params[:page]).order('status, created_at DESC').per(10)
     @comment = Comment.new
     @comment_teacher = CommentTeacher.new
+    @evaluation = Evaluation.new
+    @evaluations = Evaluation.where(user_id: @user).page(params[:page]).order('created_at DESC').per(10)
 
     #DM機能のための記述
     @currentUserEntry=Entry.where(user_id: current_user.id)
@@ -33,11 +35,32 @@ class UsersController < ApplicationController
         @entry = Entry.new
       end
     end
-
-
-
-
   end
+
+
+
+    def create
+      @user = User.find(params[:id])
+      byebug
+      @evaluation = Evaluation.new(evaluation_params)
+      @evaluation.user_id = @user.id
+      if @evaluation.save
+        flash[:notice] = '投稿しました'
+        redirect_to user_path(@user)
+      else
+        render :index
+      end
+    end
+
+
+  def destroy
+    @user = User.find(params[:id])
+    @evaluation = Evaluation.find(params[:id])
+    @evaluation.destroy
+    flash[:alert] = '投稿を削除しました'
+    redirect_to user_path(@user)
+  end
+
 
   def edit
     @user = User.find(params[:id])
@@ -70,13 +93,6 @@ class UsersController < ApplicationController
     #   favorites.count.times do
     #     @favorite_list << favorite_list.next
       # end
-      # loop { @favorite_list << favorite_list.next }
-      # byebug
-      # @my_post_like_ranks = current_user.posts.sort { |a, b| b.likes.count <=> a.likes.count }
-      # @favorite_list = StudentPost.includes(:commented_users).sort{|a,b| b.commented_users.includes(:comments).size <=> a.commented_users.includes(:comments).size}.find(favorites)
-
-      # .joins(:friends).where("friends.id IS NOT NULL")
-      # .includes(:followed_user).sort{|a,b| b.followed_user.includes(:followed).size <=> a.followed_user.includes(:followed).size}
     end
 
 
@@ -115,6 +131,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def evaluation_params
+    params.require(:evaluation).permit(:comment, :content)
   end
 
 end

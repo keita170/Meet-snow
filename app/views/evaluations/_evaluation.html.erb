@@ -1,0 +1,25 @@
+<hr><h2 class="text-center mt-3 mb-3">評価一覧</h2><hr>
+  <% evaluations.each do |eva| %>
+      <div id="evaluation-rate<%= eva.id %>"><%= "評価:" %></div>
+      <script>
+        $('#evaluation-rate<%= eva.id %>').raty({
+          size     : 18,
+          starOn: '<%= asset_path('star-on.png') %>',
+          starOff: '<%= asset_path('star-off.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          score: <%= eva.evaluation %>,
+          half: true,
+          readOnly: true,
+        });
+      </script>
+      <hr>
+      <span class="ml-3">次は、、、<%= eva.content %></span>
+      <% if eva.user == current_user %>
+      　<%= link_to "削除", user_path(eva), method: :delete, class:"ml-3 link" %>
+      <% end %>
+    <hr>
+    <span class="text-muted">評価内容:</span><span class="font-weight-bold"><%= eva.comment %></span><hr class="border-info">
+  <% end %>
+
+
+<%= paginate evaluations %>

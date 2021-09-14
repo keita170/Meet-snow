@@ -20,7 +20,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
+//= require jquery.raty.js
 
 /*global $*/
 /*global IntersectionObserver*/
@@ -32,7 +32,4 @@
 /*global location*/
 /*global appendErrMsgToHTML*/
 /*global appendUser*/
-
-
-
 

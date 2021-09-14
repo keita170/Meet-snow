@@ -5,9 +5,11 @@
 <%= render 'layouts/flash' %>
 <div class="container mb-5 mt-4">
   <div class="row mt-2">
-    <div class="student-left col-md-2">
+    <div class="student-left col-md-4 pr-5">
+      <%= render 'evaluations/new', evaluation: @evaluation, user: @user %>
+      <%= render 'evaluations/evaluation', evaluations: @evaluations, user_keyword: @user_keyword %>
     </div>
-    <div class="student col-md-8 offset-md-1">
+    <div class="student col-md-8">
       <hr><h2 class="text-center">生徒側一覧</h2><hr>
       <div class="student_post-tbody mb-3">
         <!--生徒側投稿一覧 ここから-->
