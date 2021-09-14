@@ -42,6 +42,7 @@ ja:
     models:
       student_post:
       teacher_post:
+      user:
     # モデルごとの属性
     attributes:
       student_post:
@@ -52,6 +53,10 @@ ja:
         title: 条件 #変換後の日本語を記入
         body: 投稿内容 #変換後の日本語を記入
         field: 分野 #変換後の日本語を記入
+      user:
+        email: メールアドレス
+        password: パスワード
+        name: 名前
 
 
 

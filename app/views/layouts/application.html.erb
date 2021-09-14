@@ -4,16 +4,18 @@
     <title class="text-blue">MeetSnow</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <meta name ="viewport" content="width=device-width, initial-scale=1, maximim-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://js.cx/libs/animate.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   </head>
 
   <body>
+    <% unless current_page?(root_path) %>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-white border-bottom border-info">
         <div class="container">
@@ -89,15 +91,18 @@
           </div>
         </div>
       </nav>
+      <% end %>
     </header>
     <div id="result_user" class="mb-5">
     <%= yield %>
     </div>
     <footer>
+      <% unless current_page?(root_path) %>
       <div class="index-search border-top border-info"><br>
       <p class="text-center">c</p>
       <br>
       </div>
+      <% end %>
     </footer>
   </body>
 </html>

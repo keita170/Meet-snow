@@ -70,6 +70,7 @@ gem 'font-awesome-sass','~>5.13'
 gem 'image_processing', '~> 1.2'
 #railsで日本語使えるようになるgem
 gem 'rails-i18n', '~> 5.1' 
+gem 'devise-i18n'
 
 gem 'ransack'
 
