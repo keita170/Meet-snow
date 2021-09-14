@@ -108,6 +108,10 @@ color:#6FA8E1;
  background-color:#6FA8E1;
 }
 
+.error-message {
+  margin-left: 30px;
+}
+
 
 
 .line {
@@ -116,7 +120,7 @@ color:#6FA8E1;
     background-color: #fff;
     position: fixed;
     top: 50%;
-    z-index: 2;
+    z-index: 5;
 }
 
 .up {
@@ -124,7 +128,7 @@ color:#6FA8E1;
     height: 50%;
     background-color: #000;
     position: fixed;
-    z-index: 1;
+    z-index: 4;
 }
 
 .down {
@@ -133,7 +137,7 @@ color:#6FA8E1;
     background-color: #000;
     position: fixed;
     bottom: 0;
-    z-index: 1;
+    z-index: 4;
 }
 
 .top-main {
@@ -142,7 +146,41 @@ color:#6FA8E1;
   height: 100%;
 }
 
-img {
+.top-image1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 3;
+}
+.top-image2 {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 2;
+}
+.top-image3 {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 1;
+}
+
+.top-image4 {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -155,17 +193,28 @@ img {
 .top-meet_snow {
   display: none;
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
-  transform: translate(-50%,50%);
+  transform: translate(-50%,70%);
   color: #fff;
-  font-size: 80px;
+  font-size: 50px;
   border: 1px solid;
   padding: 88px;
   font-family: serif;
+  z-index: 3;
 }
 
 .top-meet_snow:hover {
   background-color: #696969;
   opacity: 0.2;
+  z-index: 3;
+}
+
+.first-meet_snow {
+  position: absolute;
+  top: 70%;
+  left: 37%;
+  color: #fff;
+  font-size: 80px;
+  font-family: 'Permanent Marker', cursive;
 }

@@ -4,23 +4,31 @@
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+      <script src="slick/slick.min.js"></script>
   </head>
     <body>
       <div class="top-move">
         <div class="up">
-          <a class="navbar-brand text-info" href="/">
+          <a class="first-meet_snow" href="/">
             <span>Meet snow</span>
           </a>
         </div>
         <div class="down">do</div>
         <div class="line">kk</div>
         <div class="top-main">
-          <img src="/assets/alts_jump.jpg" alt="">
+          <ul class="slider">
+            <li><img src="/assets/alts-bluesky.jpg" class="top-image1" alt=""></li>
+            <li><img src="/assets/alts-rail.jpg" class="top-image2" alt=""></li>
+            <li><img src="/assets/alts_jump.jpg" class="top-image3" alt=""></li>
+            <li><img src="/assets/alts-bluesky2.jpg" class="top-image4" alt=""></li>
+          </ul>
           <a class="" href="/users/sign_in">
-            <p class="top-meet_snow">Meet snow</p>
-            <span class="top-sub">(↑始める方はここをクリック)</span>
+            <p class="top-meet_snow">Welcome to<br>Meet snow!!</p>
+            <p class="top-sub">(↑始める方はここをクリック)</p>
           </a>
-
+          <div class="none"></div>
         </div>
       </div>
     </body>
