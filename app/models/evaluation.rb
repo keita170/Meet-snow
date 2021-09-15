@@ -1,7 +1,7 @@
 class Evaluation < ApplicationRecord
   belongs_to :user
 
-  # validates :evaluation, presence: true
+  validates :evaluation, presence: true
   validates :content, presence: true
   validates :comment, presence: true
 

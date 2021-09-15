@@ -20,9 +20,9 @@
       <%= f.radio_button :content, :もう２度とお願いしません %>
       <%= f.label :content, "もう２度とお願いしません",class:"font-weight-bold" %>
     </div>
-
+    <!--<!-ーーーーーーーーーーーーーーーーーーー-星⭐️機能ーーーーーーーーーーーーーーーー-->
     <div id="evaluation_stars" class="mb-2">
-      <%= f.label :evaluation,'5.0段階評価'  %>
+      <%= f.label :evaluation,'5.0段階評価：'  %>
     </div>
     <script>
       $('#evaluation_stars').raty({
@@ -30,10 +30,11 @@
         starOn: '<%= asset_path('star-on.png') %>',
         starOff: '<%= asset_path('star-off.png') %>',
         starHalf: '<%= asset_path('star-half.png') %>',
-        scoreName: 'user[evaluation]',
+        scoreName: 'evaluation[evaluation]',
         half: true,
       });
     </script>
+    <!--<!-ーーーーーーーーーーーーーーーーーーー-星⭐️機能ーーーーーーーーーーーーーーーーーー-->
     <div class="actions mb-3">
       <%= f.submit "新規投稿する", class: 'btn btn-outline-info mx-auto'  %>
     </div>

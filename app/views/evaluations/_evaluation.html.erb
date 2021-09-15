@@ -1,22 +1,24 @@
 <hr><h2 class="text-center mt-3 mb-3">評価一覧</h2><hr>
   <% evaluations.each do |eva| %>
-      <div id="evaluation-rate<%= eva.id %>"><%= "評価:" %></div>
-      <script>
-        $('#evaluation-rate<%= eva.id %>').raty({
-          size     : 18,
-          starOn: '<%= asset_path('star-on.png') %>',
-          starOff: '<%= asset_path('star-off.png') %>',
-          starHalf: '<%= asset_path('star-half.png') %>',
-          score: <%= eva.evaluation %>,
-          half: true,
-          readOnly: true,
-        });
-      </script>
-      <hr>
-      <span>次は、、<%= eva.content %></span>
-      <% if eva.post_user == current_user.id %>
-      　<%= link_to "削除", evaluation_path(eva), method: :delete, class:"ml-1 link" %>
-      <% end %>
+  <!--<!-ーーーーーーーーーーーーーーーーーーー-星⭐️機能ーーーーーーーーーーーーーーーー-->
+    <div id="evaluation-rate<%= eva.id %>"><%= "評価：" %></div>
+    <script>
+      $('#evaluation-rate<%= eva.id %>').raty({
+        size     : 18,
+        starOn: '<%= asset_path('star-on.png') %>',
+        starOff: '<%= asset_path('star-off.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        score: <%= eva.evaluation %>,
+        half: true,
+        readOnly: true,
+      });
+    </script>
+    <!--<!-ーーーーーーーーーーーーーーーーーーー-星⭐️機能ーーーーーーーーーーーーーーーー-->
+    <hr>
+    <span>次は、、<%= eva.content %></span>
+    <% if eva.post_user == current_user.id %>
+    　<%= link_to "削除", evaluation_path(eva), method: :delete, class:"ml-1 link" %>
+    <% end %>
     <hr>
     <span class="text-muted">評価内容:</span><span class="font-weight-bold"><%= eva.comment %></span><hr class="border-info">
   <% end %>

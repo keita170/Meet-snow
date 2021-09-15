@@ -14,13 +14,14 @@
 //= require popper
 //= require bootstrap-sprockets
 
+//= require rails-ujs
 //= require jquery
 //= require jquery_ujs
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery.raty
 //= require_tree .
-//= require jquery.raty.js
+
 
 /*global $*/
 /*global IntersectionObserver*/
