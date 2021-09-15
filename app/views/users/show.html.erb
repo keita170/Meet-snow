@@ -3,9 +3,10 @@
   <%= render 'users/profile', user: @user, isRoom: @isRoom, roomId: @roomId, entry: @entry, student_post: @student_post, teacher_post: @teacher_post, room: @room %>
 </div>
 <%= render 'layouts/flash' %>
+<%= render 'layouts/error', model: @evaluation %>
 <div class="container mb-5 mt-4">
   <div class="row mt-2">
-    <div class="student-left col-md-4 pr-5">
+    <div class="student-left col-md-4 pr-4">
       <%= render 'evaluations/new', evaluation: @evaluation, user: @user %>
       <%= render 'evaluations/evaluation', evaluations: @evaluations, user_keyword: @user_keyword %>
     </div>

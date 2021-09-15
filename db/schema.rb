@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2021_09_12_091910) do
 
   create_table "evaluations", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "post_user"
     t.string "user_select"
     t.float "evaluation"
     t.text "comment"

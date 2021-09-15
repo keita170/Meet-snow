@@ -43,6 +43,7 @@ ja:
       student_post:
       teacher_post:
       user:
+      evaluation:
     # モデルごとの属性
     attributes:
       student_post:
@@ -57,7 +58,9 @@ ja:
         email: メールアドレス
         password: パスワード
         name: 名前
-
+      evaluation:
+        comment: 評価内容
+        evaluation: 星評価
 
 
   views:

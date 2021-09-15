@@ -4,7 +4,7 @@
     <title class="text-blue">MeetSnow</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <meta name ="viewport" content="width=device-width, initial-scale=1, maximim-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -23,20 +23,11 @@
             <span>Meet snow</span>
           </a>
           <% if user_signed_in? %>
-            <% if request.path.include?("users") %>
-              <%= form_with url: search_users_path, method: :get, remote:true do |f| %>
-                <%= f.text_field :keyword, value: @keyword, placeholder:'ユーザー検索', class:'search_user_user rounded',autocomplete: 'off' %>
-              <% end %>
-            <% else %>
               <%= form_with url: search_users_path, method: :get, remote:true do |f| %>
                 <%= f.text_field :keyword, value: @keyword, placeholder:'ユーザー検索', class:'search_user rounded',autocomplete: 'off' %>
               <% end %>
-            <% end %>
-          <% else %>
-          <% end %>
           <div>
            <ul class="navbar-nav ml-auto">
-            <% if user_signed_in? %>
             <li>
               <%= link_to student_posts_path, class:"nav-link" do %>
               <span class="fas fa-baby link"> Student</span>
@@ -53,8 +44,8 @@
               <% end %>
             </li>
             <li>
-              <%= link_to evaluations_path, class:"nav-link" do %>
-              <span class="fas fa-thumbtack link " style="font-size: 1.5em;"> </span>
+              <%= link_to rooms_path, class:"nav-link" do %>
+              <span class="fas fa-comment link " style="font-size: 1.5em;"> </span>
               <% end %>
             </li>
             <li>

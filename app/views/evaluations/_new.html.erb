@@ -1,6 +1,10 @@
+
  <%= form_with model:evaluation, local: true do |f| %>
     <div class="field mb-3 mt-4">
-      <p class="ml-3 h5">「<%= user.name %>さんへの評価」</p>
+      <p class="ml-2 h5"><%= user.name %>さんへの評価</p>
+
+      <%= hidden_field_tag :user_select, user.id %>
+      <%= hidden_field_tag :post_user, current_user %>
     </div>
     <div class="field mb-3 mt-4">
       <%= f.label :comment,"評価内容",class:"mr-2 h4" %>

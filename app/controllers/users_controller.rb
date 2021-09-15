@@ -40,25 +40,12 @@ class UsersController < ApplicationController
 
 
     def create
-      @user = User.find(params[:id])
-      byebug
-      @evaluation = Evaluation.new(evaluation_params)
-      @evaluation.user_id = @user.id
-      if @evaluation.save
-        flash[:notice] = '投稿しました'
-        redirect_to user_path(@user)
-      else
-        render :index
-      end
+
     end
 
 
   def destroy
-    @user = User.find(params[:id])
-    @evaluation = Evaluation.find(params[:id])
-    @evaluation.destroy
-    flash[:alert] = '投稿を削除しました'
-    redirect_to user_path(@user)
+
   end
 
 
@@ -131,10 +118,6 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def evaluation_params
-    params.require(:evaluation).permit(:comment, :content)
   end
 
 end

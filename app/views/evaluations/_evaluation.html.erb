@@ -13,9 +13,9 @@
         });
       </script>
       <hr>
-      <span class="ml-3">次は、、、<%= eva.content %></span>
-      <% if eva.user == current_user %>
-      　<%= link_to "削除", user_path(eva), method: :delete, class:"ml-3 link" %>
+      <span>次は、、<%= eva.content %></span>
+      <% if eva.post_user == current_user.id %>
+      　<%= link_to "削除", evaluation_path(eva), method: :delete, class:"ml-1 link" %>
       <% end %>
     <hr>
     <span class="text-muted">評価内容:</span><span class="font-weight-bold"><%= eva.comment %></span><hr class="border-info">
