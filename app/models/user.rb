@@ -30,13 +30,15 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
-  validates :name, presence: true
+  #名前バリデーション、2-15文字以内で、同一の名前は使えない
+  validates :name, presence: true, length: { in: 2..15}, uniqueness: true
+  validates :introduction, length: { maximum: 200 }
 
   #フォロー機能作成時において、使えるメソッドを追加
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
-  
+
   def unfollow(user_id)
     follower.find_by(followed_id: user_id).destroy
   end
@@ -61,7 +63,7 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   #ランキング機能で使用するメソッド
   def self.one_week_student_post
     User.where(id: StudentPost.group(:user_id).where(created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day).order('count(user_id) desc').limit(3).pluck(:user_id)).includes(:student_posts).sort{|a,b| b.student_posts.includes(:id).size  <=> a.student_posts.includes(:id).size}
