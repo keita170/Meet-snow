@@ -22,232 +22,232 @@
   padding: 0px;
 }
 
-// header {
-//   background: linear-gradient(180deg, rgba(0, 208, 255,0.5) 0%, rgba(102, 227, 255,0.3) 50%, rgba(159, 241, 255,0.4) 50%, rgba(120, 227, 255,0.2) 100%);
-//   box-shadow: 5px 5px 10px 20px rgba(102, 227, 255,0.4);
-// }
+header {
+  background: linear-gradient(180deg, rgba(0, 208, 255,0.5) 0%, rgba(102, 227, 255,0.3) 50%, rgba(159, 241, 255,0.4) 50%, rgba(120, 227, 255,0.2) 100%);
+  box-shadow: 5px 5px 10px 20px rgba(102, 227, 255,0.4);
+}
 
-// body {
-//   background-color: rgba(245, 242, 244,0.5);
-// }
+body {
+  background-color: rgba(245, 242, 244,0.5);
+}
 
-// .sub-title {
-//   box-shadow: 0px -25px 10px rgba(102, 227, 255,0.2) inset;
-//   background-color: rgba(255,255,255,0.5);
-// }
-
-
-// .meet-snow {
-//   font-family: 'Corben', cursive;
-//   color:rgba(1,7,10,1);
-//   font-size: 30px;
-// }
-
-// .footer-color {
-//   background: linear-gradient(180deg, rgba(200, 249, 250,0.2) 0%, rgba(149, 241, 255,0.4) 50%, rgba(142, 227, 255,0.3) 50%, rgba(50, 208, 250,0.5) 100%);
-// }
-
-// // 目に付く所の書体をこれで統一
-// .meet_snow {
-//   font-family: 'Corben', cursive;
-// }
-
-// // DMの自分が送った側のbg-color
-// .bg-dm {
-//   background:rgba(51,112,121,0.1);
-// }
-
-// // scssで指定しないと綺麗な丸にならなかったので指定。こっちはuser/showページ用のサイズ。
-// .rounded-circle {
-//   width: 120px;
-//   height: 120px;
-// }
-// // こっちが一覧表示用のサイズにしてます。
-// .rounded-circle2 {
-//   width: 48px;
-//   height: 48px;
-// }
-
-// // プロフィール欄の名前表示
-// .profile-name {
-//   font-family: 'Oswald', sans-serif;
-//   font-size: 25px;
-// }
-
-// // ページャのcss
-// .pagination {
-//   justify-content: center;
-//   color:#17a2b8;
-// };
-
-// // リンクになってる文字全ての色調整
-// .link {
-//     text-decoration: #17a2b8;
-//     color:rgba(1,7,10,0.8);
-//     font-family: 'Vollkorn', serif;
-//     font-weight: bold;
-// }
-
-// .link-icon {
-//     text-decoration: #17a2b8;
-//     color:rgba(1,7,10,0.8);
-// }
-
-// a:hover {
-// text-decoration:none;
-// color:#6FA8E1;
-// }
-
-// .index-right {
-//   background-color: #F4F7FA;
-// }
+.sub-title {
+  box-shadow: 0px -25px 10px rgba(102, 227, 255,0.2) inset;
+  background-color: rgba(255,255,255,0.5);
+}
 
 
-// .index-search {
-//   background-color:#F4F7FA;
-// }
+.meet-snow {
+  font-family: 'Corben', cursive;
+  color:rgba(1,7,10,1);
+  font-size: 30px;
+}
+
+.footer-color {
+  background: linear-gradient(180deg, rgba(200, 249, 250,0.2) 0%, rgba(149, 241, 255,0.4) 50%, rgba(142, 227, 255,0.3) 50%, rgba(50, 208, 250,0.5) 100%);
+}
+
+// 目に付く所の書体をこれで統一
+.meet_snow {
+  font-family: 'Corben', cursive;
+}
+
+// DMの自分が送った側のbg-color
+.bg-dm {
+  background:rgba(51,112,121,0.1);
+}
+
+// scssで指定しないと綺麗な丸にならなかったので指定。こっちはuser/showページ用のサイズ。
+.rounded-circle {
+  width: 120px;
+  height: 120px;
+}
+// こっちが一覧表示用のサイズにしてます。
+.rounded-circle2 {
+  width: 48px;
+  height: 48px;
+}
+
+// プロフィール欄の名前表示
+.profile-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 25px;
+}
+
+// ページャのcss
+.pagination {
+  justify-content: center;
+  color:#17a2b8;
+};
+
+// リンクになってる文字全ての色調整
+.link {
+    text-decoration: #17a2b8;
+    color:rgba(1,7,10,0.8);
+    font-family: 'Vollkorn', serif;
+    font-weight: bold;
+}
+
+.link-icon {
+    text-decoration: #17a2b8;
+    color:rgba(1,7,10,0.8);
+}
+
+a:hover {
+text-decoration:none;
+color:#6FA8E1;
+}
+
+.index-right {
+  background-color: #F4F7FA;
+}
 
 
-// .login_page {
-//   background-color:	#63C3D3;
-// }
-
-// .user_search {
-// background-color:#6FA8E1;
-// }
-// .error-message {
-//   margin-left: 30px;
-// }
+.index-search {
+  background-color:#F4F7FA;
+}
 
 
-// // ここから下全てはTopページに対しての記述です
-// .line {
-//     width: 0%;
-//     height: 1px;
-//     background-color: #fff;
-//     position: fixed;
-//     top: 50%;
-//     z-index: 5;
-// }
+.login_page {
+  background-color:	#63C3D3;
+}
 
-// .up {
-//     width: 100%;
-//     height: 50%;
-//     background-color: #000;
-//     position: fixed;
-//     z-index: 4;
-// }
-
-// .down {
-//     width: 100%;
-//     height: 50%;
-//     background-color: #000;
-//     position: fixed;
-//     bottom: 0;
-//     z-index: 4;
-// }
-
-// .top-main {
-//   position: relative;
-//   width: 100%;
-//   height: 100%;
-// }
-
-// .top-image1 {
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   min-width: 100%;
-//   min-height: 100%;
-//   z-index: 3;
-// }
-// .top-image2 {
-//   display: none;
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   min-width: 100%;
-//   min-height: 100%;
-//   z-index: 2;
-// }
-// .top-image3 {
-//   display: none;
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   min-width: 100%;
-//   min-height: 100%;
-//   z-index: 1;
-// }
-
-// .top-image4 {
-//   display: none;
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   min-width: 100%;
-//   min-height: 100%;
-// }
-
-// .top-meet_snow {
-//   display: none;
-//   position: absolute;
-//   top: 30%;
-//   left: 50%;
-//   transform: translate(-50%,70%);
-//   color: #fff;
-//   font-size: 50px;
-//   border: 1px solid;
-//   padding: 88px;
-//   font-family: serif;
-//   z-index: 3;
-// }
-
-// .top-meet_snow:hover {
-//   background-color: #696969;
-//   opacity: 0.2;
-//   z-index: 3;
-// }
-
-// .first-meet_snow {
-//   position: absolute;
-//   top: 70%;
-//   left: 37%;
-//   color: #fff;
-//   font-size: 80px;
-//   font-family: 'Permanent Marker', cursive;
-// }
-
-// .top-sub {
-//   position: absolute;
-//   right: 0;
-//   top: 10%;
-//   transform: translate(-30%,30%);
-//   color: #000000;
-//   font-size: 30px;
-//   border: 1px solid;
-//   padding: 10px;
-//   font-family: serif;
-//   z-index: 3;
-//   background: rgba(115,115,115,0.2);
-// }
+.user_search {
+background-color:#6FA8E1;
+}
+.error-message {
+  margin-left: 30px;
+}
 
 
-// .card {
-//   box-shadow: 0 0 8px gray;
-// }
+// ここから下全てはTopページに対しての記述です
+.line {
+    width: 0%;
+    height: 1px;
+    background-color: #fff;
+    position: fixed;
+    top: 50%;
+    z-index: 5;
+}
 
-// .index-post {
-//   background-color: #fff;
-// }
-// .right-ranking {
-//   box-shadow: 0px 0px 40px rgba(255, 230, 0,0.8),0px 0px 40px rgba(255, 230, 0,0.8) inset;
-// }
+.up {
+    width: 100%;
+    height: 50%;
+    background-color: #000;
+    position: fixed;
+    z-index: 4;
+}
+
+.down {
+    width: 100%;
+    height: 50%;
+    background-color: #000;
+    position: fixed;
+    bottom: 0;
+    z-index: 4;
+}
+
+.top-main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.top-image1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 3;
+}
+.top-image2 {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 2;
+}
+.top-image3 {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 1;
+}
+
+.top-image4 {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.top-meet_snow {
+  display: none;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%,70%);
+  color: #fff;
+  font-size: 50px;
+  border: 1px solid;
+  padding: 88px;
+  font-family: serif;
+  z-index: 3;
+}
+
+.top-meet_snow:hover {
+  background-color: #696969;
+  opacity: 0.2;
+  z-index: 3;
+}
+
+.first-meet_snow {
+  position: absolute;
+  top: 70%;
+  left: 37%;
+  color: #fff;
+  font-size: 80px;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.top-sub {
+  position: absolute;
+  right: 0;
+  top: 10%;
+  transform: translate(-30%,30%);
+  color: #000000;
+  font-size: 30px;
+  border: 1px solid;
+  padding: 10px;
+  font-family: serif;
+  z-index: 3;
+  background: rgba(115,115,115,0.2);
+}
+
+
+.card {
+  box-shadow: 0 0 8px gray;
+}
+
+.index-post {
+  background-color: #fff;
+}
+.right-ranking {
+  box-shadow: 0px 0px 40px rgba(255, 230, 0,0.8),0px 0px 40px rgba(255, 230, 0,0.8) inset;
+}
