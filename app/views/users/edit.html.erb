@@ -1,13 +1,13 @@
-<div class="student-title pt-2 pb-2 mb-4 index-search d-flex align-items-center justify-content-center border-bottom">
-  <div class="col-md-5">
-    <hr><h3 class="text-center">ユーザー情報編集ページ</h3><hr>
+<div class="sub-title pt-2 pb-2 mb-2 mr-3">
+  <div class="col-md-4 offset-md-4">
+    <hr><h3 class="text-center link">ユーザー情報編集ページ</h3><hr>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div class="index-search d-flex mx-auto justify-content-center align-items-center rounded mt-2 mb-5 border border-info" style="height:450px; width:700px;">
+      <div class="index-post-2 d-flex mx-auto justify-content-center align-items-center rounded mt-4 mb-5 card" style="height:450px; width:700px;">
         <%= form_with model: @user, local: true do |f| %>
         <div class="field mb-3 mt-4">
           <%= f.label :"名前",class:"mr-2 " %>

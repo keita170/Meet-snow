@@ -1,7 +1,6 @@
-
-<div class="student-title pt-2 pb-2 mb-2 index-search d-flex align-items-center justify-content-center">
-  <div class="col-md-5">
-    <hr><h3 class="text-center">いいねした投稿一覧</h3><hr>
+<div class="sub-title pt-2 pb-2 mb-2 mr-3">
+  <div class="col-md-4 offset-md-4">
+    <hr><h3 class="text-center link">いいねした投稿一覧</h3><hr>
   </div>
 </div>
 
@@ -15,8 +14,8 @@
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-9">
-      <%= link_to "新着順でソート", favorites_users_path(current_user, sort:'status'), class:"btn btn-sm btn-outline-info " %>
-      <%= link_to "分野でソート", favorites_users_path(current_user, sort:'field'), class:"btn btn-sm btn-outline-info " %>
+      <%= link_to "新着順でソート", favorites_users_path(current_user, sort:'status'), class:"btn btn-sm btn-outline-secondary " %>
+      <%= link_to "分野でソート", favorites_users_path(current_user, sort:'field'), class:"btn btn-sm btn-outline-secondary " %>
       <%#= link_to "コメント数でソート", favorites_users_path(current_user, sort:'comment'), class:"btn btn-sm btn-outline-info " %>
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
       <%= render 'users/favorites', favorite_list: @favorite_list %>
@@ -37,8 +36,8 @@
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-9">
-      <%= link_to "新着順でソート", favorites_users_path(current_user, sort:'status-teacher'), class:"btn btn-sm btn-outline-info " %>
-      <%= link_to "分野でソート", favorites_users_path(current_user, sort:'field-teacher'), class:"btn btn-sm btn-outline-info " %>
+      <%= link_to "新着順でソート", favorites_users_path(current_user, sort:'status-teacher'), class:"btn btn-sm btn-outline-secondary " %>
+      <%= link_to "分野でソート", favorites_users_path(current_user, sort:'field-teacher'), class:"btn btn-sm btn-outline-secondary " %>
       <%#= link_to "コメント数でソート", favorites_users_path(current_user, sort:'comment-teacher'), class:"btn btn-sm btn-outline-info " %>
       <!--ーーーーーーーーーーーーーーーーーー内容ーーーーーーーーーーーーーーーーーーーーーー-->
       <%= render 'users/favorite-teacher', favorite_list: @favorite_list_teacher %>

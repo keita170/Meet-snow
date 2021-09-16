@@ -11,7 +11,7 @@ $(document).on('turbolinks:load', function(){
     let html = `
         <div class="col-md-5 d-flex align-items-center justify-content-center offset-md-2">
           <a href="/users/${data.id}" class="link text-center ml-5">${data.name}:<span class="font-weight-bold">${data.status}</span></a>
-        </div>
+        </div><hr width="17%" class="offset-md-4">
     `
     searchResult.append(html);
   }
