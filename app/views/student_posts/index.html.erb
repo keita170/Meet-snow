@@ -1,9 +1,10 @@
-<div class="sub-title pt-2 pb-2 mb-2 mr-3">
+<div class="sub-title pt-2 pb-2 mr-3">
   <div class="col-md-4 offset-md-3">
     <hr noshade><h3 class="text-center link">生徒側投稿一覧</h3><hr noshade>
   </div>
 </div>
-<div class="student-title pt-4 pb-4">
+<%= render 'layouts/flash' %>
+<div class="student-title pt-4 pb-4 mt-2">
   <div class="col-md-5 offset-md-3">
     <div class="row">
     <%= form_with url: student_posts_path, method: :get, local:true do |f| %>
@@ -11,7 +12,7 @@
       <%= f.submit '検索', class:"btn btn-sm btn-outline-dark mr-5" %>
     <% end %>
 
-    <%= form_with url: search_student_posts_path, method: :get, remote:true do |f| %>
+    <%= form_with url: search_path, method: :get, local:true do |f| %>
       <%= f.text_field :keyword, value: @keyword, placeholder:'キーワード検索', class:'search__form__input rounded' %>
       <%= f.submit '検索', class:"btn btn-sm btn-outline-dark"%>
     <% end %>
@@ -19,7 +20,6 @@
     </div>
   </div>
 </div>
-<%= render 'layouts/flash' %>
 <div class="container mt-4">
   <div class="row mb-5">
     <!--画面左側の新規投稿ページへのリンクがある範囲-->

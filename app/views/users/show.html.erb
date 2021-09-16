@@ -1,23 +1,23 @@
 
-<div class="student-title pt-4 pb-4 index-search border-bottom">
+<div class="sub-title pt-4 pb-4 mr-3">
   <%= render 'users/profile', user: @user, isRoom: @isRoom, roomId: @roomId, entry: @entry, student_post: @student_post, teacher_post: @teacher_post, room: @room %>
 </div>
 <%= render 'layouts/flash' %>
 <%= render 'layouts/error', model: @evaluation %>
-<div class="container mb-5 mt-4">
+<div class="container mb-5 mt-5">
   <div class="row mt-2">
     <div class="student-left col-md-4 pr-4">
       <%= render 'evaluations/new', evaluation: @evaluation, user: @user %>
       <%= render 'evaluations/evaluation', evaluations: @evaluations, user_keyword: @user_keyword %>
     </div>
     <div class="student col-md-8">
-      <hr><h2 class="text-center">生徒側一覧</h2><hr>
+      <hr width="32%" class="offset-md-4"><h2 class="text-center link">生徒側一覧</h2><hr width="32%" class="mb-5 offset-md-4">
       <div class="student_post-tbody mb-3">
         <!--生徒側投稿一覧 ここから-->
         <%= render 'student_posts/index', student_post: @student_post, comment: @comment %>
         <!--生徒側投稿一覧 ここまで-->
       </div>
-      <hr><h2 class="text-center">先生側一覧</h2><hr>
+      <hr width="32%" class="offset-md-4"><h2 class="text-center link">先生側一覧</h2><hr width="32%" class="mb-5 offset-md-4">
       <div class="teacher_post-tbody">
         <!--先生側投稿一覧 ここから-->
         <%= render 'teacher_posts/index', teacher_post: @teacher_post, comment_teacher: @comment_teacher %>

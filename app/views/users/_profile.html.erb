@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-7">
       <div class="row">
-      <p class="ml-3 profile-name"><%= user.name %></p>
+      <p class="ml-3 profile-name link"><%= user.name %></p>
       <!--プロフィール編集or フォロー機能-->
       <% if @user == current_user %>
         <p><%= link_to "プロフィール編集", edit_user_path(user), class:"btn btn-outline-info btn-sm ml-2 " %></p>
