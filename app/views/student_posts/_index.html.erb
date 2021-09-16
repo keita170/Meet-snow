@@ -1,6 +1,6 @@
 <% if student_post.present? %>
   <% student_post.each do |student| %>
-  <div class="card mb-2 index-post">
+  <div class="card mb-5 index-post">
     <div class="card-body">
       <!--投稿内容表示-->
       <h5 class="card-title">
@@ -27,7 +27,7 @@
         </div>
         　<div class="col-md-10"><%= student.body %></div>
       </div>
-      
+
       <div class="text-muted mb-1 row ml-2">
          <div class="favorite-<%= student.id %>">
            <!--いいね機能 非同期化してます-->
@@ -50,5 +50,5 @@
   </div>
   <% end %>
 <% else %>
-  
+
 <% end %>

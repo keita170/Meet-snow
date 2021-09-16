@@ -16,41 +16,47 @@
 
   <body>
     <% unless current_page?(root_path) %>
+
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-white border-bottom border-info">
+      <nav class="navbar navbar-expand-lg pt-3 pb-3">
+        <div class="d-flex align-items-left justify-content-left">
+
+        </div>
         <div class="container">
-          <a class="navbar-brand text-info" href="/">
-            <span>Meet snow</span>
+          <a class="navbar-brand text-info text-left blue-round" href="/">
+            <span class="meet-snow">Meet snow</span>
           </a>
-          <% if user_signed_in? %>
+          <div class="d-flex mx-auto">
+            <% if user_signed_in? %>
               <%= form_with url: search_users_path, method: :get, remote:true do |f| %>
-                <%= f.text_field :keyword, value: @keyword, placeholder:'ユーザー検索', class:'search_user rounded',autocomplete: 'off' %>
-              <% end %>
+              <%= f.text_field :keyword, value: @keyword, placeholder:'ユーザー検索', class:'search_user rounded',autocomplete: 'off' %>
+            <% end %>
+          </div>
           <div>
            <ul class="navbar-nav ml-auto">
             <li>
               <%= link_to student_posts_path, class:"nav-link" do %>
-              <span class="fas fa-baby link"> Student</span>
+              <span class="fas fa-baby link-icon"> <span class="link">Student</span></span>
               <% end %>
             </li>
             <li>
               <%= link_to teacher_posts_path, class:"nav-link" do %>
-              <span class="fas fa-user-graduate link" > Teacher</span>
+              <span class="fas fa-user-graduate link-icon" > <span class="link">Teacher</span></span>
               <% end %>
             </li>
             <li>
               <%= link_to favorites_users_path(current_user), class:"nav-link" do %>
-              <span class="fas fa-heart link "style="font-size: 1.5em;"> </span>
+              <span class="fas fa-heart link-icon"style="font-size: 1.5em;"> </span>
               <% end %>
             </li>
             <li>
               <%= link_to rooms_path, class:"nav-link" do %>
-              <span class="fas fa-comment link " style="font-size: 1.5em;"> </span>
+              <span class="fas fa-comment link-icon" style="font-size: 1.5em;"> </span>
               <% end %>
             </li>
             <li>
               <%= link_to user_path(current_user), class:"nav-link" do %>
-              <span class="fas fa-user link " style="font-size: 1.5em;"> </span>
+              <span class="fas fa-user link-icon" style="font-size: 1.5em;"> </span>
               <% end %>
             </li>
 
@@ -58,23 +64,23 @@
               <%= link_to notifications_path(current_user), class:"nav-link" do %>
                 <% if unchecked_notifications.any? %>
                   <span class="fa-stack">
-                    <i class="fas fa-bell link" style="font-size: 1.5em;" ></i>
+                    <i class="fas fa-bell link-icon" style="font-size: 1.5em;" ></i>
                     <i class="fas fa-circle n-circle fa-stack-1x" style="font-size: 0.7em;" ></i>
                   </span>
                 <% else %>
-                  <i class="fas fa-bell link" style="font-size: 1.5em;" ></i>
+                  <i class="fas fa-bell link-icon" style="font-size: 1.5em;" ></i>
                 <% end %>
               <% end %>
             </li>
             <% elsif admin_signed_in? %>
             <li>
               <%= link_to admins_users_path, class:"nav-link" do %>
-              <span class="fas fa-user link"> ユーザー</span>
+              <span class="fas fa-user link-icon"> ユーザー</span>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_admin_session_path, class:"nav-link" ,method: :delete, data: {confirm: "本当にログアウトしますか？"} do %>
-              <span class="fas fa-hand-peace link"> ログアウト</span>
+              <span class="fas fa-hand-peace link-icon"> ログアウト</span>
               <% end %>
             </li>
             <% end %>
@@ -83,14 +89,22 @@
         </div>
       </nav>
       <% end %>
+
     </header>
+
     <div id="result_user" class="mb-5">
     <%= yield %>
     </div>
     <footer>
       <% unless current_page?(root_path) %>
-      <div class="index-search border-top border-info"><br>
-      <p class="text-center">c</p>
+      <div class="footer-color"><br>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mt-5 mb-5">
+            <p class="text-center text-white">c</p>
+          </div>
+        </div>
+      </div>
       <br>
       </div>
       <% end %>

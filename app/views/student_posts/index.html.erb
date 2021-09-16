@@ -1,4 +1,9 @@
-<div class="student-title pt-4 pb-4 index-search border-bottom">
+<div class="sub-title pt-2 pb-2 mb-2 mr-3">
+  <div class="col-md-4 offset-md-3">
+    <hr noshade><h3 class="text-center link">生徒側投稿一覧</h3><hr noshade>
+  </div>
+</div>
+<div class="student-title pt-4 pb-4">
   <div class="col-md-5 offset-md-3">
     <div class="row">
     <%= form_with url: student_posts_path, method: :get, local:true do |f| %>
@@ -20,7 +25,7 @@
     <!--画面左側の新規投稿ページへのリンクがある範囲-->
     <div class="student-left col-md-1 pr-5">
       <%= link_to new_student_post_path(class:"link") do  %>
-            <i class="fas fa-plus-square link fa-2x new-button"></i>
+            <i class="fas fa-plus-square link-icon fa-2x new-button"></i>
             <%= link_to "新規投稿する", new_student_post_path, class:"h2 link" %>
       <% end %>
     </div>
@@ -35,25 +40,25 @@
     </div>
     <!--画面右側の範囲-->
     <div class="col-md-3">
-      <div class="rounded-circle pl-5 pt-4 index-right mb-4" style="width:150%; height:190px;">
+      <div class="rounded-circle pl-5 pt-4 index-post mb-5 right-ranking" style="width:150%; height:190px;">
         <h5 class="font-weight-bold"><i class="fas fa-crown"></i>週間いいね獲得ランキング</h5>
         <% @favorite_rank.each.with_index(1) do |student, i| %>
         <p>第<%= i %>位<%= link_to student.title, student_post_path(student), class:"link" %>:<span class="text-muted"><%= student.favorites.count %>いいね</span></p>
         <% end %>
       </div>
-      <div class="rounded-circle pl-5 pt-4 pr-3 index-right mb-4" style="width:150%; height:190px;">
+      <div class="rounded-circle pl-5 pt-4 pr-3 index-post mb-5 right-ranking" style="width:150%; height:190px;">
         <h5 class="font-weight-bold"><i class="fas fa-crown"></i>週間コメントランキング</h5>
         <% @comment_rank.each.with_index(1) do |student, i| %>
         <p>第<%= i %>位<%= link_to student.title, student_post_path(student), class:"link" %>:<span class="text-muted"><%= student.comments.count %>コメント</span></p>
         <% end %>
       </div>
-      <div class="rounded-circle pl-5 pt-4 pr-3 index-right mb-4" style="width:150%; height:190px;">
+      <div class="rounded-circle pl-5 pt-4 pr-3 index-post mb-5 right-ranking" style="width:150%; height:190px;">
         <h5 class="font-weight-bold"><i class="fas fa-crown"></i>週間人気投稿ランキング</h5>
         <% @ranking_posts.each.with_index(1) do |student, i| %>
         <p>第<%= i %>位<%= link_to student.title, student_post_path(student), class:"link" %>:<span class="text-muted"><%= student.view_counts.count %>ビュー</span></p>
         <% end %>
       </div>
-      <div class="rounded-circle pl-5 pt-4 pr-3 index-right" style="width:130%; height:190px;">
+      <div class="rounded-circle pl-5 pt-4 pr-3 index-post right-ranking" style="width:130%; height:190px;">
         <h5 class="font-weight-bold"><i class="fas fa-crown"></i>週間投稿数ランキング</h5>
         <% @ranking_users.each.with_index(1) do |user, i| %>
         <p>第<%= i %>位<%= link_to user.name, user_path(user), class:"link" %>:<span class="text-muted"><%= user.student_posts.count %>件</span></p>
