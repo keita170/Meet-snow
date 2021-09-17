@@ -1,4 +1,4 @@
-<table class="table table-hover bg-white favorite-red mt-3">
+<table class="table table-hover bg-white card mt-3">
         <thead>
           <tr>
             <th scope="col">状況</th>
@@ -14,9 +14,9 @@
             <% favorite_list.each do |post| %>
           <tr>
               <% if post.status == "受付中" %>
-                  <th class="font-weight-bold"><%= post.status %></th>
+                  <th class="hand-write"><%= post.status %></th>
                 <% else %>
-                  <th class="text-danger"><%= post.status %></th>
+                  <th class="text-danger hand-write"><%= post.status %></th>
               <% end %>
               <td class="font-weight-bold"><%= link_to post.field, teacher_post_path(post), class:"link" %></td>
             <td><%= post.title %></td>

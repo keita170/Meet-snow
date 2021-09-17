@@ -238,7 +238,7 @@ background-color:#6FA8E1;
 
 
 .card {
-  box-shadow: 5px 5px 10px 10px rgba(102, 227, 255,0.4);
+  box-shadow: 0 0 20px rgba(102, 227, 255,0.8), 0 0 20px rgba(102, 227, 255,0.8) inset;
 }
 
 .card-login {
@@ -258,4 +258,18 @@ background-color:#6FA8E1;
 
 .favorite-red {
   box-shadow: 0px 0px 20px rgba(255, 0, 0,0.8),0px 0px 20px rgba(255, 0, 0,0.8) inset;
+}
+
+.hand-write {
+  font-family: 'Hannotate SC';
+  text-decoration: #17a2b8;
+  color:rgba(1,7,10,0.8);
+  font-weight: bold;
+}
+
+.post-body {
+  font-family: -apple-system, BlinkMacSystemFont,"Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  font-weight: 600;
+  text-decoration: #17a2b8;
+  color:rgba(1,7,10,0.8);
 }

@@ -5,7 +5,7 @@ class StudentPostsController < ApplicationController
   def index
     @student_post = StudentPost.page(params[:page]).order('status, created_at DESC').per(10)
     @comment = Comment.new
-    #絞り込み機能
+    # 絞り込み機能
     if params[:field] == "分野検索"
       @student_post = StudentPost.page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "フリースタイル"
@@ -17,7 +17,7 @@ class StudentPostsController < ApplicationController
     elsif params[:field] == "その他"
       @student_post = StudentPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     end
-    #ランキング機能
+    # ランキング機能
     @favorite_rank = StudentPost.one_week
     @comment_rank = StudentPost.one_week_comment
     @ranking_users = User.one_week_student_post
@@ -26,7 +26,7 @@ class StudentPostsController < ApplicationController
 
   def show
     @comment = Comment.new
-    #閲覧数カウント
+    # 閲覧数カウント
     unless ViewCount.find_by(user_id: current_user, student_post_id: @student_post.id)
       current_user.view_counts.create(student_post_id: @student_post.id)
     end
@@ -72,7 +72,6 @@ class StudentPostsController < ApplicationController
     render :json => @student_post
   end
 
-
   private
 
   def set_user
@@ -82,5 +81,4 @@ class StudentPostsController < ApplicationController
   def student_post_params
     params.require(:student_post).permit(:title, :body, :field, :status)
   end
-
 end

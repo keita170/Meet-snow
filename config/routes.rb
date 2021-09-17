@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
-  sessions: 'admins/sessions'
-}
+    sessions: 'admins/sessions',
+  }
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :student_posts, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
     resources :favorites, only: [:create]
-    delete 'favorites' => 'favorites#destroy', as:'favorite'
+    delete 'favorites' => 'favorites#destroy', as: 'favorite'
     resources :comments, only: [:create, :destroy]
     collection do
       get 'search'
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   resources :teacher_posts, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
     resources :favorite_teachers, only: [:create]
-    delete 'favorites' => 'favorite_teachers#destroy', as:'favorite'
+    delete 'favorites' => 'favorite_teachers#destroy', as: 'favorite'
     resources :comment_teachers, only: [:create, :destroy]
   end
 
@@ -46,5 +46,4 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :users, only: [:index, :edit, :update]
   end
-
 end

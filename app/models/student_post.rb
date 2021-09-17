@@ -1,5 +1,4 @@
 class StudentPost < ApplicationRecord
-
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -7,33 +6,35 @@ class StudentPost < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
   has_many :view_counts, dependent: :destroy
-  
+
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 140 }
   validates :field, presence: true
-  
-  #いいね機能実装にて使用
+
+  # いいね機能実装にて使用
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
 
-  #キーワード検索用
+  # キーワード検索用
   def self.search(keyword)
     where(["body LIKE? OR title LIKE?", "%#{keyword}%", "%#{keyword}%"]).order('created_at DESC')
   end
 
-  #ランクキング機能で使用する
+  # ランクキング機能で使用する
   def self.one_week
-    StudentPost.joins(:favorites).where(favorites: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day}).group(:student_post_id).order("count(student_post_id) desc").limit(3)
-  end
-  def self.one_week_comment
-    StudentPost.joins(:comments).where(comments: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day}).group(:student_post_id).order("count(student_post_id) desc").limit(3)
-  end
-  def self.one_week_post
-    StudentPost.joins(:view_counts).where(view_counts: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day}).group(:student_post_id).order("count(student_post_id) desc").limit(3)
+    StudentPost.joins(:favorites).where(favorites: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day }).group(:student_post_id).order("count(student_post_id) desc").limit(3)
   end
 
-  #いいねでの通知機能
+  def self.one_week_comment
+    StudentPost.joins(:comments).where(comments: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day }).group(:student_post_id).order("count(student_post_id) desc").limit(3)
+  end
+
+  def self.one_week_post
+    StudentPost.joins(:view_counts).where(view_counts: { created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day }).group(:student_post_id).order("count(student_post_id) desc").limit(3)
+  end
+
+  # いいねでの通知機能
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and student_post_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
@@ -52,7 +53,7 @@ class StudentPost < ApplicationRecord
     end
   end
 
-  #コメントでの通知機能
+  # コメントでの通知機能
   def create_notification_comment!(current_user, comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = Comment.select(:user_id).where(student_post_id: id).where.not(user_id: current_user.id).distinct
@@ -78,7 +79,7 @@ class StudentPost < ApplicationRecord
     notification.save if notification.valid?
   end
 
-  scope :status, -> {order(status: :desc)}
+  scope :status, -> { order(status: :desc) }
 
   enum field: { フリースタイル: 0, グラトリ: 1, カービング: 2, その他: 3 }
   enum status: { 受付中: 0, 締め切り: 1 }

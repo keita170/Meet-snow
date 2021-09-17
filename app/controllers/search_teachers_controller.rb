@@ -11,5 +11,4 @@ class SearchTeachersController < ApplicationController
     @ranking_users = User.one_week_teacher_post
     @ranking_posts = TeacherPost.one_week_post
   end
-
 end

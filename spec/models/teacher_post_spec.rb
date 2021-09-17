@@ -28,7 +28,7 @@
 #         is_expected.to eq false
 #       end
 #     end
-    
+
 #     context 'fieldカラム' do
 #       it '空欄でないこと' do
 #         teacher_post.field = ''
@@ -44,7 +44,7 @@
 #       end
 #     end
 #   end
-  
+
 #   describe '実際に保存してみる' do
 #     it "有効な投稿内容の場合は保存されるか" do
 #       expect(FactoryBot.build(:teacher_post)).to be_valid
@@ -63,7 +63,7 @@
 #       expect(teacher_post).to be_invalid
 #       expect(teacher_post.errors[:body]).to include("を入力してください")
 #     end
-    
+
 #     it "fieldが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
 #       teacher_post = TeacherPost.new(title: 'hoge', field:'')
 #       expect(teacher_post).to be_invalid

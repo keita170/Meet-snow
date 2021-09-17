@@ -25,11 +25,11 @@ class Admins::UsersController < ApplicationController
     elsif params[:sort] == 'is_valid-reverse'
       @users = User.all.order('is_valid')
     elsif params[:sort] == 'follow'
-      @users = User.includes(:following_user).sort{|a,b| b.following_user.includes(:follower).size <=> a.following_user.includes(:follower).size}
+      @users = User.includes(:following_user).sort { |a, b| b.following_user.includes(:follower).size <=> a.following_user.includes(:follower).size }
     elsif params[:sort] == 'follower'
-      @users = User.includes(:followed_user).sort{|a,b| b.followed_user.includes(:followed).size <=> a.followed_user.includes(:followed).size}
+      @users = User.includes(:followed_user).sort { |a, b| b.followed_user.includes(:followed).size <=> a.followed_user.includes(:followed).size }
     elsif params[:sort] == 'post'
-      @users = User.includes(:student_posts, :teacher_posts).sort{|a,b| b.student_posts.includes(:id).size + b.teacher_posts.includes(:id).size <=> a.student_posts.includes(:id).size + a.teacher_posts.includes(:id).size}
+      @users = User.includes(:student_posts, :teacher_posts).sort { |a, b| b.student_posts.includes(:id).size + b.teacher_posts.includes(:id).size <=> a.student_posts.includes(:id).size + a.teacher_posts.includes(:id).size }
     end
   end
 
