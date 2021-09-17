@@ -1,4 +1,4 @@
 class FavoriteTeacher < ApplicationRecord
   belongs_to :user
-  belongs_to :teacher_post, required: false
+  belongs_to :teacher_post, optional: true
 end

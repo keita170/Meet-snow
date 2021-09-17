@@ -5,7 +5,7 @@ FactoryBot.define do
     introduction { Faker::Lorem.characters(number: 20) }
     password { 'password' }
     password_confirmation { 'password' }
-    is_valid {true}
-    status {0}
+    is_valid { true }
+    status { 0 }
   end
 end

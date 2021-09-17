@@ -5,7 +5,7 @@ class Evaluation < ApplicationRecord
   validates :content, presence: true
   validates :comment, presence: true
 
-  #評価ページでの検索機能
+  # 評価ページでの検索機能
   # def self.search(user_keyword)
   #   where(["user_select LIKE?", "%#{user_keyword}%"])
   # end

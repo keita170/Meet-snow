@@ -56,7 +56,7 @@
 #       expect(student_post).to be_invalid
 #       expect(student_post.errors[:body]).to include("を入力してください")
 #     end
-    
+
 #     it "fieldが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
 #       student_post = StudentPost.new(title: 'hoge', field:'')
 #       expect(student_post).to be_invalid

@@ -9,10 +9,10 @@ class CommentsController < ApplicationController
 
     @student_post.create_notification_comment!(current_user, @comment.id)
     respond_to do |format|
-      format.html {redirect_to request.referrer}
+      format.html { redirect_to request.referrer }
       format.js
     end
-    #非同期化のためにコメントオフ
+    # 非同期化のためにコメントオフ
     # redirect_back(fallback_location: root_path)
   end
 
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @student_post = StudentPost.find(params[:student_post_id])
     comment = Comment.find_by(id: params[:id], student_post_id: params[:student_post_id])
     comment.destroy
-    #非同期化のためにコメントオフ
+    # 非同期化のためにコメントオフ
     # redirect_back(fallback_location: root_path)
   end
 
@@ -29,5 +29,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment)
   end
-
 end

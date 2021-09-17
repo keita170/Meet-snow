@@ -6,5 +6,4 @@ class SearchUsersController < ApplicationController
     @user_keyword = params[:user_keyword]
     @users = User.all
   end
-
 end

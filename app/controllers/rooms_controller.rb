@@ -2,12 +2,10 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-
     @room = Room.create
     @entry1 = Entry.create(:room_id => @room.id, :user_id => current_user.id)
     @entry2 = Entry.create(params.require(:entry).permit(:user_id, :room_id).merge(:room_id => @room.id))
     redirect_to "/rooms/#{@room.id}"
-
   end
 
   def show
@@ -22,7 +20,6 @@ class RoomsController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
     end
-
   end
 
   def destroy
@@ -33,9 +30,5 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = current_user.rooms.includes(:messages).order("messages.created_at desc")
-
-
   end
-
-
 end

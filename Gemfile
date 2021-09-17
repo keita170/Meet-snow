@@ -48,17 +48,19 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rubocop-airbnb'
+  # gem 'bullet'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   # gem 'capybara', '>= 2.15'
-  #gem 'selenium-webdriver'
+  # gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  # gem 'chromedriver-helper' 
+  # gem 'chromedriver-helper'
   # gem 'webdrivers'
   # gem 'rspec-rails'
-  #書き換え
+  # 書き換え
   gem 'capybara'
   gem 'rspec-rails'
   gem "factory_bot_rails"
@@ -69,13 +71,13 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem 'bootstrap','~>4.5'
+gem 'bootstrap', '~>4.5'
 gem 'jquery-rails'
-gem 'font-awesome-sass','~>5.13'
+gem 'font-awesome-sass', '~>5.13'
 
-#画像プロセッサのgemを導入
+# 画像プロセッサのgemを導入
 gem 'image_processing', '~> 1.2'
-#railsで日本語使えるようになるgem
+# railsで日本語使えるようになるgem
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 

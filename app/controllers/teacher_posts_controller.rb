@@ -3,9 +3,9 @@ class TeacherPostsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @teacher_post = TeacherPost.page(params[:page]).order('status, created_at DESC').per(10)
+    @teacher_post = TeacherPost.includes([:user,:comment_teachers]).page(params[:page]).order('status, created_at DESC').per(10)
     @comment_teacher = CommentTeacher.new
-    #絞り込み機能
+    # 絞り込み機能
     if params[:field] == "分野検索"
       @teacher_post = TeacherPost.page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "フリースタイル"
@@ -26,7 +26,7 @@ class TeacherPostsController < ApplicationController
 
   def show
     @comment_teacher = CommentTeacher.new
-    #閲覧数
+    # 閲覧数
     unless TeacherViewCount.find_by(user_id: current_user, teacher_post_id: @teacher_post.id)
       current_user.teacher_view_counts.create(teacher_post_id: @teacher_post.id)
     end
@@ -74,5 +74,4 @@ class TeacherPostsController < ApplicationController
   def teacher_post_params
     params.require(:teacher_post).permit(:title, :body, :field, :status)
   end
-
 end
