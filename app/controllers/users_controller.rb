@@ -8,8 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @student_post = @user.student_posts.page(params[:page]).order('status, created_at DESC').per(10)
-    @teacher_post = @user.teacher_posts.page(params[:page]).order('status, created_at DESC').per(10)
+    @student_post = @user.student_posts.includes([:comments]).page(params[:page]).order('status, created_at DESC').per(10)
+    @teacher_post = @user.teacher_posts.includes([:comment_teachers]).page(params[:page]).order('status, created_at DESC').per(10)
     @comment = Comment.new
     @comment_teacher = CommentTeacher.new
     @evaluation = Evaluation.new
@@ -23,12 +23,12 @@ class UsersController < ApplicationController
       @currentUserEntry.each do |current|
         @userEntry.each do |user|
           if current.room_id == user.room_id
-            @isRoom = true
+            @Room_maked = true
             @roomId = current.room_id
           end
         end
       end
-      if @isRoom
+      if @Room_maked
       else
         @room = Room.new
         @entry = Entry.new
