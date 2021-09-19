@@ -33,7 +33,18 @@ class StudentPostsController < ApplicationController
   end
 
   def new
-    @student_post = StudentPost.new
+    if current_user.status == "先生"
+      @student_post = StudentPost.includes([:user,:comments]).page(params[:page]).order('status, created_at DESC').per(10)
+      @comment = Comment.new
+      @favorite_rank = StudentPost.one_week
+      @comment_rank = StudentPost.one_week_comment
+      @ranking_users = User.one_week_student_post
+      @ranking_posts = StudentPost.one_week_post
+      flash[:alert] = 'ステータスを変更してください'
+      render :index
+    else
+      @student_post = StudentPost.new
+    end
   end
 
   def create
