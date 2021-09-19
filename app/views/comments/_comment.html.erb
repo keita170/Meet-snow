@@ -13,22 +13,3 @@
  </tr>
  <br>
 <% end %>
-
-
-
-<!--非同期化-->
-<%# student.comments.each do |comment| %>
- <tr>
-    <td><%#= link_to comment.user.name, user_path(comment.user) %></td>
-    <td><%#= comment.comment %></td>
-    <td>
-     <%# if comment.user == current_user %>
-      <!--<button type="button" class="btn btn-white btn-sm" data-toggle="collapse" data-target="#demo">▼</button>-->
-      <!--<div id="demo" class="collapse">-->
-      <%#= link_to "削除", student_post_comment_path(comment, student), class:"text-danger", method: :delete, remote: true %>
-      <!--</div>-->
-     <%# end %>
-    </td>
- </tr>
- <!--<br>-->
-<%# end %>

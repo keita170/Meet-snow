@@ -1,0 +1,3 @@
+$("#message-<%= @room.id %>").html("<%= j(render 'messages/message', messages: @messages) %>")
+$(".inputComment").val('');
+alert('コメントできてる');
