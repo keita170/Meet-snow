@@ -56,11 +56,11 @@ $(function(){
                 $(".up").animate({"height":"0%"})
                 $(".down").animate({"height":"0%"},500,function(){
                     $(".top-meet_snow").fadeIn("slow")
-                    $(".top-image1").delay(6000).fadeOut(2000)
+                    $(".top-image1").delay(5000).fadeOut(2000)
                     $(".none").animate({"height":"0%"},100,function(){
-                        $(".top-image2").fadeIn("slow").delay(15000).fadeOut(2000)
+                        $(".top-image2").fadeIn("slow").delay(10000).fadeOut(2000)
                         $(".none").animate({"height":"0%"},100,function(){
-                            $(".top-image3").fadeIn("slow").delay(24000).fadeOut(2000)
+                            $(".top-image3").fadeIn("slow").delay(15000).fadeOut(2000)
                             $(".none").animate({"height":"0%"},100,function(){
                                 $(".top-image4").fadeIn("slow").delay(33000)
                             });
