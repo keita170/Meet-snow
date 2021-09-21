@@ -30,7 +30,10 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 ">
+    <div class="col-md-6">
+      <p class="text-left"><%= link_to "パスワードを忘れた方", new_user_password_path, class: 'text-decolation' %></p>
+    </div>
+    <div class="col-md-4 offset-md-2">
       <p class="text-right">アカウント作成済みの方は<%= link_to "こちら", new_user_session_path, class: 'text-decolation' %>から。</p>
     </div>
   </div>
