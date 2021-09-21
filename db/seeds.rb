@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-   email: 'meet@snow',
-   password: 'meetsnow'
+   email: ENV['ADMIN_EMAIL'],
+   password: ENV['ADMIN_PASSWORD']
 )

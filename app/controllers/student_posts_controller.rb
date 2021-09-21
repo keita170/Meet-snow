@@ -3,7 +3,7 @@ class StudentPostsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @student_post = StudentPost.includes([:user,:comments]).page(params[:page]).order('status, created_at DESC').per(10)
+    @student_post = StudentPost.page(params[:page]).order('status, created_at DESC').per(10)
     @comment = Comment.new
     # 絞り込み機能
     if params[:field] == "分野検索"

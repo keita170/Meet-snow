@@ -1,4 +1,4 @@
-<% student.comments.each do |comment| %>
+<% student.comments.includes([:user]).each do |comment| %>
  <tr>
     <td><%= link_to comment.user.name, user_path(comment.user), class:"link" %></td>
     <td><%= comment.comment %></td>
