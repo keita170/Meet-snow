@@ -5,7 +5,7 @@
 </div>
 <%= render 'layouts/flash' %>
 <div class="student-title pt-4 pb-4 mt-2">
-  <div class="col-md-5 offset-md-3">
+  <div class="col-md-5 offset-md-3 col-sm-10 offset-sm-2 col-xs-7 offset-xs-2">
     <div class="row">
     <%= form_with url: teacher_posts_path, method: :get, local:true do |f| %>
       <%= f.select :field, options_for_select({"分野検索" => "分野検索","フリースタイル" => "フリースタイル", "グラトリ" => "グラトリ", "カービング" => "カービング", "その他" => "その他"}) %>

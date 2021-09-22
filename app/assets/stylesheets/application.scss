@@ -196,20 +196,34 @@ background-color:#6FA8E1;
 .top-meet_snow {
   display: none;
   position: absolute;
-  top: 30%;
+  top: 10%;
   left: 50%;
-  transform: translate(-50%,70%);
+  transform: translate(-50%,10%);
   color: #fff;
-  font-size: 50px;
+  font-size: 44px;
   border: 1px solid;
-  padding: 88px;
+  padding: 48px;
   font-family: serif;
   z-index: 3;
+}
+.top-meet_snow2 {
+  font-size: 30px;
 }
 
 .top-meet_snow:hover {
   background-color: rgba(155,155,155,0.4);
   opacity: 0.2;
+  z-index: 3;
+}
+.top-text {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%,210%);
+  color: #fff;
+  font-size: 20px;
+  font-family: serif;
   z-index: 3;
 }
 
