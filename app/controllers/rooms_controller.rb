@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
       @messages = @room.messages.includes([:user])
       @message = Message.new
       @entries = @room.entries.includes(:user)
-
+      # binding.irb
     else
       redirect_back(fallback_location: root_path)
     end

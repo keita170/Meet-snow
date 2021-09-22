@@ -1,2 +1,2 @@
-$("#message-<%= @message.room_id %>").html("<%= j(render 'messages/message', messages: @messages) %>")
+$("#message-<%= @room.id %>").html("<%= j(render 'messages/message', messages: @messages) %>")
 $(".inputComment").val('');

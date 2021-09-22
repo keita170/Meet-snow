@@ -23,9 +23,9 @@ class MessagesController < ApplicationController
       end
       notification.save if notification.valid?
 
-      # binding.irb
+      
       @messages = @room.messages
-
+      #binding.irb
       # redirect_to room_path(@message.room_id, anchor: 'saikabu')
   end
 end
