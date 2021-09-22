@@ -7,15 +7,15 @@ class TeacherPostsController < ApplicationController
     @comment_teacher = CommentTeacher.new
     # 絞り込み機能
     if params[:field] == "分野検索"
-      @teacher_post = TeacherPost.page(params[:page]).order('status, created_at DESC').per(10)
+      @teacher_post = TeacherPost.includes([user: {image_attachment: :blob}]).page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "フリースタイル"
-      @teacher_post = TeacherPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
+      @teacher_post = TeacherPost.includes([user: {image_attachment: :blob}]).where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "グラトリ"
-      @teacher_post = TeacherPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
+      @teacher_post = TeacherPost.includes([user: {image_attachment: :blob}]).where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "カービング"
-      @teacher_post = TeacherPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
+      @teacher_post = TeacherPost.includes([user: {image_attachment: :blob}]).where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     elsif params[:field] == "その他"
-      @teacher_post = TeacherPost.where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
+      @teacher_post = TeacherPost.includes([user: {image_attachment: :blob}]).where(field: params[:field]).page(params[:page]).order('status, created_at DESC').per(10)
     end
 
     @favorite_rank = TeacherPost.one_week
