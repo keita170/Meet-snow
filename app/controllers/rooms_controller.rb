@@ -29,6 +29,6 @@ class RoomsController < ApplicationController
   end
 
   def index
-    @rooms = current_user.rooms.includes([:entries]).includes(:messages).order("messages.created_at desc")
+    @rooms = current_user.rooms.includes([:entries,users:{image_attachment: :blob}]).includes(:messages).order("messages.created_at desc")
   end
 end

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:likes]
 
   def index
-    @users = User.all
+    @users = User.all.includes([image_attachment: :blob])
   end
 
   def show
