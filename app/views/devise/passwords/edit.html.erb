@@ -8,15 +8,15 @@
         <h2 class="meet_snow font-weight-bold">パスワード変更ページ</h2>
 
         <div class="field mb-3 mt-4">
-          <%= f.label :password, "New password" %><br />
+          <%= f.label :password, "新しいパスワード" %><br />
           <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+            <em>(<%= @minimum_password_length %> 文字以上)</em><br />
           <% end %>
           <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
         </div>
 
         <div class="field mb-3">
-          <%= f.label :password_confirmation, "Confirm new password" %><br />
+          <%= f.label :password_confirmation, "パスワード確認用(2)" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
 
