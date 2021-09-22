@@ -1,5 +1,5 @@
 
-<div class="sub-title pt-4 pb-4 mr-3">
+<div class="sub-title pt-4 pb-4">
   <%= render 'users/profile', user: @user, isRoom: @Room_maked, roomId: @roomId, entry: @entry, student_post: @student_post, teacher_post: @teacher_post, room: @room %>
 </div>
 <%= render 'layouts/flash' %>
@@ -14,7 +14,7 @@
       <hr width="32%" class="offset-md-4"><h2 class="text-center link">生徒側一覧</h2><hr width="32%" class="mb-5 offset-md-4">
       <div class="student_post-tbody mb-3">
         <!--生徒側投稿一覧 ここから-->
-        <%= render 'student_posts/index', student_post: @student_post, comment: @comment %>
+        <%= render 'users/show', student_post: @student_post, comment: @comment %>
         <!--生徒側投稿一覧 ここまで-->
       </div>
       <hr width="32%" class="offset-md-4"><h2 class="text-center link">先生側一覧</h2><hr width="32%" class="mb-5 offset-md-4">

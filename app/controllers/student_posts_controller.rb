@@ -34,7 +34,7 @@ class StudentPostsController < ApplicationController
 
   def new
     if current_user.status == "先生"
-      @student_post = StudentPost.includes([:user,:comments]).page(params[:page]).order('status, created_at DESC').per(10)
+      @student_post = StudentPost.page(params[:page]).order('status, created_at DESC').per(10)
       @comment = Comment.new
       @favorite_rank = StudentPost.one_week
       @comment_rank = StudentPost.one_week_comment

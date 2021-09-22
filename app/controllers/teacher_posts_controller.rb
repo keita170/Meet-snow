@@ -3,7 +3,7 @@ class TeacherPostsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @teacher_post = TeacherPost.includes([:user,:comment_teachers,{ user: [:image_attachment] }]).page(params[:page]).order('status, created_at DESC').per(10)
+    @teacher_post = TeacherPost.includes([:user, user: {image_attachment: :blob}]).page(params[:page]).order('status, created_at DESC').per(10)
     @comment_teacher = CommentTeacher.new
     # 絞り込み機能
     if params[:field] == "分野検索"
@@ -34,7 +34,7 @@ class TeacherPostsController < ApplicationController
 
   def new
     if current_user.status == "生徒"
-      @teacher_post = TeacherPost.includes([:user,:comment_teachers,{ user: [:image_attachment] }]).page(params[:page]).order('status, created_at DESC').per(10)
+      @teacher_post = TeacherPost.includes([:user, user: {image_attachment: :blob}]).page(params[:page]).order('status, created_at DESC').per(10)
       @comment_teacher = CommentTeacher.new
       @favorite_rank = TeacherPost.one_week
       @comment_rank = TeacherPost.one_week_comment

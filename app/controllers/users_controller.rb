@@ -8,8 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @student_post = @user.student_posts.includes([:comments]).page(params[:page]).order('status, created_at DESC').per(10)
-    @teacher_post = @user.teacher_posts.includes([:comment_teachers]).page(params[:page]).order('status, created_at DESC').per(10)
+    @student_post = @user.student_posts.page(params[:page]).order('status, created_at DESC').per(10)
+    @teacher_post = @user.teacher_posts.page(params[:page]).order('status, created_at DESC').per(10)
     @comment = Comment.new
     @comment_teacher = CommentTeacher.new
     @evaluation = Evaluation.new
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   def favorites
     # ログイン中のユーザーのお気に入りのteacher_post_idカラムを取得
     favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
-    @favorite_list = StudentPost.order('status, created_at DESC').find(favorites)
+    @favorite_list = StudentPost.includes([:user]).order('status, created_at DESC').find(favorites)
     # ソート機能
     if params[:sort] == 'status'
       favorites = Favorite.where(user_id: current_user.id).order('created_at DESC').pluck(:student_post_id)
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
 
     # ログイン中のユーザーのお気に入りのteacher_post_idカラムを取得
     favorite_teachers = FavoriteTeacher.where(user_id: current_user.id).order('created_at DESC').pluck(:teacher_post_id)
-    @favorite_list_teacher = TeacherPost.order('status, created_at DESC').find(favorite_teachers)
+    @favorite_list_teacher = TeacherPost.includes([:user]).order('status, created_at DESC').find(favorite_teachers)
     # 先生側ソート機能
     if params[:sort] == 'status-teacher'
       favorite_teachers = FavoriteTeacher.where(user_id: current_user.id).order('created_at DESC').pluck(:teacher_post_id)
