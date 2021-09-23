@@ -85,7 +85,14 @@ class StudentPostsController < ApplicationController
 
   def check
   end
-  
+
+  def ranking
+    @favorite_rank = StudentPost.one_week
+    @comment_rank = StudentPost.one_week_comment
+    @ranking_users = User.one_week_student_post
+    @ranking_posts = StudentPost.one_week_post
+  end
+
   private
 
   def set_user

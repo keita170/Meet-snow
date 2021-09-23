@@ -78,6 +78,13 @@ class TeacherPostsController < ApplicationController
 
   def check
   end
+  
+  def ranking
+    @favorite_rank = TeacherPost.one_week
+    @comment_rank = TeacherPost.one_week_comment
+    @ranking_users = User.one_week_teacher_post
+    @ranking_posts = TeacherPost.one_week_post
+  end
 
   private
 

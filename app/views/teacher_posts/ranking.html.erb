@@ -1,0 +1,27 @@
+<h4 class="font-weight-bold mt-5 ml-2"><i class="fas fa-crown"></i>Teacher側：週間ランキング</h4>
+<div class="col-md-3 col-8 mt-3">
+  <div class="rounded-circle pl-5 pt-4 index-post mb-5 right-ranking" style="width:150%; height:200px;">
+    <h5 class="font-weight-bold"><i class="fas fa-crown"></i>週間いいね獲得ランキング</h5>
+    <% @favorite_rank.each.with_index(1) do |teacher, i| %>
+    <p>第<%= i %>位<%= link_to teacher.title, teacher_post_path(teacher), class:"link" %>:<span class="text-muted"><%= teacher.favorite_teachers.count %>いいね</span></p>
+    <% end %>
+  </div>
+  <div class="rounded-circle pl-5 pt-4 index-post mb-5 right-ranking" style="width:150%; height:200px;">
+  <h5 class="font-weight-bold"><i class="fas fa-crown"></i>週間コメントランキング</h5>
+  <% @comment_rank.each.with_index(1) do |teacher, i| %>
+  <p>第<%= i %>位<%= link_to teacher.title, teacher_post_path(teacher), class:"link" %>:<span class="text-muted"><%= teacher.comment_teachers.count %>コメント</span></p>
+  <% end %>
+  </div>
+  <div class="rounded-circle pl-5 pt-4 pr-3 index-post mb-5 right-ranking" style="width:150%; height:200px;">
+    <h5 class="font-weight-bold"><i class="fas fa-crown"></i>週間人気投稿ランキング</h5>
+    <% @ranking_posts.each.with_index(1) do |teacher, i| %>
+    <p>第<%= i %>位<%= link_to teacher.title, teacher_post_path(teacher), class:"link" %>:<span class="text-muted"><%= teacher.teacher_view_counts.count %>ビュー</span></p>
+    <% end %>
+  </div>
+  <div class="rounded-circle pl-5 pt-4 index-post mb-5 right-ranking" style="width:130%; height:190px;">
+  <h5 class="font-weight-bold"><i class="fas fa-crown"></i>週間投稿数ランキング</h5>
+  <% @ranking_users.each.with_index(1) do |user, i| %>
+  <p>第<%= i %>位<%= link_to user.name, user_path(user), class:"link" %>:<span class="text-muted"><%= user.teacher_posts.count %>件</span></p>
+  <% end %>
+  </div>
+</div>

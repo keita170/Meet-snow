@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'check' => 'users#check'
   get 'check_post' => 'student_posts#check'
   get 'check_post_teacher' => 'teacher_posts#check'
+  get 'ranking' => 'student_posts#ranking'
+  get 'ranking_teacher' => 'teacher_posts#ranking'
 
   resources :evaluations, only: [:create, :index, :destroy]
 
