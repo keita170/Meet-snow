@@ -5,30 +5,30 @@
 </div>
 
  <div class="row">
-   <div class="col-md-3"></div>
-   <div class="col-md-3">
+   <div class="col-md-3 col-1"></div>
+   <div class="col-md-3 col-5">
      <div class="student-title">
         <hr><h4 class="text-center">フォロワー</h4><hr>
       </div>
    </div>
-   <div class="col-md-3">
+   <div class="col-md-3 col-5">
      <div class="student-title">
         <hr><h4 class="text-center">フォロー中</h4><hr>
       </div>
    </div>
-   <div class="col-md-3"></div>
+   <div class="col-md-3 col-1"></div>
  </div>
 
   <div class="row ml-4">
     <!--画面左側-->
-    <div class="student-left col-md-3">
+    <div class="student-left col-md-3 col-1">
     </div>
-    <div class="student-center col-md-3 overflow-auto border mr-1" style="width:10pxpx; height:500px;">
+    <div class="student-center col-md-3 overflow-auto border mr-1 col-5" style="width:10pxpx; height:500px;">
     <%= render 'relationships/follower', users: @users %>
     </div>
-    <div class="student-center col-md-3 overflow-auto border ml-" style="width:100%; height:500px;">
+    <div class="student-center col-md-3 overflow-auto border col-5" style="width:100%; height:500px;">
     <%= render 'relationships/follow', users_follower: @users_follower %>
     </div>
     <!--画面右側-->
-    <div class="col-md-3"></div>
+    <div class="col-md-3 col-1"></div>
   </div>

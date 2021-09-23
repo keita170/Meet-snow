@@ -29,7 +29,7 @@
           <div class="d-flex mx-auto">
             <% if user_signed_in? %>
               <%= form_with url: search_users_path, method: :get, remote:true do |f| %>
-              <%= f.text_field :keyword, value: @keyword, placeholder:'ユーザー検索', class:'search_user rounded',autocomplete: 'off' %>
+              <%= f.text_field :keyword, value: @keyword, placeholder:'ユーザー検索', class:'search_user rounded res-link',autocomplete: 'off' %>
             <% end %>
           </div>
           <div>
@@ -72,6 +72,27 @@
                 <% end %>
               <% end %>
             </li>
+
+            <div id="sp-menu">
+              <h2>MENU</h2>
+              <ul>
+                <li><a href="/student_posts">Student投稿一覧</a></li>
+                <li><a href="/teacher_posts">Teacher投稿一覧</a></li>
+                <li><a href="/users/favorites">いいねした投稿</a></li>
+                <li><a href="/rooms">DMページ</a></li>
+                <li><%= link_to "マイページ", user_path(current_user) %></li>
+                <li><a href="/notifications">通知一覧</a></li>
+              </ul>
+            </div>
+
+            <div id="hm-icon">
+              <a class="menu-trigger" href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+            </div>
+
             <% elsif admin_signed_in? %>
             <li>
               <%= link_to admins_users_path, class:"nav-link" do %>

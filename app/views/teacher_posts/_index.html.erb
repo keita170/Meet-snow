@@ -19,19 +19,19 @@
           <%= link_to "連絡を取る", user_path(teacher.user) ,class:"btn btn-secondary btn-sm ml-5" %>
           <% end %>
         </h5>
-    
-    
+
+
         <div class="card-text font-weight-bold row">
-          <div class="col-md-1">
+          <div class="col-md-1 col-1">
           <% if teacher.user.image.attached? %>
             <%= image_tag teacher.user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2" %>
           <% else %>
            <%= image_tag 'no_image.jpg', class:"rounded-circle rounded-circle2" %>
           <% end %>
           </div>
-          　<div class="col-md-10"><%= teacher.body %></div>
+          　<div class="col-md-10 col-10"><%= teacher.body %></div>
         </div>
-    
+
         <div class="text-muted mb-1 row ml-2">
            <div class="favorite-<%= teacher.id %>">
            <!--いいね機能 非同期化してます-->
@@ -39,8 +39,8 @@
            </div>
           <span class="ml-2">条件:<%= teacher.title %></span>
         </div>
-    
-    
+
+
         <div class="comment-<%= teacher.id %>">
           <!--コメント表示機能-->
           <%= render 'comment_teachers/comment', teacher: teacher %>
@@ -48,7 +48,7 @@
         <!--コメント投稿機能-->
         <div class="commnt-student-make border-top pt-3">
           <%= form_with(model:[teacher, comment_teacher], remote:true) do |f| %>
-          <%= f.text_area :comment, size:"40x1", class:"inputComment" %>
+          <%= f.text_area :comment, size:"37x1", class:"inputComment" %>
           <%= f.submit "コメント", class:"btn btn-sm btn-outline-dark" %>
           <% end %>
         </div>

@@ -6,7 +6,7 @@
 <%= render 'layouts/flash' %>
 <div class="student-title pt-4 pb-4 mt-2">
   <div class="col-md-5 offset-md-3 col-sm-10 offset-sm-2 col-xs-7 offset-xs-2">
-    <div class="row">
+    <div class="row res-link">
     <%= form_with url: teacher_posts_path, method: :get, local:true do |f| %>
       <%= f.select :field, options_for_select({"分野検索" => "分野検索","フリースタイル" => "フリースタイル", "グラトリ" => "グラトリ", "カービング" => "カービング", "その他" => "その他"}) %>
       <%= f.submit '検索', class:"btn btn-sm btn-outline-dark mr-5" %>
@@ -22,7 +22,7 @@
 <div class="container mt-4">
   <div class="row mb-5">
     <!--画面左側の新規投稿ページへのリンクがある範囲-->
-    <div class="student-left col-md-1 pr-5">
+    <div class="student-left col-md-1 pr-5 res-link">
       <%= link_to new_teacher_post_path(class:"link") do %>
             <i class="fas fa-plus-square link-icon fa-2x new-button"></i>
             <%= link_to "新規投稿する", new_teacher_post_path, class:"h2 hand-write" %>
@@ -36,7 +36,7 @@
       </div>
       <!--投稿一覧 ここまで-->
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 res-link">
       <div class="rounded-circle pl-5 pt-4 index-post mb-5 right-ranking" style="width:150%; height:200px;">
         <h5 class="font-weight-bold"><i class="fas fa-crown"></i>週間いいね獲得ランキング</h5>
         <% @favorite_rank.each.with_index(1) do |teacher, i| %>

@@ -1,6 +1,6 @@
 <!--プロフィール欄 ここから-->
   <div class="row">
-    <div class="col-md-3 offset-md-2 text-right">
+    <div class="col-md-3 offset-md-2 text-right col-3">
       <!--プロフィール画像-->
       <% if user.image.attached? %>
         <%= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle" %>
@@ -8,7 +8,7 @@
        <%= image_tag 'no_image.jpg', class:"rounded-circle" %>
       <% end %>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-7 col-7">
       <div class="row">
       <p class="ml-3 profile-name link"><%= user.name %></p>
       <!--プロフィール編集or フォロー機能-->

@@ -117,6 +117,8 @@ background-color:#6FA8E1;
 
 
 // ここから下全てはTopページに対しての記述です
+
+// 動き用
 .line {
     width: 0%;
     height: 1px;
@@ -143,6 +145,7 @@ background-color:#6FA8E1;
     z-index: 4;
 }
 
+// 表示する内容全体
 .top-main {
   position: relative;
   width: 100%;
@@ -192,7 +195,11 @@ background-color:#6FA8E1;
   min-width: 100%;
   min-height: 100%;
 }
+.top-image5 {
+  display: none;
+}
 
+// aboutページ的な役割の書き込み部分
 .top-meet_snow {
   display: none;
   position: absolute;
@@ -202,12 +209,12 @@ background-color:#6FA8E1;
   color: #fff;
   font-size: 44px;
   border: 1px solid;
-  padding: 48px;
+  padding: 40px;
   font-family: serif;
   z-index: 3;
 }
 .top-meet_snow2 {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .top-meet_snow:hover {
@@ -215,16 +222,21 @@ background-color:#6FA8E1;
   opacity: 0.2;
   z-index: 3;
 }
+
 .top-text {
   display: none;
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translate(-50%,210%);
+  transform: translate(-50%,370%);
   color: #fff;
   font-size: 20px;
   font-family: serif;
   z-index: 3;
+}
+
+.text-top {
+  margin: 0 auto;
 }
 
 .first-meet_snow {
@@ -288,3 +300,206 @@ background-color:#6FA8E1;
   color:rgba(1,7,10,0.8);
 }
 
+#sp-menu {
+    display: none;
+  }
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーー以下レスポンシブデザインーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+@media screen and (max-width:767px){
+  // body {
+  //   width: 90%;
+  //   margin: 0 auto;
+  // }
+
+  .nav-link,.res-link {
+    display: none;
+  }
+
+  #hm-icon {
+    right: 60px;
+    top: 20px;
+    z-index: 10;
+  }
+
+  .menu-trigger,
+  .menu-trigger span {
+    display: inline-block;
+    transition: all .4s;
+    box-sizing: border-box;
+  }
+
+  .menu-trigger {
+    position: relative;
+    width: 50px;
+    height: 40px;
+  }
+
+  .menu-trigger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+    border-radius: 4px;
+  }
+
+  .menu-trigger span:nth-child(1) {
+    top: 0;
+  }
+
+  .menu-trigger span:nth-child(2) {
+    top: 20px;
+  }
+
+  .menu-trigger span:nth-child(3) {
+    bottom: 0;
+  }
+
+  .menu-trigger.active span:nth-child(1) {
+    -webkit-transform: translateY(20px) rotate(-45deg);
+    transform: translateY(20px) rotate(-45deg);
+    background-color: #fff;
+  }
+  .menu-trigger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-trigger.active span:nth-child(3) {
+    -webkit-transform: translateY(-20px) rotate(45deg);
+    transform: translateY(-20px) rotate(45deg);
+    background-color: #fff;
+  }
+
+  #sp-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    color: #fff;
+    width: 100%;
+    min-height: 100%;
+    display: none;
+    z-index: 9;
+  }
+  #sp-menu li {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  #sp-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  // ーーーーーーーーーーーーーーーーーーーーーーーーーーー以下トップページーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+  .first-meet_snow {
+    position: absolute;
+    top: 83%;
+    left: 26%;
+    color: #fff;
+    font-size: 40px;
+    font-family: 'Permanent Marker', cursive;
+  }
+
+  .top-meet_snow {
+    display: none;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,40%);
+    color: #fff;
+    font-size: 18px;
+    padding: 5px;
+    font-family: serif;
+    z-index: 3;
+  }
+  .top-meet_snow2 {
+    font-size: 13px;
+  }
+
+  .top-meet_snow:hover {
+    background-color: rgba(155,155,155,0.4);
+    opacity: 0.2;
+    z-index: 3;
+  }
+
+  .top-text {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,250%);
+    color: #fff;
+    font-size: 11px;
+    font-family: serif;
+    z-index: 3;
+  }
+
+  .top-image1 {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 0;
+    min-height: 0;
+    z-index: 3;
+  }
+  .top-image2 {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 0;
+    min-height: 0;
+    z-index: 2;
+  }
+  .top-image3 {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 0;
+    min-height: 0;
+    z-index: 1;
+  }
+
+  .top-image4 {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 0;
+    min-height: 0;
+  }
+  .top-image5 {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 3;
+  }
+
+
+  // student_postページ-------------------------------------
+  .rounded-circle {
+    width: 80px;
+    height: 80px;
+  }
+  .rounded-circle2 {
+  width: 40px;
+  height: 40px;
+}
+// ⬇︎これはレスポンシブ全体の最後の括弧
+}

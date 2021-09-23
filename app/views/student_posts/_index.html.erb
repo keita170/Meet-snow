@@ -21,14 +21,14 @@
           <% end %>
         </h5>
         <div class="card-text row">
-          <div class="col-md-1">
+          <div class="col-md-1 col-1">
           <% if student.user.image.attached? %>
             <%= image_tag student.user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2" %>
           <% else %>
            <%= image_tag 'no_image.jpg', class:"rounded-circle rounded-circle2" %>
           <% end %>
           </div>
-          　<div class="col-md-10 post-body"><%= student.body %></div>
+          　<div class="col-md-10 post-body col-10"><%= student.body %></div>
         </div>
 
         <div class="text-muted mb-1 row ml-2">
@@ -45,7 +45,7 @@
         <!--コメント投稿機能-->
         <div class="commnt-student-make border-top">
           <%= form_with(model:[student, comment], remote:true) do |f| %>
-          <%= f.text_area :comment, size:"40x1", class:"inputComment" %>
+          <%= f.text_area :comment, size:"37x1", class:"inputComment" %>
           <%= f.submit "コメント", class:"btn btn-sm btn-outline-dark" %>
           <% end %>
         </div>
