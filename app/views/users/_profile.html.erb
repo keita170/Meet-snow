@@ -1,6 +1,6 @@
 <!--プロフィール欄 ここから-->
   <div class="row">
-    <div class="col-md-3 offset-md-2 text-right col-3">
+    <div class="col-md-3 offset-md-2 text-right col-3 offset-1">
       <!--プロフィール画像-->
       <% if user.image.attached? %>
         <%= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle" %>

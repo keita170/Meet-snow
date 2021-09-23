@@ -76,6 +76,9 @@ class TeacherPostsController < ApplicationController
     redirect_to teacher_posts_path
   end
 
+  def check
+  end
+
   private
 
   def set_user

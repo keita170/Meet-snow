@@ -1,5 +1,5 @@
 <div class="sub-title pt-2 pb-2 mb-4">
-  <div class="col-md-4 offset-md-4 hand-write">
+  <div class="col-md-4 offset-md-4 hand-write col-7 offset-3">
     <h3>検索結果:<%= @teacher_post.count %>件</h3>
     <h5>
       <% if @key_word == "" %>
@@ -12,7 +12,7 @@
 </div>
 
 <div class="student-title mb-5 mt-2">
-  <div class="col-md-5 offset-md-4">
+  <div class="col-md-5 offset-md-4 col-9 offset-3">
     <%= form_with url: search_teacher_path, method: :get, local:true do |f| %>
       <%= f.text_field :key_word, value: @key_word, placeholder:'キーワード検索', class:'search_word' %>
       <%= f.submit '検索'%>
@@ -22,21 +22,21 @@
 <div class="container">
   <div class="row ml-5 mb-5">
     <!--画面左側の新規投稿ページへのリンクがある範囲-->
-    <div class="student-left col-md-1 pr-5">
+    <div class="student-left col-md-1 pr-5 res-link">
       <%= link_to new_teacher_post_path(class:"link") do %>
             <i class="fas fa-plus-square link-icon fa-2x new-button"></i>
             <%= link_to "新規投稿する", new_teacher_post_path, class:"h2 link" %>
       <% end %>
     </div>
     <!--画面真ん中の一覧表示がされてる範囲-->
-    <div class="student-center col-md-6 mr-5 offset-md-1">
+    <div class="student-center col-md-6 mr-5 offset-md-1 col-11">
       <!--投稿一覧 ここから-->
       <div class="teacher_post-tbody">
-        <%= render 'teacher_posts/index', teacher_post: @teacher_post, comment_teacher: @comment_teacher %>
+        <%= render 'teacher_posts/phone', teacher_post: @teacher_post, comment_teacher: @comment_teacher %>
       </div>
       <!--投稿一覧 ここまで-->
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 res-link">
       <div class="rounded-circle pl-5 pt-4 index-post mb-5 right-ranking" style="width:150%; height:200px;">
         <h5 class="font-weight-bold"><i class="fas fa-crown"></i>週間いいね獲得ランキング</h5>
         <% @favorite_rank.each.with_index(1) do |teacher, i| %>

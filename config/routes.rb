@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'check' => 'users#check'
+  get 'check_post' => 'student_posts#check'
+  get 'check_post_teacher' => 'teacher_posts#check'
+
   resources :evaluations, only: [:create, :index, :destroy]
 
   resources :student_posts, only: [:index, :new, :create, :edit, :update, :destroy, :show] do

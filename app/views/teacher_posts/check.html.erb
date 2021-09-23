@@ -1,0 +1,6 @@
+<div class="col-9 offset-3 mt-3">
+  <%= form_with url: search_teacher_path, method: :get, local:true do |f| %>
+    <%= f.text_field :key_word, value: @key_word, placeholder:'キーワード検索', class:'search_word' %>
+    <%= f.submit '検索', class:"btn btn-sm btn-outline-dark"%>
+  <% end %>
+</div>

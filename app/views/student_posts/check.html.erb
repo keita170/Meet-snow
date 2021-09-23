@@ -1,0 +1,6 @@
+<div class="col-9 offset-3 mt-3">
+    <%= form_with url: search_path, method: :get, local:true do |f| %>
+      <%= f.text_field :keyword, value: @keyword, placeholder:'キーワード検索', class:'search__form__input rounded' %>
+      <%= f.submit '検索', class:"btn btn-sm btn-outline-dark"%>
+    <% end %>
+  </div>

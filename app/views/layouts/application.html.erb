@@ -82,6 +82,13 @@
                 <li><a href="/rooms">DMページ</a></li>
                 <li><%= link_to "マイページ", user_path(current_user) %></li>
                 <li><a href="/notifications">通知一覧</a></li>
+                <li><a href="#">ーーーーーーーーーーーーーーーーー</a></li>
+                <li><%= link_to "ユーザー検索ページ", check_path %></li>
+                <li><%= link_to "Student投稿検索ページ", check_post_path %></li>
+                <li><%= link_to "Teacher投稿検索ページ", check_post_teacher_path %></li>
+                <li><a href="#">ーーーーーーーーーーーーーーーーー</a></li>
+                <li><%= link_to "Student側投稿ページへ", new_student_post_path %></li>
+                <li><%= link_to "Teacher側投稿ページへ", new_teacher_post_path %></li>
               </ul>
             </div>
 

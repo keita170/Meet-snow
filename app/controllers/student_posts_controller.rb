@@ -83,6 +83,9 @@ class StudentPostsController < ApplicationController
     render :json => @student_post
   end
 
+  def check
+  end
+  
   private
 
   def set_user

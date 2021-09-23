@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="col-12">
+    <div class="mx-auto mb-3 mt-3">
+    <%= form_with url: search_users_path, method: :get, remote:true do |f| %>
+    <%= f.text_field :keyword, value: @keyword, placeholder:'ユーザー検索', class:'search_user_phone rounded ml-5',autocomplete: 'off' %>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="result_user_phone" class="mb-5">
+</div>
