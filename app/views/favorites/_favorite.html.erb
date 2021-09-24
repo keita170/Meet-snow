@@ -1,9 +1,9 @@
 <% if student.favorited_by?(current_user) %>
   <%= link_to student_post_favorite_path(id: student.id, student_post_id: student.id), method: :delete, class:"link", remote: true do %>
-    <i class="fas fa-heart"></i><%= student.favorites.count %>
+    <i class="fas fa-heart"  style='color: #f1224d;'></i>
   <% end %>
 <% else %>
   <%= link_to student_post_favorites_path(id: student.id, student_post_id: student.id), method: :post, class:"link", remote: true do %>
-      <i class="far fa-heart"></i><%= student.favorites.count %>
+      <i class="far fa-heart"></i>
   <% end %>
 <% end %>

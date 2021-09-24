@@ -1,9 +1,9 @@
 <% if student_post.present? %>
   <% student_post.includes([user: {image_attachment: :blob}]).each do |student| %>
   <% if student.status == "受付中" %>
-    <div class="card mb-5 index-post">
+    <div class="card mb-4 index-post">
   <% else %>
-    <div class="favorite-red mb-5 index-post">
+    <div class="favorite-red mb-4 index-post">
   <% end %>
       <div class="card-body">
         <!--投稿内容表示-->
@@ -31,12 +31,19 @@
           　<div class="col-md-10 post-body col-9"><%= student.body %></div>
         </div>
 
-        <div class="text-muted mb-1 row ml-2">
-           <div class="favorite-<%= student.id %>">
+        <div class="text-muted mb-1 row ml-1">
+           <div class="favorite-<%= student.id %>col-md-1 col-1">
              <!--いいね機能 非同期化してます-->
               <%= render 'favorites/favorite', student: student %>
            </div>
-         <span class="ml-2">条件:<%= student.title %></span>
+           <div class="col-md-6 col-10">
+              条件:<%= student.title %>
+            </div>
+            <div class="col-md-5 d-flex align-items-end col-10 pr-1 pl-1">
+              <%= link_to  "https://twitter.com/share?url=#{request.url}&text=(Meet snowというアプリでの投稿です)", title: 'Twitter', target: '_blank' do %>
+                <div class="fab fa-twitter btn text-right" style='color: #00acee;'>Twitterで共有する</div>
+              <% end %>
+           </div>
         </div>
         <!--コメント表示機能-->
         <div class="comment-<%= student.id %>">

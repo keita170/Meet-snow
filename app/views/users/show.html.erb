@@ -11,13 +11,13 @@
       <%= render 'evaluations/evaluation', evaluations: @evaluations, user_keyword: @user_keyword %>
     </div>
     <div class="student col-md-8">
-      <hr width="32%" class="offset-md-4"><h2 class="text-center link">生徒側一覧</h2><hr width="32%" class="mb-5 offset-md-4">
+      <hr width="32%" class="offset-md-4"><h2 class="text-center link">生徒側一覧</h2><hr width="32%" class="mb-4 offset-md-4">
       <div class="student_post-tbody mb-3">
         <!--生徒側投稿一覧 ここから-->
         <%= render 'users/show', student_post: @student_post, comment: @comment %>
         <!--生徒側投稿一覧 ここまで-->
       </div>
-      <hr width="32%" class="offset-md-4"><h2 class="text-center link">先生側一覧</h2><hr width="32%" class="mb-5 offset-md-4">
+      <hr width="32%" class="offset-md-4"><h2 class="text-center link">先生側一覧</h2><hr width="32%" class="mb-4 offset-md-4">
       <div class="teacher_post-tbody">
         <!--先生側投稿一覧 ここから-->
         <%= render 'teacher_posts/index', teacher_post: @teacher_post, comment_teacher: @comment_teacher %>

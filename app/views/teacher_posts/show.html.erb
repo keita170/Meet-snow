@@ -4,7 +4,7 @@
   </div>
 </div>
 </div>
-<div class="index-post card mb-2 mt-4 d-flex mx-auto mb-5" style="width: 42rem;">
+<div class="index-post card mb-2 mt-4 d-flex mx-auto mb-5 col-11" style="width: 42rem;">
   <div class="card-body">
     <!--投稿内容表示-->
     <h5 class="card-title">
@@ -15,9 +15,9 @@
         <span class="text-danger font-weight-bold"><%= @teacher_post.status %></span>
       <% end %>
       <% if @teacher_post.user == current_user %>
-      <%= link_to "編集する",  edit_student_post_path(@teacher_post) ,class:"btn btn-outline-secondary btn-sm ml-5" %>
+      <%= link_to "編集する",  edit_student_post_path(@teacher_post) ,class:"btn btn-outline-secondary btn-sm ml-2" %>
       <% else %>
-      <%= link_to "連絡を取る", user_path(@teacher_post.user) ,class:"btn btn-secondary btn-sm ml-5" %>
+      <%= link_to "連絡を取る", user_path(@teacher_post.user) ,class:"btn btn-secondary btn-sm ml-2" %>
       <% end %>
     </h5>
 
@@ -33,14 +33,19 @@
     </div>
 
 
-    <div class="text-muted mb-1">
-     <span>条件:<%= @teacher_post.title %>
-
+    <div class="text-muted mb-1 row ml-1">
        <div class="favorite-<%= @teacher_post.id %>">
          <!--いいね機能 非同期化してます-->
           <%= render 'favorite_teachers/favorite', teacher: @teacher_post %>
        </div>
-     </span>
+       <div class="col-md-6 col-10">
+          条件:<%= @teacher_post.title %>
+        </div>
+       <div class="col-md-5 d-flex align-items-end col-10">
+          <%= link_to  "https://twitter.com/share?url=#{request.url}&text=(Meet snowというアプリでの投稿です)", title: 'Twitter', target: '_blank' do %>
+            <div class="fab fa-twitter btn text-right" style='color: #00acee;'>Twitterで共有する</div>
+          <% end %>
+       </div>
     </div>
     <!--コメント表示機能-->
     <div class="comment-<%= @teacher_post.id %>">

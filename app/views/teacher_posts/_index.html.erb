@@ -1,8 +1,8 @@
 <% teacher_post.each do |teacher| %>
   <% if teacher.status == "受付中" %>
-    <div class="card mb-5 index-post">
+    <div class="card mb-4 index-post">
   <% else %>
-    <div class="favorite-red mb-5 index-post">
+    <div class="favorite-red mb-4 index-post">
   <% end %>
       <div class="card-body">
       <!--投稿内容表示-->
@@ -14,9 +14,9 @@
             <span class="text-danger hand-write"><%= teacher.status %></span>
           <% end %>
           <% if teacher.user == current_user %>
-          <%= link_to "編集する",  edit_teacher_post_path(teacher) ,class:"btn btn-outline-secondary btn-sm ml-5" %>
+          <%= link_to "編集する",  edit_teacher_post_path(teacher) ,class:"btn btn-outline-secondary btn-sm ml-2" %>
           <% else %>
-          <%= link_to "連絡を取る", user_path(teacher.user) ,class:"btn btn-secondary btn-sm ml-5" %>
+          <%= link_to "連絡を取る", user_path(teacher.user) ,class:"btn btn-secondary btn-sm ml-2" %>
           <% end %>
         </h5>
 
@@ -32,15 +32,20 @@
           　<div class="col-md-10 col-10"><%= teacher.body %></div>
         </div>
 
-        <div class="text-muted mb-1 row ml-2">
-           <div class="favorite-<%= teacher.id %>">
+        <div class="text-muted mb-1 row ml-1">
+           <div class="favorite-<%= teacher.id %> col-md-1 col-1">
            <!--いいね機能 非同期化してます-->
             <%= render 'favorite_teachers/favorite', teacher: teacher %>
            </div>
-          <span class="ml-2">条件:<%= teacher.title %></span>
+           <div class="col-md-6 col-10">
+              条件:<%= teacher.title %>
+            </div>
+            <div class="col-md-5 d-flex align-items-end col-10">
+              <%= link_to  "https://twitter.com/share?url=#{request.url}&text=(Meet snowというアプリでの投稿です)", title: 'Twitter', target: '_blank' do %>
+                <div class="fab fa-twitter btn text-right" style='color: #00acee;'>Twitterで共有する</div>
+              <% end %>
+           </div>
         </div>
-
-
         <div class="comment-<%= teacher.id %>">
           <!--コメント表示機能-->
           <%= render 'comment_teachers/comment', teacher: teacher %>

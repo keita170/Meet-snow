@@ -3,12 +3,12 @@
     <% if message.user.id == current_user.id %>
     <!--自分の送信した文字が表示される側-->
     <div id="" class="d-flex flex-row-reverse">
-      <p class="rounded-pill bg-dm px-md-3 py-md-2" style="max-width:80%;text-align: left"><%= message.message %></p>
+      <p class="rounded-pill bg-dm px-md-3 py-md-2 px-3 py-2" style="max-width:80%;text-align: left"><%= message.message %></p>
     </div>
     <% else %>
     <!--相手の送信した文字が表示される側-->
     <div class="d-flex flex-row">
-     <p class="rounded-pill border px-md-3 py-md-2" style="max-width:80%;text-align: left"><%= message.message %></p>
+     <p class="rounded-pill border px-md-3 py-md-2 px-3 py-2" style="max-width:80%;text-align: left"><%= message.message %></p>
      </div>
     <% end %>
   <% end %>

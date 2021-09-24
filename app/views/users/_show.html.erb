@@ -1,9 +1,9 @@
 <% if student_post.present? %>
   <% student_post.each do |student| %>
   <% if student.status == "受付中" %>
-    <div class="card mb-5 index-post">
+    <div class="card mb-4 index-post">
   <% else %>
-    <div class="favorite-red mb-5 index-post">
+    <div class="favorite-red mb-4 index-post">
   <% end %>
       <div class="card-body">
         <!--投稿内容表示-->
