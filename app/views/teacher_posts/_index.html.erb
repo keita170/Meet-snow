@@ -37,7 +37,7 @@
            <!--いいね機能 非同期化してます-->
             <%= render 'favorite_teachers/favorite', teacher: teacher %>
            </div>
-           <div class="col-md-6 col-10">
+           <div class="col-md-6 col-10 title-font pl-1 pr-1">
               条件:<%= teacher.title %>
             </div>
             <div class="col-md-5 d-flex align-items-end col-10">
@@ -53,7 +53,7 @@
         <!--コメント投稿機能-->
         <div class="commnt-student-make border-top pt-3">
           <%= form_with(model:[teacher, comment_teacher], remote:true) do |f| %>
-          <%= f.text_area :comment, size:"37x1", class:"inputComment" %>
+          <%= f.text_area :comment, size:"37x1", class:"inputComment comment-phone" %>
           <%= f.submit "コメント", class:"btn btn-sm btn-outline-dark" %>
           <% end %>
         </div>

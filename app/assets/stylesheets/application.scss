@@ -262,8 +262,15 @@ background-color:#6FA8E1;
   background: rgba(115,115,115,0.2);
 }
 
+.title-font {
+  font-size: 14px;
+}
 
 .card {
+  box-shadow: 0 0 20px rgba(102, 227, 255,0.8), 0 0 20px rgba(102, 227, 255,0.8) inset;
+}
+
+.card-fav {
   box-shadow: 0 0 20px rgba(102, 227, 255,0.8), 0 0 20px rgba(102, 227, 255,0.8) inset;
 }
 
@@ -500,6 +507,10 @@ background-color:#6FA8E1;
   .rounded-circle2 {
   width: 40px;
   height: 40px;
+}
+
+.comment-phone {
+  width: 100%;
 }
 // ⬇︎これはレスポンシブ全体の最後の括弧
 }
