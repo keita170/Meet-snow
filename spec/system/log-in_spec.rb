@@ -6,9 +6,6 @@
 #       visit root_path
 #     end
 #     context '表示の確認' do
-#       it 'トップ画面(root_path)に「Welcome toMeet snow!!」が表示されているか' do
-#         expect(page).to have_content 'Welcome toMeet snow!!'
-#       end
 #       it 'top_pathが"/"であるか' do
 #         expect(current_path).to eq('/')
 #       end

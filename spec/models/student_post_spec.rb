@@ -12,6 +12,14 @@
 #         student_post.title = ''
 #         is_expected.to eq false
 #       end
+#       it '15文字以下であること:  15文字は〇' do
+#         student_post.title = Faker::Lorem.characters(number: 15)
+#         is_expected.to eq true
+#       end
+#       it '15文字以下であること: 16文字は×' do
+#         student_post.title = Faker::Lorem.characters(number: 16)
+#         is_expected.to eq false
+#       end
 #     end
 
 #     context 'bodyカラム' do
@@ -35,7 +43,34 @@
 #         is_expected.to eq false
 #       end
 #     end
+#   end
 
+#   describe 'アソシエーションのテスト' do
+#     context 'Userモデルとの関係' do
+#       it 'N:1となっている' do
+#         expect(StudentPost.reflect_on_association(:user).macro).to eq :belongs_to
+#       end
+#     end
+#     context 'Favoriteモデルとの関係' do
+#       it '1:Nとなっている' do
+#         expect(StudentPost.reflect_on_association(:favorites).macro).to eq :has_many
+#       end
+#     end
+#     context 'Commentモデルとの関係' do
+#       it '1:Nとなっている' do
+#         expect(StudentPost.reflect_on_association(:comments).macro).to eq :has_many
+#       end
+#     end
+#     context 'Notificationモデルとの関係' do
+#       it '1:Nとなっている' do
+#         expect(StudentPost.reflect_on_association(:notifications).macro).to eq :has_many
+#       end
+#     end
+#     context 'ViewCountモデルとの関係' do
+#       it '1:Nとなっている' do
+#         expect(StudentPost.reflect_on_association(:view_counts).macro).to eq :has_many
+#       end
+#     end
 #   end
 
 #   describe '実際に保存してみる' do

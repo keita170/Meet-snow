@@ -12,6 +12,14 @@
 #         teacher_post.title = ''
 #         is_expected.to eq false
 #       end
+#       it '15文字以下であること: 15文字は〇' do
+#         teacher_post.title = Faker::Lorem.characters(number: 15)
+#         is_expected.to eq true
+#       end
+#       it '15文字以下であること: 16文字は×' do
+#         teacher_post.title = Faker::Lorem.characters(number: 16)
+#         is_expected.to eq false
+#       end
 #     end
 
 #     context 'bodyカラム' do
@@ -41,6 +49,26 @@
 #     context 'Userモデルとの関係' do
 #       it 'N:1となっている' do
 #         expect(TeacherPost.reflect_on_association(:user).macro).to eq :belongs_to
+#       end
+#     end
+#     context 'FavoriteTeacherモデルとの関係' do
+#       it '1:Nとなっている' do
+#         expect(TeacherPost.reflect_on_association(:favorite_teachers).macro).to eq :has_many
+#       end
+#     end
+#     context 'CommentTeacherモデルとの関係' do
+#       it '1:Nとなっている' do
+#         expect(TeacherPost.reflect_on_association(:comment_teachers).macro).to eq :has_many
+#       end
+#     end
+#     context 'Notificationモデルとの関係' do
+#       it '1:Nとなっている' do
+#         expect(TeacherPost.reflect_on_association(:notifications).macro).to eq :has_many
+#       end
+#     end
+#     context 'TeacherViewCountモデルとの関係' do
+#       it '1:Nとなっている' do
+#         expect(TeacherPost.reflect_on_association(:teacher_view_counts).macro).to eq :has_many
 #       end
 #     end
 #   end

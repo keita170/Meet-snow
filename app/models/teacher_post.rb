@@ -6,7 +6,7 @@ class TeacherPost < ApplicationRecord
   has_many :teacher_view_counts, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 15 }
   validates :body, presence: true, length: { maximum: 140 }
   validates :field, presence: true
 

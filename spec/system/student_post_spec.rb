@@ -13,14 +13,13 @@
 #       it 'new_student_post_pathが"/student_posts/new"であるか' do
 #         expect(current_path).to eq('/student_posts/new')
 #       end
-#       it '投稿ボタンが表示されているか' do
-#         expect(page).to have_button '新規投稿する'
-#       end
+      
 #     end
 #     context '投稿処理のテスト' do
 #       it '投稿後のリダイレクト先は正しいか' do
 #         fill_in 'student_post[title]', with: Faker::Lorem.characters(number:5)
 #         fill_in 'student_post[body]', with: Faker::Lorem.characters(number:20)
+#         fill_in 'student_post[field]', with: 'その他'
 #         click_button '新規投稿する'
 #         expect(page).to have_current_path student_posts_path
 #       end
