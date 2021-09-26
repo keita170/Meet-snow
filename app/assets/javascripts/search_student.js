@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function(){
 
   function builtHTML(data){
     let html = `
-     <div class="index-post card mb-2 col-md-12" style="width: 42rem;">
+     <div class="index-post card mb-4 col-md-12" style="width: 42rem;">
         <h5 class="card-title">
           <a href="student_posts/${data.id}" class="link">${data.field}:<span class="font-weight-bold">${data.status}</span></a>
         </h5>
