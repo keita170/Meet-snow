@@ -1,5 +1,6 @@
 <div class="sub-title pt-2 pb-2 mb-2">
   <div class="col-md-4 offset-md-3">
+    <div id="saikabu"></div>
     <hr><h3 class="text-center link">DMページ</h3><hr>
   </div>
 </div>
@@ -49,7 +50,6 @@
     <% @entries.each do |entry| %>
       <% if entry.user_id == current_user.id %>
       <% else %>
-      <div id="saikabu"></div>
         <!--やり取りする相手の名前表示-->
         <h5 class="mt-3"><a href="/users/<%= entry.user.id %>" class="link"><%= entry.user.name %>さん</a></h5>
       <% end %>
