@@ -1,4 +1,4 @@
-<img width="650" alt="サイズ変更後" src="https://user-images.githubusercontent.com/85141468/134845124-caff77da-8720-480f-999e-aa4666225f63.png">
+<div align="center"><img width="650" alt="サイズ変更後" src="https://user-images.githubusercontent.com/85141468/134845124-caff77da-8720-480f-999e-aa4666225f63.png"></div>
 
 # マッチングSNSサイト「Meet snow」
 
