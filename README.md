@@ -1,4 +1,4 @@
-<img width="1394" alt="スクリーンショット 2021-09-26 11 54 22" src="https://user-images.githubusercontent.com/85141468/134844964-78a74231-16ca-4e1c-9660-2a8c783411c1.png">
+<img width="650" alt="サイズ変更後" src="https://user-images.githubusercontent.com/85141468/134845124-caff77da-8720-480f-999e-aa4666225f63.png">
 
 # マッチングSNSサイト「Meet snow」
 
