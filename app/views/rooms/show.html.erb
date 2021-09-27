@@ -8,40 +8,7 @@
 <div class="row mb-3 mt-4">
   <div class="col-md-2 col-1"></div>
   <!--DMでの相手の一覧表示記入場所 始まり-->
-  <div class="col-md-3 border bg-white res-link" style="width:100%; height:540px;">
-    <h5 class="mt-3 text-center link">メッセージ相手一覧</h5>
-    <hr>
-    <div class="DM-member overflow-auto" style="width:100%; height:450px;">
-    <% @rooms.each do |room| %>
-      <% room.users.each do |user| %>
-        <% if user == current_user %>
-        <% else %>
-          <div class="rounded bg-dm px-md-4 py-md-2 mb-2 row" style="width:110%; height:60px;">
-            <!--画像-->
-           <div>
-            <% if user.image.attached? %>
-              <%= image_tag user.image.variant(resize:'200x200'), class:"rounded-circle rounded-circle2 mr-3" %>
-            <% else %>
-              <%= image_tag 'no_image.jpg', class:"rounded-circle rounded-circle2 mr-3" %>
-            <% end %>
-           </div>
-            <!--名前,最後のメッセージ,その時間-->
-            <div class="text-muted ">
-              <%= link_to user.name,room_path(room, anchor: 'saikabu'), class:"link" %>
-              <%= link_to "削除", room_path, method: :delete %>
-              <br>
-              <% if room.messages.count > 0 %>
-                <%= room.messages.order('created_at DESC').limit(1).first.message.truncate(12) %>..
-                <% @post = room.messages.order('created_at DESC').limit(1).first %>
-                <%= time_ago_in_words(@post.created_at) %>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
-    </div>
-  </div>
+  <%= render 'rooms/rooms', rooms: @rooms, last_one: @last_one %>
   <!--DMでの相手の一覧表示記入場所 終わり-->
 
 
