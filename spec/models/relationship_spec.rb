@@ -1,27 +1,27 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.describe Relationship, type: :model do
-#   let(:relationship) { create(:relationship) }
- 
-#   describe "各モデルとのアソシエーション" do
-#     let(:association) do
-#       described_class.reflect_on_association(target)
-#     end
+RSpec.describe Relationship, type: :model do
+  let(:relationship) { create(:relationship) }
 
-#     context "仮想モデルfollowerとのアソシエーション" do
-#       let(:target) { :follower }
+  describe "各モデルとのアソシエーション" do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
 
-#       it "Followerとの関連付けはbelongs_toであること" do
-#         expect(association.macro).to  eq :belongs_to
-#       end
-#     end
+    context "仮想モデルfollowerとのアソシエーション" do
+      let(:target) { :follower }
 
-#     context "仮想モデルfollowingとのアソシエーション" do
-#       let(:target) { :followed }
+      it "Followerとの関連付けはbelongs_toであること" do
+        expect(association.macro).to  eq :belongs_to
+      end
+    end
 
-#       it "Followingとの関連付けはbelongs_toであること" do
-#         expect(association.macro).to  eq :belongs_to
-#       end
-#     end
-#   end
-# end
+    context "仮想モデルfollowingとのアソシエーション" do
+      let(:target) { :followed }
+
+      it "Followingとの関連付けはbelongs_toであること" do
+        expect(association.macro).to  eq :belongs_to
+      end
+    end
+  end
+end
