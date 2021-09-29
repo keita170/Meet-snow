@@ -23,9 +23,9 @@
           <%= f.label :"分野",class:"h4" %>
         　<%= f.select :field, [["フリースタイル", "フリースタイル"], ["グラトリ", "グラトリ"], ["カービング", "カービング"], ["その他", "その他"]], include_blank: "選択して下さい", class:"border border-info" %>
         　<%= f.radio_button :status,:受付中,  checked: "checked",class:"ml-2" %>
-          <%= f.label :status, "受付中" %>
+          <%= f.label :status_受付中, "受付中" %>
           <%= f.radio_button :status, :締め切り %>
-          <%= f.label :status, "締め切り" %>
+          <%= f.label :status_締め切り, "締め切り" %>
         </div>
 
         <div class="actions mb-3">

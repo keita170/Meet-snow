@@ -1,55 +1,38 @@
-<html>
-  <head>
-      <title class="text-blue">MeetSnow</title>
+<div class="top-move">
+  <div class="up">
+    <div class="first-meet_snow btn">
+      Meet snow
+    </div>
+  </div>
+  <div class="down"></div>
+  <div class="line"></div>
+  <div class="top-main">
+    <ul class="slider">
+      <!--<li><img src="/assets/alts-bluesky.jpg" class="top-image1" alt=""></li>-->
+      <!--<li><img src="/assets/alts-rail.jpg" class="top-image2" alt=""></li>-->
+      <!--<li><img src="/assets/alts_jump.jpg" class="top-image3" alt=""></li>-->
+      <!--<li><img src="/assets/alts-bluesky2.jpg" class="top-image4" alt=""></li>-->
+      <!--本番環境用-->
+      <li><%= image_tag asset_path("alts-bluesky.jpg", alt: ""), class:"top-image1" %></li>
+      <li><%= image_tag asset_path("alts-rail.jpg", alt: ""), class:"top-image2" %></li>
+      <li><%= image_tag asset_path("alts_jump.jpg", alt: ""), class:"top-image3" %></li>
+      <li><%= image_tag asset_path("alts-bluesky2.jpg", alt: ""), class:"top-image4" %></li>
+      <li><%= image_tag asset_path("alts-phone.jpg", alt: ""), class:"top-image5" %></li>
+    </ul>
 
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-      <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-      <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-      <script src="slick/slick.min.js"></script>
-      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-    <body>
-      <div class="top-move">
-        <div class="up">
-          <div class="first-meet_snow btn">
-            Meet snow
-          </div>
-        </div>
-        <div class="down"></div>
-        <div class="line"></div>
-        <div class="top-main">
-          <ul class="slider">
-            <!--<li><img src="/assets/alts-bluesky.jpg" class="top-image1" alt=""></li>-->
-            <!--<li><img src="/assets/alts-rail.jpg" class="top-image2" alt=""></li>-->
-            <!--<li><img src="/assets/alts_jump.jpg" class="top-image3" alt=""></li>-->
-            <!--<li><img src="/assets/alts-bluesky2.jpg" class="top-image4" alt=""></li>-->
-            <!--本番環境用-->
-            <li><%= image_tag asset_path("alts-bluesky.jpg", alt: ""), class:"top-image1" %></li>
-            <li><%= image_tag asset_path("alts-rail.jpg", alt: ""), class:"top-image2" %></li>
-            <li><%= image_tag asset_path("alts_jump.jpg", alt: ""), class:"top-image3" %></li>
-            <li><%= image_tag asset_path("alts-bluesky2.jpg", alt: ""), class:"top-image4" %></li>
-            <li><%= image_tag asset_path("alts-phone.jpg", alt: ""), class:"top-image5" %></li>
-          </ul>
-
-          <a class="" href="/users/sign_in">
-            <p class="top-meet_snow">「Meet snow」とは<br>
-              <span class="top-meet_snow2">「教えたい人」と「教えられたい人」を<br>マッチングする為に作られた</span>
-              <br>スノーボードに特化した<br><span class="top-meet_snow2">SNSサービスです</span>
-            </p>
-          </a>
-          <div class="top-text">
-            <p>(利用にはアカウント登録が必要です)</p>
-            <div class="row text-top">
-              <%= link_to "新規登録",new_user_registration_path, class: "btn btn-outline-light mb-3 mr-2" %>
-              <%= link_to "ログイン",new_user_session_path, class: "btn btn-outline-light mb-3" %>
-            </div>
-          </div>
-          <div class="none"></div>
-        </div>
+    <a class="" href="/users/sign_in">
+      <p class="top-meet_snow">「Meet snow」とは<br>
+        <span class="top-meet_snow2">「教えたい人」と「教えられたい人」を<br>マッチングする為に作られた</span>
+        <br>スノーボードに特化した<br><span class="top-meet_snow2">SNSサービスです</span>
+      </p>
+    </a>
+    <div class="top-text">
+      <p>(利用にはアカウント登録が必要です)</p>
+      <div class="row text-top">
+        <%= link_to "新規登録",new_user_registration_path, class: "btn btn-outline-light mb-3 mr-2" %>
+        <%= link_to "ログイン",new_user_session_path, class: "btn btn-outline-light mb-3" %>
       </div>
-    </body>
-</html>
-
-
-
+    </div>
+    <div class="none"></div>
+  </div>
+</div>

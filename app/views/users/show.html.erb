@@ -7,7 +7,15 @@
 <div class="container mb-5 mt-5">
   <div class="row mt-2">
     <div class="student-left col-md-4 pr-4">
-      <%= render 'evaluations/new', evaluation: @evaluation, user: @user %>
+      <% if @user == current_user %>
+        <div class="res-link">
+          <div class="field mb-3 mt-4">
+            <p class="ml-2 h4 text-center mb-4">「<%= @user.name %>さんへの評価」</p>
+          </div>
+        </div>
+      <% else %>
+        <%= render 'evaluations/new', evaluation: @evaluation, user: @user %>
+      <% end %>
       <%= render 'evaluations/evaluation', evaluations: @evaluations, user_keyword: @user_keyword %>
     </div>
     <div class="student col-md-8">

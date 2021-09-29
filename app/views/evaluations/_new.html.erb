@@ -1,7 +1,7 @@
 <div class="res-link">
  <%= form_with model:evaluation, local: true do |f| %>
     <div class="field mb-3 mt-4">
-      <p class="ml-2 h5"><%= user.name %>さんへの評価</p>
+      <p class="ml-2 h4 text-center mb-4">「<%= user.name %>さんへの評価」</p>
 
       <%= hidden_field_tag :user_select, user.id %>
       <%= hidden_field_tag :post_user, current_user %>
@@ -14,11 +14,11 @@
     <div class="field mb-3">
       <span>"※もう2度とお願いしないが多発した場合、<strong class="text-danger">利用停止</strong>する可能性があります"</span><br>
       <%= f.radio_button :content,:またお願いしたい,  checked: "checked",class:"ml-1" %>
-      <%= f.label :content, "またお願いしたい",class:"font-weight-bold" %><br>
+      <%= f.label :content_またお願いしたい, "またお願いしたい",class:"font-weight-bold" %><br>
       <%= f.radio_button :content, :タイミングが合えば %>
-      <%= f.label :content, "タイミングが合えば",class:"font-weight-bold" %><br>
+      <%= f.label :content_タイミングが合えば, "タイミングが合えば",class:"font-weight-bold" %><br>
       <%= f.radio_button :content, :もう２度とお願いしません %>
-      <%= f.label :content, "もう２度とお願いしません",class:"font-weight-bold" %>
+      <%= f.label :content_もう２度とお願いしません, "もう２度とお願いしません",class:"font-weight-bold" %>
     </div>
     <!--<!-ーーーーーーーーーーーーーーーーーーー-星⭐️機能ーーーーーーーーーーーーーーーー-->
     <div id="evaluation_stars" class="mb-2">

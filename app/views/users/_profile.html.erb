@@ -8,7 +8,7 @@
        <%= image_tag 'no_image.jpg', class:"rounded-circle" %>
       <% end %>
     </div>
-    <div class="col-md-7 col-7">
+    <div class="col-md-4 col-8">
       <div class="row">
       <p class="ml-3 profile-name link"><%= user.name %></p>
       <!--プロフィール編集or フォロー機能-->
@@ -44,5 +44,11 @@
       </p>
       <%= user.introduction %>
     </div>
+    <% if user == current_user %>
+      <div class="col-md-2 res-link"><br><br><br>
+        <p class="text-right"><%= link_to "ログアウトする", destroy_user_session_path, class:"btn btn-outline-secondary", method: :delete, data: {confirm: "本当にログアウトしますか？"} %></p>
+      </div>
+    <% else %>
+    <% end %>
   </div>
   <!--プロフィール欄 ここまで-->

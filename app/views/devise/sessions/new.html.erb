@@ -9,12 +9,8 @@
         <h1 class="meet_snow display-4">Meet snow</h1>
 
         <div class="field mb-3 mt-4">
-          <%= f.text_field :name, autofocus: true, placeholder: "名前" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@examle.com" %>
         </div>
-
-        <div class="field mb-3">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@examle.com" %>
-          </div>
 
         <div class="field mb-3">
           <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード(6文字以上)" %>

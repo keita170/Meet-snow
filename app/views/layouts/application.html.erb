@@ -17,124 +17,23 @@
 
   <body>
     <% unless current_page?(root_path) %>
-
     <header>
-      <nav class="navbar navbar-expand-lg pt-3 pb-3">
-        <div class="d-flex align-items-left justify-content-left">
-
-        </div>
-        <div class="container">
-          <a class="navbar-brand text-info text-left blue-round" href="/">
-            <span class="meet-snow">Meet snow</span>
-          </a>
-          <div class="d-flex mx-auto">
-            <% if user_signed_in? %>
-              <%= form_with url: search_users_path, method: :get, remote:true do |f| %>
-              <%= f.text_field :keyword, value: @keyword, placeholder:'ユーザー検索', class:'search_user rounded res-link',autocomplete: 'off' %>
-            <% end %>
-          </div>
-          <div>
-           <ul class="navbar-nav ml-auto">
-            <li>
-              <%= link_to student_posts_path, class:"nav-link" do %>
-              <span class="fas fa-baby link-icon"> <span class="link">Student</span></span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to teacher_posts_path, class:"nav-link" do %>
-              <span class="fas fa-user-graduate link-icon" > <span class="link">Teacher</span></span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to favorites_users_path(current_user), class:"nav-link" do %>
-              <span class="fas fa-heart link-icon"style="font-size: 1.5em;"> </span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to rooms_path, class:"nav-link" do %>
-              <span class="fas fa-comment link-icon" style="font-size: 1.5em;"> </span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to user_path(current_user), class:"nav-link" do %>
-              <span class="fas fa-user link-icon" style="font-size: 1.5em;"> </span>
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to notifications_path(current_user), class:"nav-link" do %>
-                <% if unchecked_notifications.any? %>
-                  <span class="fa-stack">
-                    <i class="fas fa-bell link-icon" style="font-size: 1.5em;" ></i>
-                    <i class="fas fa-circle n-circle fa-stack-1x" style="font-size: 0.7em;" ></i>
-                  </span>
-                <% else %>
-                  <i class="fas fa-bell link-icon" style="font-size: 1.5em;" ></i>
-                <% end %>
-              <% end %>
-            </li>
-
-            <div id="sp-menu">
-              <h2>MENU</h2>
-              <ul>
-                <li><a href="/student_posts">Student投稿一覧</a></li>
-                <li><a href="/teacher_posts">Teacher投稿一覧</a></li>
-                <li><a href="/users/favorites">いいねした投稿</a></li>
-                <li><a href="/rooms">DMページ</a></li>
-                <li><%= link_to "マイページ", user_path(current_user) %></li>
-                <li><a href="/notifications">通知一覧</a></li>
-                <li><a href="#">ーーーーーーーーーーーーーーーーー</a></li>
-                <li><%= link_to "ユーザー検索ページ", check_path %></li>
-                <li><%= link_to "Student投稿検索ページ", check_post_path %></li>
-                <li><%= link_to "Teacher投稿検索ページ", check_post_teacher_path %></li>
-                <li><a href="#">ーーーーーーーーーーーーーーーーー</a></li>
-                <li><%= link_to "Student側投稿ページへ", new_student_post_path %></li>
-                <li><%= link_to "Teacher側投稿ページへ", new_teacher_post_path %></li>
-                <li><a href="#">ーーーーーーーーーーーーーーーーー</a></li>
-                <li><%= link_to "Student側投稿ランキングページへ", ranking_path %></li>
-                <li><%= link_to "Teacher側投稿ランキングページへ", ranking_teacher_path %></li>
-              </ul>
-            </div>
-
-            <div id="hm-icon">
-              <a class="menu-trigger" href="#">
-                <span></span>
-                <span></span>
-                <span></span>
-              </a>
-            </div>
-
-            <% elsif admin_signed_in? %>
-            <li>
-              <%= link_to admins_users_path, class:"nav-link" do %>
-              <span class="fas fa-user link-icon"> ユーザー</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_admin_session_path, class:"nav-link" ,method: :delete, data: {confirm: "本当にログアウトしますか？"} do %>
-              <span class="fas fa-hand-peace link-icon"> ログアウト</span>
-              <% end %>
-            </li>
-            <% end %>
-           </ul>
-          </div>
-        </div>
-      </nav>
-      <% end %>
+      <%= render 'layouts/header', keyword: @keyword %>
     </header>
+    <% end %>
     <div id="result_user" class="mb-5">
     <%= yield %>
     </div>
     <footer>
       <% unless current_page?(root_path) %>
       <div class="footer-color"><br>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mt-5 mb-5">
-            <p class="text-center text-white">c</p>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 mt-5 mb-5">
+              <p class="text-center text-white">c</p>
+            </div>
           </div>
         </div>
-      </div>
       <br>
       </div>
       <% end %>
