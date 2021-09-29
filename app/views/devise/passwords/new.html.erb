@@ -1,8 +1,8 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <div class="index-post-2 card-login d-flex mx-auto justify-content-center align-items-center rounded-pill mt-5 mb-5" style="height:470px; width:520px;">
+    <div class="col-md-12 col-12">
+      <div class="index-post-2 card-login d-flex mx-auto justify-content-center align-items-center rounded-pill mt-5 mb-5">
         <%#= form_with model: @user, url: edit_user_password_path, method: :post, class: 'new_user', local: true do |f| %>
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "再設定用にメールを送る", class: 'btn btn-primary mx-auto'  %>
+          <%= f.submit "再設定用にメールを送る", class: 'btn btn-outline-primary mx-auto'  %>
         </div>
       <% end %>
       </div>
@@ -25,10 +25,10 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 col-6">
       <p class="text-left">アカウント作成の方は<%= link_to "こちら", new_user_registration_path, class: 'text-decolation' %>から。</p>
     </div>
-    <div class="col-md-4 offset-md-2">
+    <div class="col-md-4 offset-md-2 col-6">
       <p class="text-right">アカウント作成済みの方は<%= link_to "こちら", new_user_session_path, class: 'text-decolation' %>から。</p>
     </div>
   </div>

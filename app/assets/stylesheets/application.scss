@@ -277,6 +277,8 @@ background-color:#6FA8E1;
 }
 
 .card-login {
+  height: 470px;
+  width: 520px;
   box-shadow: 0 0 50px rgba(102, 227, 255,0.6), 0 0 50px rgba(102, 227, 255,0.6) inset;
 }
 
@@ -498,6 +500,12 @@ background-color:#6FA8E1;
     min-width: 100%;
     min-height: 100%;
     z-index: 3;
+  }
+   // log inページ-------------------------------------
+  .card-login {
+    height: 360px;
+    width: 360px;
+    box-shadow: 0 0 50px rgba(102, 227, 255,0.6), 0 0 50px rgba(102, 227, 255,0.6) inset;
   }
 
 

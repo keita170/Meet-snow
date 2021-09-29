@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <div class="index-post-2 card-login d-flex mx-auto justify-content-center align-items-center rounded-pill mt-5 mb-5" style="height:470px; width:520px;">
+    <div class="col-md-12 col-12">
+      <div class="index-post-2 card-login d-flex mx-auto justify-content-center align-items-center rounded-pill mt-5 mb-5">
         <%= form_with model: @user, url: user_session_path, local: true do |f| %>
         <%= render "devise/shared/error_messages", resource: @user %>
         <%= flash[:alert]%>
@@ -30,10 +30,10 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 col-6">
       <p class="text-left"><%= link_to "パスワードを忘れた方", new_user_password_path, class: 'text-decolation' %></p>
     </div>
-    <div class="col-md-4 offset-md-2">
+    <div class="col-md-4 offset-md-2 col-6">
       <p class="text-right">アカウント作成の方は<%= link_to "こちら", new_user_registration_path, class: 'text-decolation' %>から。</p>
     </div>
   </div>
