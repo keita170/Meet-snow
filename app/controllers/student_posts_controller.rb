@@ -5,6 +5,7 @@ class StudentPostsController < ApplicationController
   def index
     @student_post = StudentPost.page(params[:page]).order('status, created_at DESC').per(10)
     @comment = Comment.new
+
     # 絞り込み機能
     if params[:field] == "分野検索"
       @student_post = StudentPost.page(params[:page]).order('status, created_at DESC').per(10)
@@ -102,4 +103,5 @@ class StudentPostsController < ApplicationController
   def student_post_params
     params.require(:student_post).permit(:title, :body, :field, :status)
   end
+
 end

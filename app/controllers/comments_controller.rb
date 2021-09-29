@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.student_post_id = @student_post.id
     @comment.save
-
+    
     @student_post.create_notification_comment!(current_user, @comment.id)
     respond_to do |format|
       format.html { redirect_to request.referrer }

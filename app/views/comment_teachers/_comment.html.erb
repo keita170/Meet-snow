@@ -1,6 +1,6 @@
 <% teacher.comment_teachers.includes([:user]).each do |comment| %>
  <tr>
-    <td><%= link_to comment.user.name, user_path(comment.user), class:"link" %></td>
+    <td><%= link_to comment.user.name, user_path(comment.user), class:"link mr-1" %></td>
     <td><%= comment.comment %></td>
     <td>
      <% if comment.user == current_user %>
